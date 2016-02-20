@@ -1,0 +1,255 @@
+{% set css_files = css_files + ["_static/css/bootstrap.min.css"] %}
+{% set script_files = script_files + ["_static/js/bootstrap.min.js"] %}
+{#
+  basic/layout.html
+  ~~~~~~~~~~~~~~~~~
+
+  Master layout template for Sphinx themes.
+
+  :copyright: Copyright 2007-2016 by the Sphinx team, see AUTHORS.
+  :license: BSD, see LICENSE for details.
+  #}
+  {%- block doctype -%}
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  {%- endblock %}
+  {%- set reldelim1 = reldelim1 is not defined and ' &raquo;' or reldelim1 %}
+  {%- set reldelim2 = reldelim2 is not defined and ' |' or reldelim2 %}
+  {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and
+  (sidebars != []) %}
+  {%- set url_root = pathto('', 1) %}
+  {# XXX necessary? #}
+  {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
+  {%- if not embedded and docstitle %}
+  {%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
+  {%- else %}
+  {%- set titlesuffix = "" %}
+  {%- endif %}
+
+  {%- macro relbar() %}
+  <div class="related" role="navigation" aria-label="related navigation">
+    
+    <ul>
+      {%- for rellink in rellinks %}
+      <li class="right" {% if loop.first %}style="margin-right: 10px"{% endif %}>
+        <a href="{{ pathto(rellink[0]) }}" title="{{ rellink[1]|striptags|e }}"
+        {{ accesskey(rellink[2]) }}>{{ rellink[3] }}</a>
+        {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
+        {%- endfor %}
+        {%- block rootrellink %}
+        <li class="nav-item nav-item-0"><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>{{ reldelim1 }}</li>
+        {%- endblock %}
+        {%- for parent in parents %}
+        <li class="nav-item nav-item-{{ loop.index }}"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+        {%- endfor %}
+        {%- block relbaritems %} {% endblock %}
+      </ul>
+    </div>
+    {%- endmacro %}
+
+    {%- macro sidebar() %}
+    {%- if render_sidebar %}
+    <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebarwrapper">
+        <h3> Site Navigation </h3>
+        <ul>
+          <li><a href="{{pathto('documentation')}}">Documentation</a></li>
+          <li><a href="{{pathto('devel/index')}}">Development</a></li>
+        </ul>
+
+        <h3> NIPY Community </h3>
+        <ul class="simple">
+          <li><a class="reference external" href="http://nipy.org/">Community Home</a></li>
+          <li><a class="reference external" href="http://nipy.org/software/projects/">NIPY Projects</a></li>
+          <li><a class="reference external" href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+          <li><a class="reference external" href="http://nipy.org/nipy/license.html">License</a></li>
+        </ul>
+        {%- block sidebarlogo %}
+        {%- if logo %}
+        <p class="logo"><a href="{{ pathto(master_doc) }}">
+          <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+        </a></p>
+        {%- endif %}
+        {%- endblock %}
+        {%- if sidebars != None %}
+        {#- new style sidebar: explicitly include/exclude templates #}
+        {%- for sidebartemplate in sidebars %}
+        {%- include sidebartemplate %}
+        {%- endfor %}
+        {%- else %}
+        {#- old style sidebars: using blocks -- should be deprecated #}
+        {%- block sidebartoc %}
+        {%- include "localtoc.html" %}
+        {%- endblock %}
+        {%- block sidebarrel %}
+        {%- include "relations.html" %}
+        {%- endblock %}
+        {%- block sidebarsourcelink %}
+        {%- include "sourcelink.html" %}
+        {%- endblock %}
+        {%- if customsidebar %}
+        {%- include customsidebar %}
+        {%- endif %}
+        {%- block sidebarsearch %}
+        {%- include "searchbox.html" %}
+        {%- endblock %}
+        {%- endif %}
+      </div>
+    </div>
+    {%- endif %}
+    {%- endmacro %}
+
+    {%- macro script() %}
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '{{ url_root }}',
+        VERSION:     '{{ release|e }}',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '{{ '' if no_search_suffix else file_suffix }}',
+        HAS_SOURCE:  {{ has_source|lower }}
+      };
+    </script>
+    {%- for scriptfile in script_files %}
+    <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
+    {%- endmacro %}
+
+    {%- macro css() %}
+    {%- for cssfile in css_files %}
+    <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
+    {%- endfor %}
+    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+    {%- endmacro %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset={{ encoding }}" />
+      {{ metatags }}
+      {%- block htmltitle %}
+      <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+      {%- endblock %}
+      {{ css() }}
+      {%- if not embedded %}
+      {{ script() }}
+      {%- if use_opensearch %}
+      <link rel="search" type="application/opensearchdescription+xml"
+      title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}"
+      href="{{ pathto('_static/opensearch.xml', 1) }}"/>
+      {%- endif %}
+      {%- if favicon %}
+      <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+      {%- endif %}
+      {%- endif %}
+      {%- block linktags %}
+      {%- if hasdoc('about') %}
+      <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
+      {%- endif %}
+      {%- if hasdoc('genindex') %}
+      <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+      {%- endif %}
+      {%- if hasdoc('search') %}
+      <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+      {%- endif %}
+      {%- if hasdoc('copyright') %}
+      <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
+      {%- endif %}
+      <link rel="top" title="{{ docstitle|e }}" href="{{ pathto(master_doc) }}" />
+      {%- if parents %}
+      <link rel="up" title="{{ parents[-1].title|striptags|e }}" href="{{ parents[-1].link|e }}" />
+      {%- endif %}
+      {%- if next %}
+      <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+      {%- endif %}
+      {%- if prev %}
+      <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+      {%- endif %}
+      {%- endblock %}
+      {%- block extrahead %} {% endblock %}
+    </head>
+    <body role="document">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><img style="max-width:100px; margin-top: -7px;"
+             src="{{ pathto("_static/images/dipy-logo.png", 1) }}"></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="{{pathto('index')}}">Home</a></li>
+              <li><a href="{{pathto('stateoftheart')}}">Overview</a></li>
+              <li><a href="{{pathto('examples_index')}}">Gallery</a></li>
+              <li><a href="{{pathto('installation')}}">Download</a></li>
+              <li><a href="{{pathto('subscribe')}}">Subscribe</a></li>
+              <li><a href="{{pathto('developers')}}">Developers</a></li>
+              <li><a href="{{pathto('cite')}}">Cite</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+      {%- block header %}{% endblock %}
+      {%- block content %}
+      {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
+      <div class="container mainContainer">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 docCol">
+            <div class="document main-doc">
+              {%- block document %}
+              <div class="documentwrapper">
+                {%- if render_sidebar %}
+                <div class="bodywrapper">
+                  {%- endif %}
+                  <div class="body img-control" role="main">
+                    {% block body %} {% endblock %}
+                  </div>
+                  {%- if render_sidebar %}
+                </div>
+                {%- endif %}
+              </div>
+              {%- endblock %}
+
+              <div class="clearer"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebarCol">
+          {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+          </div>
+        </div>
+      </div>
+      {%- endblock %}
+
+      {%- block footer %}
+      <footer class="footer">
+        <div class="container footerContainer">
+          <div class="bottomNav">
+          {%- block relbar2 %}{{ relbar() }}{% endblock %}
+          </div>
+          <div class="footerContent" role="contentinfo">
+          {%- if show_copyright %}
+          {%- if hasdoc('copyright') %}
+          {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+          {%- else %}
+          {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+          {%- endif %}
+          {%- endif %}
+          {%- if last_updated %}
+          {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+          {%- endif %}
+          {%- if show_sphinx %}
+          {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+          {%- endif %}
+        </div>
+        </div>
+      </footer>
+      {%- endblock %}
+    </body>
+    </html>

@@ -1,0 +1,84 @@
+.main-doc {
+    font-size: 1.08em;
+    line-height: 1.6em;
+    word-spacing: 0.08em;
+    padding: 1em;
+}
+
+.img-control img {
+	max-width: 100%;
+	height: auto;
+	margin: 0 auto;
+	display: block;
+}
+
+.headerlink {
+	color: #fff;
+}
+
+.headerlink :hover{
+	color: ##337ab7;
+}
+
+.mainContainer {
+	box-shadow: 0px 4px 5px #2b2b2b;
+	transition: all 0.3s;
+}
+
+.mainContainer:hover {
+	box-shadow: 0px 4px 9px #2b2b2b;
+}
+
+.sidebarCol {
+	background: #d2eae4;
+}
+body {
+	background-image: url("../images/bg.png");
+	background-repeat: no-repeat;
+	background-size: auto;
+}
+
+.docCol {
+	background: rgba(255, 255, 255, 0.85);
+}
+
+.footerContainer{
+	background: #e7e7e7 none repeat scroll 0 0;
+	box-shadow: 0px 6px 5px #2b2b2b;
+	padding: 1em;
+	color: #333;
+	transition: all 3s;
+}
+.footerContainer:hover {
+	box-shadow: 0px 6px 9px #2b2b2b;
+}
+
+a {
+    color: #ca7900;
+    text-decoration: none;
+}
+
+a{
+	transition: all .3s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.right {
+	float: right;
+	list-style: none;
+}
+
+.navbar-right li:hover{
+	transition: all .3s;
+}
+.navbar-right li:hover{
+	background: #e1e1e1;
+}
+
+.sphinxsidebar ul, .sphinxsidebar ol, .sphinxsidebar li {
+    margin-left: 0;
+    padding-left: .6em;
+}
