@@ -1,12 +1,13 @@
 dependencies:
   pre:
     - sudo apt-get update;
-    - sudo apt-get install -y ipython python-tables python-vtk python-matplotlib;
+    - sudo apt-get install -y ipython python-tables python-vtk;
     - sudo apt-get install -y xvfb;
     - sudo apt-get install -y python-tk;
     - sudo apt-get install -y python-imaging;
     - pip install nose
     - pip install sphinx
+    - pip install matplotlib
 
 checkout:
   post:
