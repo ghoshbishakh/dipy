@@ -8,6 +8,8 @@ dependencies:
     - pip install nose
     - pip install sphinx
     - pip install matplotlib
+    # Enable systemwide vtk
+    - ln -sf /usr/lib/pymodules/python2.7/vtk ~/virtualenvs/venv-system/lib/python2.7/site-packages/
 
 checkout:
   post:
