@@ -1,0 +1,20 @@
+dependencies:
+  pre:
+    - sudo apt-get update;
+    - sudo apt-get install -y ipython python-tables python-vtk python-matplotlib;
+    - sudo apt-get install -y xvfb;
+    - sudo apt-get install -y python-tk;
+    - sudo apt-get install -y python-imaging;
+    - pip install nose
+    - pip install sphinx
+
+checkout:
+  post:
+    - mkdir for_testing
+
+test:
+  override:
+    # Change into an innocuous directory and find tests from installation
+    - nosetests --with-doctest --verbose dipy:
+        pwd:
+          for_testing
