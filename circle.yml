@@ -14,7 +14,17 @@ checkout:
 
 test:
   override:
+    # TESTS
     # Change into an innocuous directory and find tests from installation
-    - nosetests --with-doctest --verbose dipy:
+    #- nosetests --with-doctest --verbose dipy:
+    #    pwd:
+    #      for_testing
+    #
+    # DOC BUILDS
+    - make install
         pwd:
-          for_testing
+          doc
+
+general:
+  artifacts:
+    - "doc/_build/html"
