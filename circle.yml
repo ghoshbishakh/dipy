@@ -21,9 +21,7 @@ test:
     #      for_testing
     #
     # DOC BUILDS
-    - make install;
-        pwd:
-          doc
+    - cd doc && make html
 
 general:
   artifacts:
