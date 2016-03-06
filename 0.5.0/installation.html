@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="index.html" />
+    <link rel="up" title="Documentation" href="documentation.html" />
+    <link rel="next" title="Examples" href="examples_index.html" />
+    <link rel="prev" title="Mission statement" href="mission.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="index.html">
+  <img src="_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="examples_index.html" title="Examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mission.html" title="Mission statement"
+             accesskey="P">previous</a> |</li>
+  <li><a href="index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="documentation.html" accesskey="U">Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="documentation.html">Documentation</a></li>
+    <li><a href="devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#note-on-python-versions">Note on python versions</a></li>
+<li><a class="reference internal" href="#installing-a-release">Installing a release</a><ul>
+<li><a class="reference internal" href="#using-easy-install">Using easy_install</a></li>
+<li><a class="reference internal" href="#using-packages">Using packages</a><ul>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+<li><a class="reference internal" href="#osx">OSX</a></li>
+<li><a class="reference internal" href="#linux">Linux</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installing-from-source">Installing from source</a><ul>
+<li><a class="reference internal" href="#getting-the-source">Getting the source</a></li>
+<li><a class="reference internal" href="#building-and-installing">Building and installing</a><ul>
+<li><a class="reference internal" href="#id2">Windows</a></li>
+<li><a class="reference internal" href="#id3">OSX</a></li>
+<li><a class="reference internal" href="#ubuntu-debian">Ubuntu/Debian</a></li>
+<li><a class="reference internal" href="#fedora-mandriva-maybe-redhat">Fedora / Mandriva maybe Redhat</a></li>
+<li><a class="reference internal" href="#install-from-source-for-unices-e-g-linux-osx">Install from source for unices (e.g Linux, OSX)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mission.html"
+                        title="previous chapter">Mission statement</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="examples_index.html"
+                        title="next chapter">Examples</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/installation.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://dipy.org">dipy</a> is in active development at the moment. You can install it from our latest
+release, but you may find that the release has got well behind the current
+development - at least - we hope so - if we&#8217;re developing fast enough!</p>
+<div class="section" id="note-on-python-versions">
+<span id="python-versions"></span><h2>Note on python versions<a class="headerlink" href="#note-on-python-versions" title="Permalink to this headline">¶</a></h2>
+<p>Sorry, but <a class="reference external" href="http://dipy.org">dipy</a> does not yet work with python 3 - so all the instructions
+following instructions apply to python 2.5 or python 2.6 or python 2.7.</p>
+<p>On OSX we always use the python binaries available from the python.org
+downloads, and not the python that comes with the OSX system.  If you don&#8217;t have
+the python.org python you need to go to <a class="reference external" href="http://python.org/downloads">http://python.org/downloads</a>, then
+download and install the python version you want (2.7 or 2.6 or 2.5).  Check
+that you have this version on your path (perhaps after <code class="docutils literal"><span class="pre">.</span> <span class="pre">~/.bash_profile</span></code>)
+with <code class="docutils literal"><span class="pre">which</span> <span class="pre">python</span></code>.  This should show something like:</p>
+<div class="highlight-python"><div class="highlight"><pre>/Library/Frameworks/Python.framework/Versions/2.6/bin/python
+</pre></div>
+</div>
+<p>We&#8217;ve compiled dipy against this python, and all our testing on OSX too.</p>
+</div>
+<div class="section" id="installing-a-release">
+<h2>Installing a release<a class="headerlink" href="#installing-a-release" title="Permalink to this headline">¶</a></h2>
+<p>If you are on Debian or Ubuntu Linux we recommend you try
+<a class="reference internal" href="#install-packages"><span>Using packages</span></a> first. Otherwise please try <cite>install-easy-install</cite>.</p>
+<div class="section" id="using-easy-install">
+<span id="install-easy-install"></span><h3>Using easy_install<a class="headerlink" href="#using-easy-install" title="Permalink to this headline">¶</a></h3>
+<p>See first the <a class="reference internal" href="#python-versions"><span>Note on python versions</span></a>.</p>
+<p>In case <code class="docutils literal"><span class="pre">easy_install</span></code> is not installed then please install <a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a> or
+<a href="#id4"><span class="problematic" id="id5">distribute_</span></a>.</p>
+<p>Please install <a class="reference external" href="http://numpy.scipy.org">numpy</a> and <a class="reference external" href="http://www.scipy.org">scipy</a> using their respective binary installers if you
+haven&#8217;t already.</p>
+<p>For windows you can use <a class="reference external" href="http://www.pythonxy.com">pythonxy</a> to get numpy and scipy and lots of other
+useful python packages. This is quite a big package but will install
+lots of python stuff that is useful for your scientific endeavors.</p>
+<p>When you have numpy and scipy installed then try</p>
+<div class="highlight-python"><div class="highlight"><pre>easy_install dipy
+</pre></div>
+</div>
+<p>This command should work under Linux, Mac OS X and Windows.</p>
+<p>Then from any python console or script try</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dipy</span>
+</pre></div>
+</div>
+<p>Does it work? For any problems/suggestions please let us know by sending us an
+e-mail to the <a class="reference external" href="http://projects.scipy.org/mailman/listinfo/nipy-devel">nipy mailing list</a> with the subject line starting with
+<code class="docutils literal"><span class="pre">[dipy]</span></code>.</p>
+<p>By the way, you might be tempted to try and run the tests after installing with
+easy_install.  Unfortunately this doesn&#8217;t work because of a problem with
+easy_install.  To run the tests you need to install from source on windows or
+mac, or via a package on Linux (source also works on Linux).</p>
+</div>
+<div class="section" id="using-packages">
+<span id="install-packages"></span><h3>Using packages<a class="headerlink" href="#using-packages" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="windows">
+<h4>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h4>
+<p>Download and install <a class="reference external" href="http://numpy.scipy.org">numpy</a> and <a class="reference external" href="http://www.scipy.org">scipy</a> - or install <a class="reference external" href="http://www.pythonxy.com">pythonxy</a>.  Install <a class="reference external" href="http://nipy.sourceforge.net/nibabel">nibabel</a>
+from <a class="reference external" href="http://pypi.python.org/pypi/nibabel">nibabel pypi</a> using the <code class="docutils literal"><span class="pre">.exe</span></code> installer.  Install dipy from <a class="reference external" href="http://pypi.python.org/pypi/dipy">dipy
+pypi</a> using the <code class="docutils literal"><span class="pre">.exe</span></code> installer for your version of python.</p>
+<p>Then from any python console or script try</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dipy</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="osx">
+<h4>OSX<a class="headerlink" href="#osx" title="Permalink to this headline">¶</a></h4>
+<p>Download and install <a class="reference external" href="http://numpy.scipy.org">numpy</a> and <a class="reference external" href="http://www.scipy.org">scipy</a> using the OSX binary packages for your
+distribution of python.  Install <a class="reference external" href="http://nipy.sourceforge.net/nibabel">nibabel</a> from <a class="reference external" href="http://pypi.python.org/pypi/nibabel">nibabel pypi</a> using the
+<code class="docutils literal"><span class="pre">.mpkg</span></code> installer for your version of python.  Install dipy from <a class="reference external" href="http://pypi.python.org/pypi/dipy">dipy pypi</a>
+using the <code class="docutils literal"><span class="pre">.mpkg</span></code> installer for your version of python.</p>
+<p>Then from any python console or script try</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dipy</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="linux">
+<h4>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h4>
+<p>For Debian and Ubuntu, set up the <a class="reference external" href="http://neuro.debian.net">NeuroDebian</a> repositories - see <a class="reference external" href="http://neuro.debian.net/#how-to-use-this-repository">NeuroDebian
+how to</a>. Then:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-dipy
+</pre></div>
+</div>
+<p>We hope to get packages for the other Linux distributions, but for now, please
+try <a class="reference internal" href="#install-easy-install"><span>Using easy_install</span></a> instead.</p>
+</div>
+</div>
+</div>
+<div class="section" id="installing-from-source">
+<h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-source">
+<h3>Getting the source<a class="headerlink" href="#getting-the-source" title="Permalink to this headline">¶</a></h3>
+<p>You can get the released source zip file or <code class="docutils literal"><span class="pre">tar.gz</span></code> archive from <a class="reference external" href="http://pypi.python.org/pypi/dipy">dipy
+pypi</a>.</p>
+<p>If you want the latest development source as an archive, go to the <a class="reference external" href="http://github.com/Garyfallidis/dipy">dipy
+github</a> page, and click on the Download button.</p>
+<p>More likely you will want to get the source repository to be able to follow the
+latest changes.  In that case, see <a class="reference internal" href="devel/gitwash/following_latest.html#following-latest"><span>Following the latest source</span></a>.</p>
+<p>After you&#8217;ve unpacked the archive or cloned the repository, you will have a new
+directory, containing the dipy <code class="docutils literal"><span class="pre">setup.py</span></code> file, among others.  We&#8217;ll call this
+directory - that contains the <code class="docutils literal"><span class="pre">setup.py</span></code> file - the <em>dipy source root
+directory</em>.  Sometimes we&#8217;ll also call it the <code class="docutils literal"><span class="pre">&lt;dipy</span> <span class="pre">root&gt;</span></code> directory.</p>
+</div>
+<div class="section" id="building-and-installing">
+<h3>Building and installing<a class="headerlink" href="#building-and-installing" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>Windows<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="http://www.pythonxy.com">pythonxy</a> is probably the easiest way to install the dependencies that you need.</p>
+<p>Otherwise you will need <a class="reference external" href="http://www.python.org">python</a> (obviously). You&#8217;ll need to install the <a class="reference external" href="http://www.mingw.org/wiki/Getting_Started">mingw</a>
+compiler suite if you don&#8217;t have a c compiler on your machine. We suggest you
+run the <a class="reference external" href="http://www.mingw.org/wiki/Getting_Started">mingw</a> automated installer, and install the developer tools, including
+<a href="#id6"><span class="problematic" id="id7">msys_</span></a>.  Don&#8217;t forget to put the mingw <code class="docutils literal"><span class="pre">bin</span></code> directory on your path so python
+can find the compiler. Install <a class="reference external" href="http://numpy.scipy.org">numpy</a>, <a class="reference external" href="http://www.scipy.org">scipy</a>, <a class="reference external" href="http://nipy.sourceforge.net/nibabel">nibabel</a> and <a class="reference external" href="http://cython.org">cython</a> from their
+respective binary installers.  All of these come with <a class="reference external" href="http://www.pythonxy.com">pythonxy</a> . You can also
+install them from their Windows binary installers.  You&#8217;ll find these by
+following the links from their home pages.</p>
+<p>Start a command shell like <code class="docutils literal"><span class="pre">cmd</span></code> or <a href="#id8"><span class="problematic" id="id9">Powershell_</span></a> and change directory into the
+<em>dipy source root directory</em>.</p>
+<p>To install into your system:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py install --compiler=mingw32
+</pre></div>
+</div>
+<p>To install inplace - so that dipy is running out of the source code directory:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py develop
+</pre></div>
+</div>
+<p>(this is the mode we recommend for following the latest source code).  If you
+get an error with <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">develop</span></code> make sure you have installed
+<a class="reference external" href="http://pypi.python.org/pypi/setuptools">setuptools</a>.</p>
+<p>If you get an error saying  &#8220;unable to find vcvarsall.bat&#8221; then you need to
+create a file called &#8220;pydistutils.cfg&#8221; in notepad and give it the contents</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">build</span><span class="p">]</span>
+<span class="n">compiler</span><span class="o">=</span><span class="n">mingw32</span>
+</pre></div>
+</div>
+<p>Save this into your system python <code class="docutils literal"><span class="pre">distutils</span></code> directory as <code class="docutils literal"><span class="pre">distutils.cfg</span></code>.
+This will be something like <code class="docutils literal"><span class="pre">C:\Python26\Lib\distutils\distutils.cfg</span></code>.</p>
+</div>
+<div class="section" id="id3">
+<h4>OSX<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>See the <a class="reference internal" href="#python-versions"><span>Note on python versions</span></a> for which python you need.</p>
+<p>Make sure you have <a class="reference external" href="http://developer.apple.com/TOOLS/xcode">Xcode</a> installed.</p>
+<p>Download and install <a class="reference external" href="http://numpy.scipy.org">numpy</a> and <a class="reference external" href="http://www.scipy.org">scipy</a> from their respective download sites.
+Chose the version for your versions of OSX and python.  Install <a class="reference external" href="http://cython.org">cython</a>.
+This is probably most easily done with:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo easy_install cython
+</pre></div>
+</div>
+<p>Install <a class="reference external" href="http://nipy.sourceforge.net/nibabel">nibabel</a></p>
+<div class="highlight-python"><div class="highlight"><pre>sudo easy_install nibabel
+</pre></div>
+</div>
+<p>From here follow the <a class="reference internal" href="#install-source-nix"><span>Install from source for unices (e.g Linux, OSX)</span></a> instructions.</p>
+</div>
+<div class="section" id="ubuntu-debian">
+<h4>Ubuntu/Debian<a class="headerlink" href="#ubuntu-debian" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-dev python-setuptools
+sudo apt-get install python-numpy python-scipy
+</pre></div>
+</div>
+<p>then:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo easy_install cython
+sudo easy_install nibabel
+</pre></div>
+</div>
+<p>(we need the latest version of these two - hence <code class="docutils literal"><span class="pre">easy_install</span></code> rather than
+<code class="docutils literal"><span class="pre">apt-get</span></code>).</p>
+<p>You might want the optional packages too (highly recommended):</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install ipython python-tables python-vtk python-matplotlib
+</pre></div>
+</div>
+<p>Now follow <a class="reference internal" href="#install-source-nix"><span>Install from source for unices (e.g Linux, OSX)</span></a>.</p>
+</div>
+<div class="section" id="fedora-mandriva-maybe-redhat">
+<h4>Fedora / Mandriva maybe Redhat<a class="headerlink" href="#fedora-mandriva-maybe-redhat" title="Permalink to this headline">¶</a></h4>
+<p>Making this up, but:</p>
+<div class="highlight-python"><div class="highlight"><pre>yum install gcc-c++
+yum install python-devel
+yum install python-setuptools
+yum install numpy scipy
+</pre></div>
+</div>
+<p>Then:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo easy_install cython
+sudo easy_install nibabel
+</pre></div>
+</div>
+<p>Options:</p>
+<div class="highlight-python"><div class="highlight"><pre>yum install ipython
+yum install python-matplotlib python-vtk python-tables
+</pre></div>
+</div>
+<p>Now follow <a class="reference internal" href="#install-source-nix"><span>Install from source for unices (e.g Linux, OSX)</span></a>.</p>
+</div>
+<div class="section" id="install-from-source-for-unices-e-g-linux-osx">
+<span id="install-source-nix"></span><h4>Install from source for unices (e.g Linux, OSX)<a class="headerlink" href="#install-from-source-for-unices-e-g-linux-osx" title="Permalink to this headline">¶</a></h4>
+<p>Change directory into the <em>dipy source root directory</em> .</p>
+<p>To install for the system:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py install
+</pre></div>
+</div>
+<p>To build in the source tree so you can run the code in the source tree
+(recommended for following the latest source) either:</p>
+<ul>
+<li><p class="first">option 1 - using <code class="docutils literal"><span class="pre">setup.py</span> <span class="pre">develop</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py develop
+</pre></div>
+</div>
+</li>
+<li><p class="first">option 2 - putting dipy into your search path manually.  This is more
+long-winded but a bit easier to understand what&#8217;s going on:</p>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py build_ext --inplace
+</pre></div>
+</div>
+<p>and then symlink the <code class="docutils literal"><span class="pre">&lt;dipy-root&gt;/dipy</span></code> directory into a directory on your
+python path (<code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span> <span class="pre">import</span> <span class="pre">sys;</span> <span class="pre">print</span> <span class="pre">sys.path</span></code>) or add the <em>dipy source root
+directory</em> into your <code class="docutils literal"><span class="pre">PYTHONPATH</span></code> environment variable. Search google for
+<code class="docutils literal"><span class="pre">PYTHONPATH</span></code> for details or see <a class="reference external" href="http://docs.python.org/tutorial/modules.html#the-module-search-path">python module path</a> for an introduction.</p>
+<p>When adding <a class="reference external" href="http://dipy.org">dipy</a> to the <code class="docutils literal"><span class="pre">PYTHONPATH</span></code>, we usually add the <code class="docutils literal"><span class="pre">PYTHONPATH</span></code> at
+the end of <code class="docutils literal"><span class="pre">~/.bashrc</span></code> or (OSX) <code class="docutils literal"><span class="pre">~/.bash_profile</span></code> so we don&#8217;t need to
+retype it every time. This should look something like:</p>
+<div class="highlight-python"><div class="highlight"><pre>export PYTHONPATH=/home/user_dir/Devel/dipy:/home/user_dir/Devel/nibabel
+</pre></div>
+</div>
+<p>After changing the <code class="docutils literal"><span class="pre">~/.bashrc</span></code> or (OSX) <code class="docutils literal"><span class="pre">~/.bash_profile</span></code> try:</p>
+<div class="highlight-python"><div class="highlight"><pre>source ~/.bashrc
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python"><div class="highlight"><pre>source ~/.bash_profile
+</pre></div>
+</div>
+<p>so that you can have immediate access to <a class="reference external" href="http://dipy.org">dipy</a> without needing to
+restart your terminal.</p>
+</li>
+</ul>
+<p>If you want to run the tests:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo easy_install nose
+</pre></div>
+</div>
+<p>Then (in python or <a class="reference external" href="http://ipython.scipy.org">ipython</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dipy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dipy</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can also run the examples in <code class="docutils literal"><span class="pre">&lt;dipy</span> <span class="pre">root&gt;/doc</span></code>.</p>
+<p>To build the documentation you will need:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo easy_install -U sphinx
+</pre></div>
+</div>
+<p>Then change directory to <code class="docutils literal"><span class="pre">&lt;dipy</span> <span class="pre">root&gt;</span></code> and:</p>
+<div class="highlight-python"><div class="highlight"><pre>make html
+</pre></div>
+</div>
+<p>to make the html documentation.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="examples_index.html" title="Examples"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mission.html" title="Mission statement"
+             >previous</a> |</li>
+  <li><a href="index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="documentation.html" >Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

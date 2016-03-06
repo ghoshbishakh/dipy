@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.reconst.qball.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.reconst.qball">
+<span id="dipy-reconst-qball"></span><h1><a class="reference internal" href="#module-dipy.reconst.qball" title="dipy.reconst.qball"><code class="xref py py-mod docutils literal"><span class="pre">dipy.reconst.qball</span></code></a><a class="headerlink" href="#module-dipy.reconst.qball" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="dipy.reconst.qball.cartesian2polar">
+<code class="descclassname">dipy.reconst.qball.</code><code class="descname">cartesian2polar</code><span class="sig-paren">(</span><em>x=0</em>, <em>y=0</em>, <em>z=0</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.qball.cartesian2polar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts cartesian coordinates to polar coordinates</p>
+<p>converts a list of cartesian coordinates (x, y, z) to polar coordinates 
+(R, theta, phi).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.qball.real_sph_harm">
+<code class="descclassname">dipy.reconst.qball.</code><code class="descname">real_sph_harm</code><span class="sig-paren">(</span><em>m</em>, <em>n</em>, <em>theta</em>, <em>phi</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.qball.real_sph_harm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute real spherical harmonics, where the real harmonic <img class="math" src="../_images/math/310565e8642905e73f4bd6c638d08275537ab1eb.png" alt="Y^m_n"/> is
+defined to be:</p>
+<blockquote>
+<div>Real(<img class="math" src="../_images/math/310565e8642905e73f4bd6c638d08275537ab1eb.png" alt="Y^m_n"/>) * sqrt(2) if m &gt; 0
+<img class="math" src="../_images/math/310565e8642905e73f4bd6c638d08275537ab1eb.png" alt="Y^m_n"/>                 if m == 0
+Imag(<img class="math" src="../_images/math/310565e8642905e73f4bd6c638d08275537ab1eb.png" alt="Y^m_n"/>) * sqrt(2) if m &lt; 0</div></blockquote>
+<p>This may take scalar or array arguments. The inputs will be broadcasted
+against each other.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>- `m`</strong> : int <a href="#id1"><span class="problematic" id="id2">|m|</span></a> &lt;= n</p>
+<blockquote>
+<div><blockquote>
+<div><p>The order of the harmonic.</p>
+</div></blockquote>
+<ul class="simple">
+<li><cite>n</cite> : int &gt;= 0
+The degree of the harmonic.</li>
+<li><cite>theta</cite> : float [0, 2*pi]
+The azimuthal (longitudinal) coordinate.</li>
+<li><cite>phi</cite> : float [0, pi]
+The polar (colatitudinal) coordinate.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>- `y_mn`</strong> : real float</p>
+<blockquote>
+<div><p>The real harmonic <img class="math" src="../_images/math/310565e8642905e73f4bd6c638d08275537ab1eb.png" alt="Y^m_n"/> sampled at <cite>theta</cite> and <cite>phi</cite>.</p>
+</div></blockquote>
+<p><strong>:See also:</strong> :</p>
+<blockquote class="last">
+<div><p>scipy.special.sph_harm</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.qball.sph_harm_ind_list">
+<code class="descclassname">dipy.reconst.qball.</code><code class="descname">sph_harm_ind_list</code><span class="sig-paren">(</span><em>sh_order</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.qball.sph_harm_ind_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the degree (n) and order (m) of all the symmetric spherical
+harmonics of degree less then or equal it sh_order. The results, m_list
+and n_list are kx1 arrays, where k depends on sh_order. They can be
+passed to real_sph_harm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sh_order</strong> : int</p>
+<blockquote>
+<div><p>even int &gt; 0, max degree to return</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m_list</strong> : array</p>
+<blockquote>
+<div><p>orders of even spherical harmonics</p>
+</div></blockquote>
+<p><strong>n_list</strong> : array</p>
+<blockquote class="last">
+<div><p>degrees of even spherical hormonics</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#dipy.reconst.qball.real_sph_harm" title="dipy.reconst.qball.real_sph_harm"><code class="xref py py-obj docutils literal"><span class="pre">real_sph_harm</span></code></a></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

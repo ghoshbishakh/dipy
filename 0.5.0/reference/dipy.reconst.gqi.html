@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy reconst" href="reconst.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" accesskey="U">dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.reconst.gqi.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.reconst.gqi">
+<span id="dipy-reconst-gqi"></span><h1><a class="reference internal" href="#module-dipy.reconst.gqi" title="dipy.reconst.gqi"><code class="xref py py-mod docutils literal"><span class="pre">dipy.reconst.gqi</span></code></a><a class="headerlink" href="#module-dipy.reconst.gqi" title="Permalink to this headline">¶</a></h1>
+<p>Classes and functions for generalized q-sampling</p>
+<dl class="class">
+<dt id="dipy.reconst.gqi.GeneralizedQSampling">
+<em class="property">class </em><code class="descclassname">dipy.reconst.gqi.</code><code class="descname">GeneralizedQSampling</code><span class="sig-paren">(</span><em>data</em>, <em>bvals</em>, <em>gradients</em>, <em>Lambda=1.2</em>, <em>odf_sphere='symmetric362'</em>, <em>mask=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.GeneralizedQSampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements Generalized Q-Sampling</p>
+<p>Generates a model-free description for every voxel that can
+be used from simple to very complicated configurations like
+quintuple crossings if your datasets support them.</p>
+<p>You can use this class for every kind of DWI image but it will
+perform much better when you have a balanced sampling scheme.</p>
+<p>Implements equation [9] from Generalized Q-Sampling as
+described in Fang-Cheng Yeh, Van J. Wedeen, Wen-Yih Isaac Tseng.
+Generalized Q-Sampling Imaging. IEEE TMI, 2010.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array,</p>
+<blockquote>
+<div><p>shape(X,Y,Z,D)</p>
+</div></blockquote>
+<p><strong>bvals</strong> : array,</p>
+<blockquote>
+<div><p>shape (N,)</p>
+</div></blockquote>
+<p><strong>gradients</strong> : array,</p>
+<blockquote>
+<div><p>shape (N,3) also known as bvecs</p>
+</div></blockquote>
+<p><strong>Lambda</strong> : float,</p>
+<blockquote class="last">
+<div><p>smoothing parameter - diffusion sampling length</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="dipy.tracking.propagation.html#dipy.tracking.propagation.EuDX" title="dipy.tracking.propagation.EuDX"><code class="xref py py-obj docutils literal"><span class="pre">dipy.tracking.propagation.EuDX</span></code></a>, <a class="reference internal" href="dipy.reconst.dti.html#dipy.reconst.dti.Tensor" title="dipy.reconst.dti.Tensor"><code class="xref py py-obj docutils literal"><span class="pre">dipy.reconst.dti.Tensor</span></code></a>, <a class="reference internal" href="dipy.data.html#dipy.data.get_sphere" title="dipy.data.get_sphere"><code class="xref py py-obj docutils literal"><span class="pre">dipy.data.get_sphere</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>In order to reconstruct the spin distribution function a nice symmetric
+evenly distributed sphere is provided using 362 or 642 points. This is
+usually sufficient for most of the datasets.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.reconst.gqi.GeneralizedQSampling.ind" title="dipy.reconst.gqi.GeneralizedQSampling.ind"><code class="xref py py-obj docutils literal"><span class="pre">ind</span></code></a>()</td>
+<td>indices on the sampling sphere</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dipy.reconst.gqi.GeneralizedQSampling.npa" title="dipy.reconst.gqi.GeneralizedQSampling.npa"><code class="xref py py-obj docutils literal"><span class="pre">npa</span></code></a>(s[,&nbsp;width])</td>
+<td>non-parametric anisotropy</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.reconst.gqi.GeneralizedQSampling.odf" title="dipy.reconst.gqi.GeneralizedQSampling.odf"><code class="xref py py-obj docutils literal"><span class="pre">odf</span></code></a>(s)</td>
+<td>spin density orientation distribution function</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dipy.reconst.gqi.GeneralizedQSampling.qa" title="dipy.reconst.gqi.GeneralizedQSampling.qa"><code class="xref py py-obj docutils literal"><span class="pre">qa</span></code></a>()</td>
+<td>quantitative anisotropy</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dipy.reconst.gqi.GeneralizedQSampling.ind">
+<code class="descname">ind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.GeneralizedQSampling.ind" title="Permalink to this definition">¶</a></dt>
+<dd><p>indices on the sampling sphere</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dipy.reconst.gqi.GeneralizedQSampling.npa">
+<code class="descname">npa</code><span class="sig-paren">(</span><em>s</em>, <em>width=5</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.GeneralizedQSampling.npa" title="Permalink to this definition">¶</a></dt>
+<dd><p>non-parametric anisotropy</p>
+<p>Nimmo-Smith et. al  ISMRM 2011</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dipy.reconst.gqi.GeneralizedQSampling.odf">
+<code class="descname">odf</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.GeneralizedQSampling.odf" title="Permalink to this definition">¶</a></dt>
+<dd><p>spin density orientation distribution function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>s</strong> : array, shape(D),</p>
+<blockquote>
+<div><p>diffusion signal for one point in the dataset</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>odf</strong> : array, shape(len(odf_vertices)),</p>
+<blockquote class="last">
+<div><p>spin density orientation distribution function</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dipy.reconst.gqi.GeneralizedQSampling.qa">
+<code class="descname">qa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.GeneralizedQSampling.qa" title="Permalink to this definition">¶</a></dt>
+<dd><p>quantitative anisotropy</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.gqi.equatorial_zone_vertices">
+<code class="descclassname">dipy.reconst.gqi.</code><code class="descname">equatorial_zone_vertices</code><span class="sig-paren">(</span><em>vertices</em>, <em>pole</em>, <em>width=5</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.equatorial_zone_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>finds the &#8216;vertices&#8217; in the equatorial zone conjugate
+to &#8216;pole&#8217; with width half &#8216;width&#8217; degrees</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.gqi.patch_vertices">
+<code class="descclassname">dipy.reconst.gqi.</code><code class="descname">patch_vertices</code><span class="sig-paren">(</span><em>vertices</em>, <em>pole</em>, <em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.patch_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>find &#8216;vertices&#8217; within the cone of &#8216;width&#8217; degrees around &#8216;pole&#8217;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.gqi.polar_zone_vertices">
+<code class="descclassname">dipy.reconst.gqi.</code><code class="descname">polar_zone_vertices</code><span class="sig-paren">(</span><em>vertices</em>, <em>pole</em>, <em>width=5</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.polar_zone_vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>finds the &#8216;vertices&#8217; in the equatorial band around
+the &#8216;pole&#8217; of radius &#8216;width&#8217; degrees</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.gqi.upper_hemi_map">
+<code class="descclassname">dipy.reconst.gqi.</code><code class="descname">upper_hemi_map</code><span class="sig-paren">(</span><em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.gqi.upper_hemi_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>maps a 3-vector into the z-upper hemisphere</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" >dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

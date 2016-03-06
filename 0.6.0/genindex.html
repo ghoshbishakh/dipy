@@ -1,0 +1,4044 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.6.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.6.0 documentation" href="index.html" />
+  <meta name="keywords" content="dipy, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="index.html">
+  <img src="_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="#" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="index.html">Home</a> |&nbsp;</li>
+  <li><a href="stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="installation.html">Download</a> |&nbsp;</li>
+  <li><a href="subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="cite.html">Cite</a> &nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="documentation.html">Documentation</a></li>
+    <li><a href="devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+
+   
+
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.gradients.GradientTable.__init__">__init__() (dipy.core.gradients.GradientTable method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.__init__">(dipy.core.graph.Graph method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.onetime.OneTimeProperty.__init__">(dipy.core.onetime.OneTimeProperty method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.onetime.ResetMixin.__init__">(dipy.core.onetime.ResetMixin method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.LooseVersion.__init__">(dipy.core.optimize.LooseVersion method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.NonNegativeLeastSquares.__init__">(dipy.core.optimize.NonNegativeLeastSquares method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.__init__">(dipy.core.optimize.Optimizer method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.SKLearnLinearSolver.__init__">(dipy.core.optimize.SKLearnLinearSolver method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.profile.Profiler.__init__">(dipy.core.profile.Profiler method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.HemiSphere.__init__">(dipy.core.sphere.HemiSphere method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.__init__">(dipy.core.sphere.Sphere method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere_stats.permutations.__init__">(dipy.core.sphere_stats.permutations method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.HemiSphere.__init__">(dipy.core.subdivide_octahedron.HemiSphere method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.DataError.__init__">(dipy.data.DataError method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.__init__">(dipy.data.Sphere method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.__init__">(dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.FSLError.__init__">(dipy.external.fsl.FSLError method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.InTemporaryDirectory.__init__">(dipy.external.fsl.InTemporaryDirectory method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.__init__">(dipy.external.fsl.Popen method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.base.ReconstFit.__init__">(dipy.reconst.base.ReconstFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.base.ReconstModel.__init__">(dipy.reconst.base.ReconstModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cache.Cache.__init__">(dipy.reconst.cache.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.Cache.__init__">(dipy.reconst.dsi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumDeconvFit.__init__">(dipy.reconst.dsi.DiffusionSpectrumDeconvFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumFit.__init__">(dipy.reconst.dsi.DiffusionSpectrumFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.OdfFit.__init__">(dipy.reconst.dsi.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.OdfModel.__init__">(dipy.reconst.dsi.OdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.__init__">(dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorModel.__init__">(dipy.reconst.dti.TensorModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.Cache.__init__">(dipy.reconst.gqi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.GeneralizedQSamplingFit.__init__">(dipy.reconst.gqi.GeneralizedQSamplingFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.OdfFit.__init__">(dipy.reconst.gqi.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.OdfModel.__init__">(dipy.reconst.gqi.OdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.Interpolator.__init__">(dipy.reconst.interpolate.Interpolator method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.NearestNeighborInterpolator.__init__">(dipy.reconst.interpolate.NearestNeighborInterpolator method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.OutsideImage.__init__">(dipy.reconst.interpolate.OutsideImage method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.TriLinearInterpolator.__init__">(dipy.reconst.interpolate.TriLinearInterpolator method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.multi_voxel.CallableArray.__init__">(dipy.reconst.multi_voxel.CallableArray method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.multi_voxel.MultiVoxelFit.__init__">(dipy.reconst.multi_voxel.MultiVoxelFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.odf.OdfFit.__init__">(dipy.reconst.odf.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.odf.OdfModel.__init__">(dipy.reconst.odf.OdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.Cache.__init__">(dipy.reconst.sfm.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ExponentialIsotropicFit.__init__">(dipy.reconst.sfm.ExponentialIsotropicFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ExponentialIsotropicModel.__init__">(dipy.reconst.sfm.ExponentialIsotropicModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.IsotropicFit.__init__">(dipy.reconst.sfm.IsotropicFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.IsotropicModel.__init__">(dipy.reconst.sfm.IsotropicModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ReconstFit.__init__">(dipy.reconst.sfm.ReconstFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ReconstModel.__init__">(dipy.reconst.sfm.ReconstModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleFit.__init__">(dipy.reconst.sfm.SparseFascicleFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleModel.__init__">(dipy.reconst.sfm.SparseFascicleModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.Cache.__init__">(dipy.reconst.shm.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.CsaOdfModel.__init__">(dipy.reconst.shm.CsaOdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OdfFit.__init__">(dipy.reconst.shm.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OdfModel.__init__">(dipy.reconst.shm.OdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OpdtModel.__init__">(dipy.reconst.shm.OpdtModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.QballModel.__init__">(dipy.reconst.shm.QballModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.ResidualBootstrapWrapper.__init__">(dipy.reconst.shm.ResidualBootstrapWrapper method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.SphHarmFit.__init__">(dipy.reconst.shm.SphHarmFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.SphHarmModel.__init__">(dipy.reconst.shm.SphHarmModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ABCMeta.__init__">(dipy.segment.clustering.ABCMeta method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.AveragePointwiseEuclideanMetric.__init__">(dipy.segment.clustering.AveragePointwiseEuclideanMetric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Cluster.__init__">(dipy.segment.clustering.Cluster method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterCentroid.__init__">(dipy.segment.clustering.ClusterCentroid method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.__init__">(dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMapCentroid.__init__">(dipy.segment.clustering.ClusterMapCentroid method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Clustering.__init__">(dipy.segment.clustering.Clustering method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Metric.__init__">(dipy.segment.clustering.Metric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.QuickBundles.__init__">(dipy.segment.clustering.QuickBundles method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ResampleFeature.__init__">(dipy.segment.clustering.ResampleFeature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.ArcLengthFeature.__init__">(dipy.segment.metric.ArcLengthFeature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.AveragePointwiseEuclideanMetric.__init__">(dipy.segment.metric.AveragePointwiseEuclideanMetric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.CenterOfMassFeature.__init__">(dipy.segment.metric.CenterOfMassFeature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.CosineMetric.__init__">(dipy.segment.metric.CosineMetric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Feature.__init__">(dipy.segment.metric.Feature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.IdentityFeature.__init__">(dipy.segment.metric.IdentityFeature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Metric.__init__">(dipy.segment.metric.Metric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.MidpointFeature.__init__">(dipy.segment.metric.MidpointFeature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.MinimumAverageDirectFlipMetric.__init__">(dipy.segment.metric.MinimumAverageDirectFlipMetric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.ResampleFeature.__init__">(dipy.segment.metric.ResampleFeature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.SumPointwiseEuclideanMetric.__init__">(dipy.segment.metric.SumPointwiseEuclideanMetric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.VectorOfEndpointsFeature.__init__">(dipy.segment.metric.VectorOfEndpointsFeature method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.__init__">(dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.eudx.EuDX.__init__">(dipy.tracking.eudx.EuDX method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.BoundaryStepper.__init__">(dipy.tracking.markov.BoundaryStepper method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.CDT_NNO.__init__">(dipy.tracking.markov.CDT_NNO method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.ClosestDirectionTracker.__init__">(dipy.tracking.markov.ClosestDirectionTracker method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.DirectionFinder.__init__">(dipy.tracking.markov.DirectionFinder method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.FixedSizeStepper.__init__">(dipy.tracking.markov.FixedSizeStepper method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.MarkovIntegrator.__init__">(dipy.tracking.markov.MarkovIntegrator method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.NearestNeighborInterpolator.__init__">(dipy.tracking.markov.NearestNeighborInterpolator method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.OutsideImage.__init__">(dipy.tracking.markov.OutsideImage method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.ProbabilisticOdfWeightedTracker.__init__">(dipy.tracking.markov.ProbabilisticOdfWeightedTracker method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.__init__">(dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.NumpyDocString.__init__">(dipy.workflows.base.NumpyDocString method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.NumpyDocString.__init__">(dipy.workflows.docstring_parser.NumpyDocString method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.__init__">(dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.boots.resampling.html#dipy.boots.resampling.abc">abc() (in module dipy.boots.resampling)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ABCMeta">ABCMeta (class in dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.abstractmethod">abstractmethod() (in module dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.ad">ad() (dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.add">add() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.add_cluster">add_cluster() (dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.add_description">add_description() (dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.add_edge">add_edge() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.add_epilogue">add_epilogue() (dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.add_node">add_node() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.phantom.add_noise">add_noise() (in module dipy.sims.phantom)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.add_noise">(in module dipy.sims.voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.add_workflow">add_workflow() (dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-affine-matrix"><strong>Affine matrix</strong></a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-affine-transformation"><strong>Affine transformation</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.affine_from_fsl_mat_file">affine_from_fsl_mat_file() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.html#dipy.align.reslice.affine_transform">affine_transform() (in module dipy.align.reslice)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.affine_transform">(in module dipy.external.fsl)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.all_paths">all_paths() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.all_tensor_evecs">all_tensor_evecs() (in module dipy.sims.voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere_stats.angular_similarity">angular_similarity() (in module dipy.core.sphere_stats)</a>, <a href="reference/dipy.core.sphere_stats.html#dipy.core.sphere_stats.angular_similarity">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.annotatePick">annotatePick() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.apply_warp">apply_warp() (in module dipy.external.fsl)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.applymask">applymask() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.approx_polygon_track">approx_polygon_track() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.approximate_mdl_trajectory">approximate_mdl_trajectory() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.arbitrarypoint">arbitrarypoint() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.arbitrarypoint">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.rng.architecture">architecture() (in module dipy.core.rng)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.ArcLengthFeature">ArcLengthFeature (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Metric.are_compatible">are_compatible() (dipy.segment.clustering.Metric method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Metric.are_compatible">(dipy.segment.metric.Metric method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.array">array() (in module dipy.reconst.interpolate)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.as_native_array">as_native_array() (in module dipy.data)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.ndindex.as_strided">as_strided() (in module dipy.core.ndindex)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.multi_voxel.as_strided">(in module dipy.reconst.multi_voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Cluster.assign">assign() (dipy.segment.clustering.Cluster method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterCentroid.assign">(dipy.segment.clustering.ClusterCentroid method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.gradients.auto_attr">auto_attr() (in module dipy.core.gradients)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.onetime.auto_attr">(in module dipy.core.onetime)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.auto_attr">(in module dipy.core.sphere)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cache.auto_attr">(in module dipy.reconst.cache)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.auto_attr">(in module dipy.reconst.dti)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.auto_attr">(in module dipy.reconst.sfm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.AveragePointwiseEuclideanMetric">AveragePointwiseEuclideanMetric (class in dipy.segment.clustering)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.AveragePointwiseEuclideanMetric">(class in dipy.segment.metric)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.axes">axes() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.axial_diffusivity">axial_diffusivity() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.axial_diffusivity">[1]</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-axis-angle"><strong>Axis angle</strong></a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.gradients.GradientTable.b0s_mask">b0s_mask() (dipy.core.gradients.GradientTable method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.segment.basename">basename() (in module dipy.workflows.segment)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.html#dipy.bench">bench() (in module dipy)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.denoise.html#dipy.denoise.bench">(in module dipy.denoise)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.bench">(in module dipy.reconst)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_bounding_box.bench_bounding_box">bench_bounding_box() (in module dipy.reconst.benchmarks.bench_bounding_box)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_peaks.bench_local_maxima">bench_local_maxima() (in module dipy.reconst.benchmarks.bench_peaks)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_squash.bench_quick_squash">bench_quick_squash() (in module dipy.reconst.benchmarks.bench_squash)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_vec_val_sum.bench_vec_val_vect">bench_vec_val_vect() (in module dipy.reconst.benchmarks.bench_vec_val_sum)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.bet">bet() (in module dipy.external.fsl)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.binary_dilation">binary_dilation() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.boots.resampling.html#dipy.boots.resampling.bootstrap">bootstrap() (in module dipy.boots.resampling)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.bootstrap_data_array">bootstrap_data_array() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.bootstrap_data_array">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.bootstrap_data_voxel">bootstrap_data_voxel() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.bootstrap_data_voxel">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.BoundaryStepper">BoundaryStepper (class in dipy.tracking.markov)</a>, <a href="reference/dipy.tracking.markov.html#dipy.tracking.markov.BoundaryStepper">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_bounding_box.bounding_box">bounding_box() (in module dipy.reconst.benchmarks.bench_bounding_box)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.bounding_box">(in module dipy.segment.mask)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.boots.resampling.html#dipy.boots.resampling.bs_se">bs_se() (in module dipy.boots.resampling)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.bundles_distances_mam">bundles_distances_mam() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.bundles_distances_mdf">bundles_distances_mdf() (in module dipy.segment.quickbundles)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.bundles_distances_mdf">(in module dipy.tracking.distances)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.gradients.GradientTable.bvals">bvals() (dipy.core.gradients.GradientTable method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.gradients.GradientTable.bvecs">bvecs() (dipy.core.gradients.GradientTable method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.bytes">bytes() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.bytes">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cache.Cache">Cache (class in dipy.reconst.cache)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.Cache">(class in dipy.reconst.dsi)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.Cache">(class in dipy.reconst.gqi)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.Cache">(class in dipy.reconst.sfm)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.Cache">(class in dipy.reconst.shm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cache.Cache.cache_clear">cache_clear() (dipy.reconst.cache.Cache method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.Cache.cache_clear">(dipy.reconst.dsi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.Cache.cache_clear">(dipy.reconst.gqi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.Cache.cache_clear">(dipy.reconst.sfm.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.Cache.cache_clear">(dipy.reconst.shm.Cache method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cache.Cache.cache_get">cache_get() (dipy.reconst.cache.Cache method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.Cache.cache_get">(dipy.reconst.dsi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.Cache.cache_get">(dipy.reconst.gqi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.Cache.cache_get">(dipy.reconst.sfm.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.Cache.cache_get">(dipy.reconst.shm.Cache method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cache.Cache.cache_set">cache_set() (dipy.reconst.cache.Cache method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.Cache.cache_set">(dipy.reconst.dsi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.Cache.cache_set">(dipy.reconst.gqi.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.Cache.cache_set">(dipy.reconst.sfm.Cache method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.Cache.cache_set">(dipy.reconst.shm.Cache method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.multi_voxel.CallableArray">CallableArray (class in dipy.reconst.multi_voxel)</a>, <a href="reference/dipy.reconst.multi_voxel.html#dipy.reconst.multi_voxel.CallableArray">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.cart2sphere">cart2sphere() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.cart2sphere">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.cart2sphere">(in module dipy.core.sphere)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.cart2sphere">(in module dipy.reconst.shm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.cart_distance">cart_distance() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.cart_distance">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.CDT_NNO">CDT_NNO (class in dipy.tracking.markov)</a>, <a href="reference/dipy.tracking.markov.html#dipy.tracking.markov.CDT_NNO">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.center_of_mass">center_of_mass() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.center_of_mass">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.CenterOfMassFeature">CenterOfMassFeature (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMapCentroid.centroids">centroids (dipy.segment.clustering.ClusterMapCentroid attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.centroids">(dipy.segment.quickbundles.QuickBundles attribute)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.children">children() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.segment.choose_create_out_dir">choose_create_out_dir() (in module dipy.workflows.segment)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.circumradius">circumradius() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.circumradius">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.clean_cc_mask">clean_cc_mask() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.clear">clear() (dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.clear">(in module dipy.viz.fvtk)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.close">close() (dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.ClosestDirectionTracker">ClosestDirectionTracker (class in dipy.tracking.markov)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Cluster">Cluster (class in dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Clustering.cluster">cluster() (dipy.segment.clustering.Clustering method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.QuickBundles.cluster">(dipy.segment.clustering.QuickBundles method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterCentroid">ClusterCentroid (class in dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Clustering">Clustering (class in dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap">ClusterMap (class in dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMapCentroid">ClusterMapCentroid (class in dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.clusters">clusters (dipy.segment.clustering.ClusterMap attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.clusters">clusters() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.clusters_sizes">clusters_sizes() (dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.clusters_sizes">(dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cross_validation.coeff_of_determination">coeff_of_determination() (in module dipy.reconst.cross_validation)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.color_fa">color_fa() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.color_fa">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.color_fa">(in module dipy.segment.mask)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.communicate">communicate() (dipy.external.fsl.Popen method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere_stats.compare_orientation_sets">compare_orientation_sets() (in module dipy.core.sphere_stats)</a>, <a href="reference/dipy.core.sphere_stats.html#dipy.core.sphere_stats.compare_orientation_sets">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.LooseVersion.component_re">component_re (dipy.core.optimize.LooseVersion attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.compose_matrix">compose_matrix() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.compose_matrix">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.concatenate">concatenate() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.connectivity_matrix">connectivity_matrix() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.contour">contour() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.denoise.html#dipy.denoise.noise_estimate.convolve">convolve() (in module dipy.denoise.noise_estimate)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.maskedview.html#dipy.reconst.maskedview.MaskedView.copy">copy() (dipy.reconst.maskedview.MaskedView method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.CosineMetric">CosineMetric (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.html#dipy.align.reslice.cpu_count">cpu_count() (in module dipy.align.reslice)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.create_colormap">create_colormap() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.create_displacements">create_displacements() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.create_displacements">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.create_qspace">create_qspace() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.create_qspace">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.create_qtable">create_qtable() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.create_qtable">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.create_unit_hemisphere">create_unit_hemisphere() (in module dipy.core.subdivide_octahedron)</a>, <a href="reference/dipy.core.subdivide_octahedron.html#dipy.core.subdivide_octahedron.create_unit_hemisphere">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.create_unit_sphere">create_unit_sphere() (in module dipy.core.subdivide_octahedron)</a>, <a href="reference/dipy.core.subdivide_octahedron.html#dipy.core.subdivide_octahedron.create_unit_sphere">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.crop">crop() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.crossing">crossing() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.CsaOdfModel">CsaOdfModel (class in dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.CsaOdfModel">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.cut_plane">cut_plane() (in module dipy.tracking.distances)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.Tensor.D">D (dipy.reconst.dti.Tensor attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.DataError">DataError (class in dipy.data)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.dcm2nii">dcm2nii() (in module dipy.external.fsl)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.decompose_matrix">decompose_matrix() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.decompose_matrix">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.decompose_tensor">decompose_tensor() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.decompose_tensor">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.dedent_lines">dedent_lines() (in module dipy.workflows.docstring_parser)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.del_node">del_node() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.del_node_and_edges">del_node_and_edges() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.density_map">density_map() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleModel.design_matrix">design_matrix() (dipy.reconst.sfm.SparseFascicleModel method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.design_matrix">(in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.design_matrix">[1]</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.learning.detect_corresponding_tracks">detect_corresponding_tracks() (in module dipy.tracking.learning)</a>, <a href="reference/dipy.tracking.learning.html#dipy.tracking.learning.detect_corresponding_tracks">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.learning.detect_corresponding_tracks_plus">detect_corresponding_tracks_plus() (in module dipy.tracking.learning)</a>, <a href="reference/dipy.tracking.learning.html#dipy.tracking.learning.detect_corresponding_tracks_plus">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.diag">diag() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.diff">diff() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.phantom.diff2eigenvectors">diff2eigenvectors() (in module dipy.sims.phantom)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumDeconvFit">DiffusionSpectrumDeconvFit (class in dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumDeconvModel">DiffusionSpectrumDeconvModel (in module dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumFit">DiffusionSpectrumFit (class in dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumModel">DiffusionSpectrumModel (in module dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.html#module-dipy">dipy (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.__config__.html#module-dipy.__config__">dipy.__config__ (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.html#module-dipy.align">dipy.align (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.aniso2iso.html#module-dipy.align.aniso2iso">dipy.align.aniso2iso (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.html#module-dipy.align.reslice">dipy.align.reslice (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.boots.html#module-dipy.boots">dipy.boots (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.boots.resampling.html#module-dipy.boots.resampling">dipy.boots.resampling (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/core.html#module-dipy.core">dipy.core (module)</a>, <a href="reference/dipy.core.html#module-dipy.core">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#module-dipy.core.geometry">dipy.core.geometry (module)</a>, <a href="reference/dipy.core.html#module-dipy.core.geometry">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.gradients.html#module-dipy.core.gradients">dipy.core.gradients (module)</a>, <a href="reference/dipy.core.html#module-dipy.core.gradients">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.graph.html#module-dipy.core.graph">dipy.core.graph (module)</a>, <a href="reference/dipy.core.html#module-dipy.core.graph">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.histeq">dipy.core.histeq (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.ndindex">dipy.core.ndindex (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.onetime">dipy.core.onetime (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.optimize">dipy.core.optimize (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.profile">dipy.core.profile (module)</a>, <a href="reference/dipy.core.profile.html#module-dipy.core.profile">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.rng">dipy.core.rng (module)</a>, <a href="reference/dipy.core.rng.html#module-dipy.core.rng">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.sphere">dipy.core.sphere (module)</a>, <a href="reference/dipy.core.sphere.html#module-dipy.core.sphere">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.sphere_stats">dipy.core.sphere_stats (module)</a>, <a href="reference/dipy.core.sphere_stats.html#module-dipy.core.sphere_stats">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#module-dipy.core.subdivide_octahedron">dipy.core.subdivide_octahedron (module)</a>, <a href="reference/dipy.core.subdivide_octahedron.html#module-dipy.core.subdivide_octahedron">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/data.html#module-dipy.data">dipy.data (module)</a>, <a href="reference/dipy.data.html#module-dipy.data">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#module-dipy.data.fetcher">dipy.data.fetcher (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.denoise.html#module-dipy.denoise">dipy.denoise (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.denoise.html#module-dipy.denoise.nlmeans">dipy.denoise.nlmeans (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.denoise.html#module-dipy.denoise.noise_estimate">dipy.denoise.noise_estimate (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#module-dipy.external">dipy.external (module)</a>, <a href="reference/external.html#module-dipy.external">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#module-dipy.external.fsl">dipy.external.fsl (module)</a>, <a href="reference/dipy.external.html#module-dipy.external.fsl">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.html#module-dipy.io">dipy.io (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.bvectxt.html#module-dipy.io.bvectxt">dipy.io.bvectxt (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.dpy.html#module-dipy.io.dpy">dipy.io.dpy (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.gradients.html#module-dipy.io.gradients">dipy.io.gradients (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.pickles.html#module-dipy.io.pickles">dipy.io.pickles (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst">dipy.reconst (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.base">dipy.reconst.base (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.benchmarks">dipy.reconst.benchmarks (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.benchmarks.bench_bounding_box">dipy.reconst.benchmarks.bench_bounding_box (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.benchmarks.bench_peaks">dipy.reconst.benchmarks.bench_peaks (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.benchmarks.bench_squash">dipy.reconst.benchmarks.bench_squash (module)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.benchmarks.bench_vec_val_sum">dipy.reconst.benchmarks.bench_vec_val_sum (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.cache">dipy.reconst.cache (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.cross_validation">dipy.reconst.cross_validation (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#module-dipy.reconst.dsi">dipy.reconst.dsi (module)</a>, <a href="reference/dipy.reconst.html#module-dipy.reconst.dsi">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#module-dipy.reconst.dti">dipy.reconst.dti (module)</a>, <a href="reference/dipy.reconst.html#module-dipy.reconst.dti">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#module-dipy.reconst.gqi">dipy.reconst.gqi (module)</a>, <a href="reference/dipy.reconst.html#module-dipy.reconst.gqi">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.interpolate">dipy.reconst.interpolate (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.maskedview.html#module-dipy.reconst.maskedview">dipy.reconst.maskedview (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.modelarray.html#module-dipy.reconst.modelarray">dipy.reconst.modelarray (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.multi_voxel">dipy.reconst.multi_voxel (module)</a>, <a href="reference/dipy.reconst.multi_voxel.html#module-dipy.reconst.multi_voxel">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.odf">dipy.reconst.odf (module)</a>, <a href="reference/dipy.reconst.odf.html#module-dipy.reconst.odf">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.sfm">dipy.reconst.sfm (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#module-dipy.reconst.shm">dipy.reconst.shm (module)</a>, <a href="reference/dipy.reconst.shm.html#module-dipy.reconst.shm">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#module-dipy.segment">dipy.segment (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#module-dipy.segment.benchmarks">dipy.segment.benchmarks (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#module-dipy.segment.clustering">dipy.segment.clustering (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#module-dipy.segment.mask">dipy.segment.mask (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#module-dipy.segment.metric">dipy.segment.metric (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#module-dipy.segment.quickbundles">dipy.segment.quickbundles (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#module-dipy.segment.threshold">dipy.segment.threshold (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#module-dipy.sims">dipy.sims (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#module-dipy.sims.phantom">dipy.sims.phantom (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#module-dipy.sims.voxel">dipy.sims.voxel (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#module-dipy.tracking">dipy.tracking (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#module-dipy.tracking._utils">dipy.tracking._utils (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#module-dipy.tracking.benchmarks">dipy.tracking.benchmarks (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#module-dipy.tracking.distances">dipy.tracking.distances (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.eudx.html#module-dipy.tracking.eudx">dipy.tracking.eudx (module)</a>, <a href="reference/dipy.tracking.html#module-dipy.tracking.eudx">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#module-dipy.tracking.learning">dipy.tracking.learning (module)</a>, <a href="reference/dipy.tracking.learning.html#module-dipy.tracking.learning">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#module-dipy.tracking.markov">dipy.tracking.markov (module)</a>, <a href="reference/dipy.tracking.markov.html#module-dipy.tracking.markov">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#module-dipy.tracking.metrics">dipy.tracking.metrics (module)</a>, <a href="reference/dipy.tracking.metrics.html#module-dipy.tracking.metrics">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.propspeed.html#module-dipy.tracking.propspeed">dipy.tracking.propspeed (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#module-dipy.tracking.utils">dipy.tracking.utils (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.vox2track.html#module-dipy.tracking.vox2track">dipy.tracking.vox2track (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#module-dipy.viz.fvtk">dipy.viz.fvtk (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#module-dipy.workflows">dipy.workflows (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#module-dipy.workflows.base">dipy.workflows.base (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#module-dipy.workflows.docstring_parser">dipy.workflows.docstring_parser (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#module-dipy.workflows.reconst">dipy.workflows.reconst (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#module-dipy.workflows.segment">dipy.workflows.segment (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#module-dipy.workflows.tracking">dipy.workflows.tracking (module)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.DirectionFinder">DirectionFinder (class in dipy.tracking.markov)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.directions">directions (dipy.reconst.dti.TensorFit attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.dirname">dirname() (in module dipy.data)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.disperse_charges">disperse_charges() (in module dipy.core.sphere)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Metric.dist">dist() (dipy.segment.clustering.Metric method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Metric.dist">(dipy.segment.metric.Metric method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.dist">(in module dipy.segment.metric)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.distance_matrix">distance_matrix() (in module dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.dot">dot() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.dot">(in module dipy.sims.voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.dots">dots() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.down">down() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.down_short">down_short() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.downsample">downsample() (in module dipy.segment.quickbundles)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.downsample">(in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.downsample">[1]</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.downsampled_tracks">downsampled_tracks() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy">Dpy (class in dipy.external.fsl)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.dsi_deconv_voxels">dsi_deconv_voxels() (in module dipy.data)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.dsi_voxels">dsi_voxels() (in module dipy.data)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.eddy_correct">eddy_correct() (in module dipy.external.fsl)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.edges">edges() (dipy.core.sphere.Sphere method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.edges">(dipy.data.Sphere method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere_stats.eigenstats">eigenstats() (in module dipy.core.sphere_stats)</a>, <a href="reference/dipy.core.sphere_stats.html#dipy.core.sphere_stats.eigenstats">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.ellipsoid">ellipsoid() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.empty">empty() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.endpoint">endpoint() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.endpoint">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.eof">eof() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.equatorial_maximum">equatorial_maximum() (in module dipy.reconst.gqi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#dipy.reconst.gqi.equatorial_zone_vertices">equatorial_zone_vertices() (in module dipy.reconst.gqi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.gqi.equatorial_zone_vertices">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.denoise.html#dipy.denoise.noise_estimate.estimate_sigma">estimate_sigma() (in module dipy.denoise.noise_estimate)</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-euclidean-norm"><strong>Euclidean norm</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.EuclideanMetric">EuclideanMetric (in module dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.eudx.html#dipy.tracking.eudx.EuDX">EuDX (class in dipy.tracking.eudx)</a>, <a href="reference/dipy.tracking.html#dipy.tracking.eudx.EuDX">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.eudx.eudx_both_directions">eudx_both_directions() (in module dipy.tracking.eudx)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.propspeed.html#dipy.tracking.propspeed.eudx_both_directions">(in module dipy.tracking.propspeed)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="glossary.html#term-euler-angles"><strong>Euler angles</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.euler_characteristic_check">euler_characteristic_check() (in module dipy.core.sphere)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.euler_matrix">euler_matrix() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.euler_matrix">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.evals">evals (dipy.reconst.dti.TensorFit attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.evecs">evecs (dipy.reconst.dti.TensorFit attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.evolution">evolution (dipy.core.optimize.Optimizer attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.exemplars">exemplars() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ExponentialIsotropicFit">ExponentialIsotropicFit (class in dipy.reconst.sfm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ExponentialIsotropicModel">ExponentialIsotropicModel (class in dipy.reconst.sfm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Feature.extract">extract() (dipy.segment.metric.Feature method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.eye">eye() (in module dipy.reconst.shm)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.Tensor.fa">fa() (dipy.reconst.dti.Tensor method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.fa">(dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.HemiSphere.faces">faces() (dipy.core.sphere.HemiSphere method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.faces">(dipy.core.sphere.Sphere method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.HemiSphere.faces">(dipy.core.subdivide_octahedron.HemiSphere method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.faces">(dipy.data.Sphere method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.faces_from_sphere_vertices">faces_from_sphere_vertices() (in module dipy.core.sphere)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.faces_from_sphere_vertices">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Feature">Feature (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Metric.feature">feature (dipy.segment.clustering.Metric attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Metric.feature">(dipy.segment.metric.Metric attribute)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.fetch_stanford_hardi">fetch_stanford_hardi() (in module dipy.data)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.fetcher.fetch_stanford_hardi">(in module dipy.data.fetcher)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.fetch_taiwan_ntu_dsi">fetch_taiwan_ntu_dsi() (in module dipy.data)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.fetcher.fetch_taiwan_ntu_dsi">(in module dipy.data.fetcher)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.fftn">fftn() (in module dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.fftshift">fftshift() (in module dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.maskedview.html#dipy.reconst.maskedview.MaskedView.filled">filled() (dipy.reconst.maskedview.MaskedView method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.NonNegativeLeastSquares.fit">fit() (dipy.core.optimize.NonNegativeLeastSquares method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.SKLearnLinearSolver.fit">(dipy.core.optimize.SKLearnLinearSolver method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.base.ReconstModel.fit">(dipy.reconst.base.ReconstModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.OdfModel.fit">(dipy.reconst.dsi.OdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.TensorModel.fit">(dipy.reconst.dti.TensorModel method)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorModel.fit">[1]</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.OdfModel.fit">(dipy.reconst.gqi.OdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.odf.OdfModel.fit">(dipy.reconst.odf.OdfModel method)</a>, <a href="reference/dipy.reconst.odf.html#dipy.reconst.odf.OdfModel.fit">[1]</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ExponentialIsotropicModel.fit">(dipy.reconst.sfm.ExponentialIsotropicModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.IsotropicModel.fit">(dipy.reconst.sfm.IsotropicModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ReconstModel.fit">(dipy.reconst.sfm.ReconstModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleModel.fit">(dipy.reconst.sfm.SparseFascicleModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OdfModel.fit">(dipy.reconst.shm.OdfModel method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.SphHarmModel.fit">(dipy.reconst.shm.SphHarmModel method)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.SphHarmModel.fit">[1]</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.FixedSizeStepper">FixedSizeStepper (class in dipy.tracking.markov)</a>, <a href="reference/dipy.tracking.markov.html#dipy.tracking.markov.FixedSizeStepper">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.flirt2aff">flirt2aff() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.flirt2aff">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.flirt2aff_files">flirt2aff_files() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.flirt2aff_files">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.rng.floor">floor() (in module dipy.core.rng)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.fopt">fopt (dipy.core.optimize.Optimizer attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.fractional_anisotropy">fractional_anisotropy() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.fractional_anisotropy">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.fractional_anisotropy">(in module dipy.segment.mask)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.frenet_serret">frenet_serret() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.frenet_serret">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.from_lower_triangular">from_lower_triangular() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.from_lower_triangular">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.HemiSphere.from_sphere">from_sphere() (dipy.core.sphere.HemiSphere class method)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.HemiSphere.from_sphere">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.HemiSphere.from_sphere">(dipy.core.subdivide_octahedron.HemiSphere class method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.FSLError">FSLError</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.FSLError">(class in dipy.external.fsl)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.gen_PSF">gen_PSF() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.gen_PSF">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.GeneralizedQSamplingFit">GeneralizedQSamplingFit (class in dipy.reconst.gqi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.GeneralizedQSamplingModel">GeneralizedQSamplingModel (in module dipy.reconst.gqi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.generate_binary_structure">generate_binary_structure() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.generate_combinations">generate_combinations() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.generate_combinations">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/data.html#dipy.data.get_data">get_data() (in module dipy.data)</a>, <a href="reference/dipy.data.html#dipy.data.get_data">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.phantom.get_data">(in module dipy.sims.phantom)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.base.ReconstModel.get_directions">get_directions() (dipy.reconst.base.ReconstModel method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ReconstModel.get_directions">(dipy.reconst.sfm.ReconstModel method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.get_flow_args">get_flow_args() (dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.html#dipy.get_info">get_info() (in module dipy)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.get_large_clusters">get_large_clusters() (dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.get_outputs">get_outputs() (dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/data.html#dipy.data.get_sim_voxels">get_sim_voxels() (in module dipy.data)</a>, <a href="reference/dipy.data.html#dipy.data.get_sim_voxels">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.maskedview.html#dipy.reconst.maskedview.MaskedView.get_size">get_size() (dipy.reconst.maskedview.MaskedView method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/data.html#dipy.data.get_skeleton">get_skeleton() (in module dipy.data)</a>, <a href="reference/dipy.data.html#dipy.data.get_skeleton">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.get_small_clusters">get_small_clusters() (dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/data.html#dipy.data.get_sphere">get_sphere() (in module dipy.data)</a>, <a href="reference/dipy.data.html#dipy.data.get_sphere">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_peaks.get_sphere">(in module dipy.reconst.benchmarks.bench_peaks)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.get_sphere">(in module dipy.reconst.dti)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.eudx.get_sphere">(in module dipy.tracking.eudx)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.gfa">gfa() (in module dipy.reconst.gqi)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.odf.gfa">(in module dipy.reconst.odf)</a>, <a href="reference/dipy.reconst.odf.html#dipy.reconst.odf.gfa">[1]</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="glossary.html#term-gimbal-lock"><strong>Gimbal lock</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.segment.glob">glob() (in module dipy.workflows.segment)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.gradients.html#dipy.core.gradients.gradient_table">gradient_table() (in module dipy.core.gradients)</a>, <a href="reference/dipy.core.html#dipy.core.gradients.gradient_table">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.gradient_table">(in module dipy.data)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.fetcher.gradient_table">(in module dipy.data.fetcher)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.phantom.gradient_table">(in module dipy.sims.phantom)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.gradients.html#dipy.core.gradients.gradient_table_from_bvals_bvecs">gradient_table_from_bvals_bvecs() (in module dipy.core.gradients)</a>, <a href="reference/dipy.core.html#dipy.core.gradients.gradient_table_from_bvals_bvecs">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.gradients.html#dipy.core.gradients.GradientTable">GradientTable (class in dipy.core.gradients)</a>, <a href="reference/dipy.core.html#dipy.core.gradients.GradientTable">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.graph.html#dipy.core.graph.Graph">Graph (class in dipy.core.graph)</a>, <a href="reference/dipy.core.html#dipy.core.graph.Graph">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.half_to_full_qspace">half_to_full_qspace() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.half_to_full_qspace">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.hanning_filter">hanning_filter() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.hanning_filter">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.hat">hat() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.hat">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.have_flirt">have_flirt() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.have_flirt">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.HemiSphere">HemiSphere (class in dipy.core.sphere)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.HemiSphere">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.HemiSphere">(class in dipy.core.subdivide_octahedron)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.histeq.histeq">histeq() (in module dipy.core.histeq)</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-homogenous-coordinates"><strong>Homogenous coordinates</strong></a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Identity">Identity (class in dipy.segment.clustering)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.IdentityFeature">IdentityFeature (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.ifftshift">ifftshift() (in module dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.Tensor.ind">ind() (dipy.reconst.dti.Tensor method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Feature.infer_shape">infer_shape() (dipy.segment.metric.Feature method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.gradients.GradientTable.info">info (dipy.core.gradients.GradientTable attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.inside_sphere">inside_sphere() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.inside_sphere">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.inside_sphere_points">inside_sphere_points() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.inside_sphere_points">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.InTemporaryDirectory">InTemporaryDirectory (class in dipy.external.fsl)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.interp_rbf">interp_rbf() (in module dipy.core.sphere)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.Interpolator">Interpolator (class in dipy.reconst.interpolate)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.intersect_segment_cylinder">intersect_segment_cylinder() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.intersect_sphere">intersect_sphere() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.intersect_sphere">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser">IntrospectiveArgumentParser (class in dipy.workflows.base)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.is_empty">is_empty() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Metric.is_order_invariant">is_order_invariant (dipy.segment.clustering.Metric attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Feature.is_order_invariant">(dipy.segment.metric.Feature attribute)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Metric.is_order_invariant">(dipy.segment.metric.Metric attribute)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.MinimumAverageDirectFlipMetric.is_order_invariant">(dipy.segment.metric.MinimumAverageDirectFlipMetric attribute)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.IsotropicFit">IsotropicFit (class in dipy.reconst.sfm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.IsotropicModel">IsotropicModel (class in dipy.reconst.sfm)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.boots.resampling.html#dipy.boots.resampling.jackknife">jackknife() (in module dipy.boots.resampling)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.segment.join">join() (in module dipy.workflows.segment)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cross_validation.kfold_xval">kfold_xval() (in module dipy.reconst.cross_validation)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.kill">kill() (dipy.external.fsl.Popen method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.label">label() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.label2cluster">label2cluster() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.label2tracks">label2tracks() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.label2tracksids">label2tracksids() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.lambert_equal_area_projection_cart">lambert_equal_area_projection_cart() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.lambert_equal_area_projection_cart">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.lambert_equal_area_projection_polar">lambert_equal_area_projection_polar() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.lambert_equal_area_projection_polar">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.larch_3merge">larch_3merge() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.larch_3split">larch_3split() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.lazy_index">lazy_index() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.lazy_index">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.lcr_matrix">lcr_matrix() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.lcr_matrix">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.rng.LEcuyer">LEcuyer() (in module dipy.core.rng)</a>, <a href="reference/dipy.core.rng.html#dipy.core.rng.LEcuyer">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.lee_angle_distance">lee_angle_distance() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.lee_perpendicular_distance">lee_perpendicular_distance() (in module dipy.tracking.distances)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.length">length() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.length">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.length">(in module dipy.tracking.utils)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.line">line() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-linear-transformation"><strong>Linear transformation</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.load">load() (in module dipy.data)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.pickles.html#dipy.io.pickles.load_pickle">load_pickle() (in module dipy.io.pickles)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_peaks.local_maxima">local_maxima() (in module dipy.reconst.benchmarks.bench_peaks)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.local_maxima">(in module dipy.reconst.gqi)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.local_skeleton_clustering">local_skeleton_clustering() (in module dipy.segment.quickbundles)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.local_skeleton_clustering">(in module dipy.tracking.distances)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.local_skeleton_clustering_3pts">local_skeleton_clustering_3pts() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.longest_track_bundle">longest_track_bundle() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.longest_track_bundle">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.LooseVersion">LooseVersion (class in dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.lower_triangular">lower_triangular() (dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.lower_triangular">(in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.lower_triangular">[1]</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.lpn">lpn() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.LR_deconv">LR_deconv() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.LR_deconv">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.magn">magn() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.magn">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.mam_distances">mam_distances() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.map_coordinates">map_coordinates() (in module dipy.reconst.dsi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.propspeed.html#dipy.tracking.propspeed.map_coordinates_trilinear_iso">map_coordinates_trilinear_iso() (in module dipy.tracking.propspeed)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.markov_streamline">markov_streamline() (in module dipy.tracking.markov)</a>, <a href="reference/dipy.tracking.markov.html#dipy.tracking.markov.markov_streamline">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.MarkovIntegrator">MarkovIntegrator (class in dipy.tracking.markov)</a>, <a href="reference/dipy.tracking.markov.html#dipy.tracking.markov.MarkovIntegrator">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.modelarray.html#dipy.reconst.modelarray.ModelArray.mask">mask (dipy.reconst.modelarray.ModelArray attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.maskedview.html#dipy.reconst.maskedview.MaskedView">MaskedView (class in dipy.reconst.maskedview)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.CsaOdfModel.max">max (dipy.reconst.shm.CsaOdfModel attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.mc">mc() (in module dipy.external.fsl)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.Tensor.md">md() (dipy.reconst.dti.Tensor method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.md">(dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.mdf">mdf() (in module dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.mean_curvature">mean_curvature() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.mean_curvature">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.mean_diffusivity">mean_diffusivity() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.mean_diffusivity">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.mean_orientation">mean_orientation() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.mean_orientation">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_bounding_box.measure">measure() (in module dipy.reconst.benchmarks.bench_bounding_box)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_peaks.measure">(in module dipy.reconst.benchmarks.bench_peaks)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_squash.measure">(in module dipy.reconst.benchmarks.bench_squash)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_vec_val_sum.measure">(in module dipy.reconst.benchmarks.bench_vec_val_sum)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.median_filter">median_filter() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.median_otsu">median_otsu() (in module dipy.segment.mask)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.segment.median_otsu">(in module dipy.workflows.segment)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.segment.median_otsu_flow">median_otsu_flow() (in module dipy.workflows.segment)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.merge_streamlines">merge_streamlines() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.message">message (dipy.core.optimize.Optimizer attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.Metric">Metric (class in dipy.segment.clustering)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.Metric">(class in dipy.segment.metric)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.midpoint">midpoint() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.midpoint">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.midpoint2point">midpoint2point() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.midpoint2point">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.MidpointFeature">MidpointFeature (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.CsaOdfModel.min">min (dipy.reconst.shm.CsaOdfModel attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.DirectionFinder.min_seperation_angle">min_seperation_angle (dipy.tracking.markov.DirectionFinder attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.minimize">minimize() (in module dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.minimum_closest_distance">minimum_closest_distance() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.MinimumAverageDirectFlipMetric">MinimumAverageDirectFlipMetric (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.HemiSphere.mirror">mirror() (dipy.core.sphere.HemiSphere method)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.HemiSphere.mirror">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.HemiSphere.mirror">(dipy.core.subdivide_octahedron.HemiSphere method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.modelarray.html#dipy.reconst.modelarray.ModelArray.model_params">model_params (dipy.reconst.modelarray.ModelArray attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.modelarray.html#dipy.reconst.modelarray.ModelArray">ModelArray (class in dipy.reconst.modelarray)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.most_similar_track_mam">most_similar_track_mam() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.move_streamlines">move_streamlines() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/data.html#dipy.data.mrtrix_spherical_functions">mrtrix_spherical_functions() (in module dipy.data)</a>, <a href="reference/dipy.data.html#dipy.data.mrtrix_spherical_functions">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.multi_median">multi_median() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.multi_tensor">multi_tensor() (in module dipy.sims.voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.multi_tensor_odf">multi_tensor_odf() (in module dipy.sims.voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.multi_voxel.html#dipy.reconst.multi_voxel.multi_voxel_model">multi_voxel_model() (in module dipy.reconst.multi_voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.MultiTensor">MultiTensor() (in module dipy.sims.voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.multi_voxel.MultiVoxelFit">MultiVoxelFit (class in dipy.reconst.multi_voxel)</a>, <a href="reference/dipy.reconst.multi_voxel.html#dipy.reconst.multi_voxel.MultiVoxelFit">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.nanmean">nanmean() (in module dipy.reconst.sfm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.propspeed.html#dipy.tracking.propspeed.ndarray_offset">ndarray_offset() (in module dipy.tracking.propspeed)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.ndbincount">ndbincount() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.modelarray.html#dipy.reconst.modelarray.ModelArray.ndim">ndim (dipy.reconst.modelarray.ModelArray attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.ndindex.ndindex">ndindex() (in module dipy.core.ndindex)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_squash.ndindex">(in module dipy.reconst.benchmarks.bench_squash)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.multi_voxel.ndindex">(in module dipy.reconst.multi_voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.nearest_pos_semi_def">nearest_pos_semi_def() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.nearest_pos_semi_def">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.NearestNeighborInterpolator">NearestNeighborInterpolator (class in dipy.reconst.interpolate)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.NearestNeighborInterpolator">(class in dipy.tracking.markov)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere_stats.permutations.next">next (dipy.core.sphere_stats.permutations attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.nfev">nfev (dipy.core.optimize.Optimizer attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.nit">nit (dipy.core.optimize.Optimizer attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.denoise.html#dipy.denoise.nlmeans.nlmeans">nlmeans() (in module dipy.denoise.nlmeans)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.denoise.html#dipy.denoise.nlmeans.nlmeans_3d">nlmeans_3d() (in module dipy.denoise.nlmeans)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.NonNegativeLeastSquares">NonNegativeLeastSquares (class in dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.norm_3vec">norm_3vec() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.normalize_data">normalize_data() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.normalize_data">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#dipy.reconst.gqi.normalize_qa">normalize_qa() (in module dipy.reconst.gqi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.gqi.normalize_qa">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.normalized_3vec">normalized_3vec() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.normalized_vector">normalized_vector() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.normalized_vector">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#dipy.reconst.gqi.npa">npa() (in module dipy.reconst.gqi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.gqi.npa">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.NumpyDocString">NumpyDocString (class in dipy.workflows.base)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.NumpyDocString">(class in dipy.workflows.docstring_parser)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumFit.odf">odf() (dipy.reconst.dsi.DiffusionSpectrumFit method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.OdfFit.odf">(dipy.reconst.dsi.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.odf">(dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.GeneralizedQSamplingFit.odf">(dipy.reconst.gqi.GeneralizedQSamplingFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.OdfFit.odf">(dipy.reconst.gqi.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.odf.OdfFit.odf">(dipy.reconst.odf.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleFit.odf">(dipy.reconst.sfm.SparseFascicleFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OdfFit.odf">(dipy.reconst.shm.OdfFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.SphHarmFit.odf">(dipy.reconst.shm.SphHarmFit method)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.SphHarmFit.odf">[1]</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.odf_sum">odf_sum() (in module dipy.reconst.gqi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.OdfFit">OdfFit (class in dipy.reconst.dsi)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.OdfFit">(class in dipy.reconst.gqi)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.odf.OdfFit">(class in dipy.reconst.odf)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OdfFit">(class in dipy.reconst.shm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.OdfModel">OdfModel (class in dipy.reconst.dsi)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.OdfModel">(class in dipy.reconst.gqi)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.odf.OdfModel">(class in dipy.reconst.odf)</a>, <a href="reference/dipy.reconst.odf.html#dipy.reconst.odf.OdfModel">[1]</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OdfModel">(class in dipy.reconst.shm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_squash.old_squash">old_squash() (in module dipy.reconst.benchmarks.bench_squash)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.ols_fit_tensor">ols_fit_tensor() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.ols_fit_tensor">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.onetime.OneTimeProperty">OneTimeProperty (class in dipy.core.onetime)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.OpdtModel">OpdtModel (class in dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.OpdtModel">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer">Optimizer (class in dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.profile.optional_package">optional_package() (in module dipy.core.profile)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.optional_package">(in module dipy.reconst.sfm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.phantom.orbital_phantom">orbital_phantom() (in module dipy.sims.phantom)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.bvectxt.html#dipy.io.bvectxt.orientation_from_string">orientation_from_string() (in module dipy.io.bvectxt)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.bvectxt.html#dipy.io.bvectxt.orientation_to_string">orientation_to_string() (in module dipy.io.bvectxt)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.bvectxt.html#dipy.io.bvectxt.ornt_mapping">ornt_mapping() (in module dipy.io.bvectxt)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.otsu">otsu() (in module dipy.segment.mask)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.threshold.otsu">(in module dipy.segment.threshold)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.OutsideImage">OutsideImage (class in dipy.reconst.interpolate)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.OutsideImage">(class in dipy.tracking.markov)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.parents">parents() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.LooseVersion.parse">parse() (dipy.core.optimize.LooseVersion method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.partitions">partitions() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.patch_maximum">patch_maximum() (in module dipy.reconst.gqi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.patch_sum">patch_sum() (in module dipy.reconst.gqi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#dipy.reconst.gqi.patch_vertices">patch_vertices() (in module dipy.reconst.gqi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.gqi.patch_vertices">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumDeconvFit.pdf">pdf() (dipy.reconst.dsi.DiffusionSpectrumDeconvFit method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dsi.DiffusionSpectrumFit.pdf">(dipy.reconst.dsi.DiffusionSpectrumFit method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.pdf_interp_coords">pdf_interp_coords() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.pdf_interp_coords">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.pdf_odf">pdf_odf() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.pdf_odf">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.odf.html#dipy.reconst.odf.peak_directions">peak_directions() (in module dipy.reconst.odf)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.peak_directions">(in module dipy.tracking.markov)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.odf.html#dipy.reconst.odf.peak_directions_nl">peak_directions_nl() (in module dipy.reconst.odf)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.odf.html#dipy.reconst.odf.peaks_from_model">peaks_from_model() (in module dipy.reconst.odf)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.peek">peek() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere_stats.permutations">permutations (class in dipy.core.sphere_stats)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.denoise.html#dipy.denoise.noise_estimate.piesno">piesno() (in module dipy.denoise.noise_estimate)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.pinv">pinv() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.pipe">pipe() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.pipe">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.pipe_cloexec">pipe_cloexec() (dipy.external.fsl.Popen method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.pjoin">pjoin() (in module dipy.data)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.fetcher.pjoin">(in module dipy.data.fetcher)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.pjoin">(in module dipy.external.fsl)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.point_segment_sq_distance">point_segment_sq_distance() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.point_track_sq_distance_check">point_track_sq_distance_check() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.points_per_track">points_per_track() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#dipy.reconst.gqi.polar_zone_vertices">polar_zone_vertices() (in module dipy.reconst.gqi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.gqi.polar_zone_vertices">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.poll">poll() (dipy.external.fsl.Popen method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.html#dipy.align.reslice.Pool">Pool() (in module dipy.align.reslice)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen">Popen (class in dipy.external.fsl)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.SKLearnLinearSolver.predict">predict() (dipy.core.optimize.SKLearnLinearSolver method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ExponentialIsotropicFit.predict">(dipy.reconst.sfm.ExponentialIsotropicFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.IsotropicFit.predict">(dipy.reconst.sfm.IsotropicFit method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleFit.predict">(dipy.reconst.sfm.SparseFascicleFit method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.principal_components">principal_components() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.principal_components">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.profile.Profiler.print_stats">print_stats() (dipy.core.profile.Profiler method)</a>, <a href="reference/dipy.core.profile.html#dipy.core.profile.Profiler.print_stats">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.print_summary">print_summary() (dipy.core.optimize.Optimizer method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.ProbabilisticOdfWeightedTracker">ProbabilisticOdfWeightedTracker (class in dipy.tracking.markov)</a>, <a href="reference/dipy.tracking.markov.html#dipy.tracking.markov.ProbabilisticOdfWeightedTracker">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.profile.Profiler">Profiler (class in dipy.core.profile)</a>, <a href="reference/dipy.core.profile.html#dipy.core.profile.Profiler">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.project_hemisph_bvecs">project_hemisph_bvecs() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.project_hemisph_bvecs">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.QballModel">QballModel (class in dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.QballModel">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.quadratic_form">quadratic_form (dipy.reconst.dti.TensorFit attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.quantize_evecs">quantize_evecs() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.quantize_evecs">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="glossary.html#term-quaternion"><strong>Quaternion</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_squash.quick_squash">quick_squash() (in module dipy.reconst.benchmarks.bench_squash)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.QuickBundles">QuickBundles (class in dipy.segment.clustering)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles">(class in dipy.segment.quickbundles)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.radial_diffusivity">radial_diffusivity() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.radial_diffusivity">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.randint">randint() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.randint">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_vec_val_sum.randn">randn() (in module dipy.reconst.benchmarks.bench_vec_val_sum)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere_stats.random_uniform_on_sphere">random_uniform_on_sphere() (in module dipy.core.sphere_stats)</a>, <a href="reference/dipy.core.sphere_stats.html#dipy.core.sphere_stats.random_uniform_on_sphere">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.cross_validation.range">range (in module dipy.reconst.cross_validation)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.rd">rd() (dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.read">read() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.gradients.html#dipy.io.gradients.read_btable">read_btable() (in module dipy.io.gradients)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.fetcher.read_bvals_bvecs">read_bvals_bvecs() (in module dipy.data.fetcher)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.io.gradients.html#dipy.io.gradients.read_bvals_bvecs">(in module dipy.io.gradients)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.io.bvectxt.html#dipy.io.bvectxt.read_bvec_file">read_bvec_file() (in module dipy.io.bvectxt)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.read_stanford_hardi">read_stanford_hardi() (in module dipy.data)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.fetcher.read_stanford_hardi">(in module dipy.data.fetcher)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.read_taiwan_ntu_dsi">read_taiwan_ntu_dsi() (in module dipy.data)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.fetcher.read_taiwan_ntu_dsi">(in module dipy.data.fetcher)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.read_to_condition">read_to_condition() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.read_to_next_empty_line">read_to_next_empty_line() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.read_to_next_unindented_line">read_to_next_unindented_line() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.read_track">read_track() (dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.read_tracks">read_tracks() (dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.read_tracksi">read_tracksi() (dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader">Reader (class in dipy.workflows.docstring_parser)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.real_sph_harm">real_sph_harm() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.real_sph_harm">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.real_sph_harm_fibernav">real_sph_harm_fibernav() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.real_sph_harm_mrtrix">real_sph_harm_mrtrix() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.base.ReconstFit">ReconstFit (class in dipy.reconst.base)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ReconstFit">(class in dipy.reconst.sfm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.base.ReconstModel">ReconstModel (class in dipy.reconst.base)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.ReconstModel">(class in dipy.reconst.sfm)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.record">record() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.reduce_labels">reduce_labels() (in module dipy.tracking.utils)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.refdata">refdata (dipy.segment.clustering.ClusterMap attribute)</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-reflection"><strong>Reflection</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ABCMeta.register">register() (dipy.segment.clustering.ABCMeta method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.DirectionFinder.relative_peak_threshold">relative_peak_threshold (dipy.tracking.markov.DirectionFinder attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.remove_cluster">remove_cluster() (dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.remove_cluster">(dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.remove_clusters">remove_clusters() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.remove_similar_vertices">remove_similar_vertices() (in module dipy.core.sphere)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.remove_similar_vertices">(in module dipy.reconst.gqi)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.remove_small_clusters">remove_small_clusters() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.remove_tracks">remove_tracks() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.ren">ren() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.reorder_voxels_affine">reorder_voxels_affine() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.io.bvectxt.html#dipy.io.bvectxt.reorient_vectors">reorient_vectors() (in module dipy.io.bvectxt)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.aniso2iso.html#dipy.align.aniso2iso.resample">resample() (in module dipy.align.aniso2iso)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ResampleFeature">ResampleFeature (class in dipy.segment.clustering)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.ResampleFeature">(class in dipy.segment.metric)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.onetime.ResetMixin.reset">reset() (dipy.core.onetime.ResetMixin method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.reset">(dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.CDT_NNO.reset_cache">reset_cache() (dipy.tracking.markov.CDT_NNO method)</a>, <a href="reference/dipy.tracking.markov.html#dipy.tracking.markov.CDT_NNO.reset_cache">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.onetime.ResetMixin">ResetMixin (class in dipy.core.onetime)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.ResidualBootstrapWrapper">ResidualBootstrapWrapper (class in dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.ResidualBootstrapWrapper">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.align.html#dipy.align.reslice.reslice">reslice() (in module dipy.align.reslice)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.rm">rm() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.rm_all">rm_all() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.rodriguez_axis_rotation">rodriguez_axis_rotation() (in module dipy.core.geometry)</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-rotation-matrix"><strong>Rotation matrix</strong></a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-rotation-vector"><strong>Rotation vector</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.run_flirt_imgs">run_flirt_imgs() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.run_flirt_imgs">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.io.pickles.html#dipy.io.pickles.save_pickle">save_pickle() (in module dipy.io.pickles)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.seeds_from_mask">seeds_from_mask() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.Reader.seek_next_non_empty_line">seek_next_non_empty_line() (dipy.workflows.docstring_parser.Reader method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.segment_from_cfa">segment_from_cfa() (in module dipy.segment.mask)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.send_signal">send_signal() (dipy.external.fsl.Popen method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.onetime.setattr_on_read">setattr_on_read() (in module dipy.core.onetime)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.sf_to_sh">sf_to_sh() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.sf_to_sh">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.sfm_design_matrix">sfm_design_matrix() (in module dipy.reconst.sfm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.sh_to_sf">sh_to_sf() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.sh_to_sf">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.shape">shape (dipy.reconst.dti.TensorFit attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.modelarray.html#dipy.reconst.modelarray.ModelArray.shape">(dipy.reconst.modelarray.ModelArray attribute)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.multi_voxel.MultiVoxelFit.shape">(dipy.reconst.multi_voxel.MultiVoxelFit attribute)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.SphHarmFit.shape">(dipy.reconst.shm.SphHarmFit attribute)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="glossary.html#term-shear-matrix"><strong>Shear matrix</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.shortest_path">shortest_path() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.show">show() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.show_argument">show_argument() (dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.single_tensor">single_tensor() (in module dipy.sims.voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.single_tensor_odf">single_tensor_odf() (in module dipy.sims.voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.phantom.SingleTensor">SingleTensor() (in module dipy.sims.phantom)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.SingleTensor">(in module dipy.sims.voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterMap.size">size() (dipy.segment.clustering.ClusterMap method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.SKLearnLinearSolver">SKLearnLinearSolver (class in dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.slicer">slicer() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.smooth_pinv">smooth_pinv() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.smooth_pinv">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.sparse_nnls">sparse_nnls() (in module dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleFit">SparseFascicleFit (class in dipy.reconst.sfm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.sfm.SparseFascicleModel">SparseFascicleModel (class in dipy.reconst.sfm)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.spdot">spdot() (in module dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.sph2latlon">sph2latlon() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.sph2latlon">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.sph_harm_ind_list">sph_harm_ind_list() (in module dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.sph_harm_ind_list">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere">Sphere (class in dipy.core.sphere)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.Sphere">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere">(class in dipy.data)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.markov.DirectionFinder.sphere">sphere (dipy.tracking.markov.DirectionFinder attribute)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.sphere">sphere() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.sphere2cart">sphere2cart() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.sphere2cart">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.sphere2cart">(in module dipy.core.sphere)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.sphere2cart">(in module dipy.sims.voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.sphere_distance">sphere_distance() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.sphere_distance">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.sphere_funcs">sphere_funcs() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.SphHarmFit">SphHarmFit (class in dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.SphHarmFit">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.SphHarmModel">SphHarmModel (class in dipy.reconst.shm)</a>, <a href="reference/dipy.reconst.shm.html#dipy.reconst.shm.SphHarmModel">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.splev">splev() (in module dipy.tracking.metrics)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.spline">spline() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.spline">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.segment.splitext">splitext() (in module dipy.workflows.segment)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.splprep">splprep() (in module dipy.tracking.metrics)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#dipy.reconst.gqi.squared_radial_component">squared_radial_component() (in module dipy.reconst.gqi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.gqi.squared_radial_component">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.startpoint">startpoint() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.startpoint">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.sticks_and_ball">sticks_and_ball() (in module dipy.sims.voxel)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.data.html#dipy.data.SticksAndBall">SticksAndBall() (in module dipy.data)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.SticksAndBall">(in module dipy.sims.voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.streamline_mapping">streamline_mapping() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.HemiSphere.subdivide">subdivide() (dipy.core.sphere.HemiSphere method)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.HemiSphere.subdivide">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.subdivide">(dipy.core.sphere.Sphere method)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.Sphere.subdivide">[1]</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.subdivide_octahedron.HemiSphere.subdivide">(dipy.core.subdivide_octahedron.HemiSphere method)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.subdivide">(dipy.data.Sphere method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.subsegment">subsegment() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.SumPointwiseEuclideanMetric">SumPointwiseEuclideanMetric (class in dipy.segment.metric)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.svd">svd() (in module dipy.reconst.shm)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.tracking.utils.html#dipy.tracking.utils.target">target() (in module dipy.tracking.utils)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.Tensor">Tensor (class in dipy.reconst.dti)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.tensor_eig_from_lo_tri">tensor_eig_from_lo_tri() (in module dipy.reconst.dti)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit">TensorFit (class in dipy.reconst.dti)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.TensorModel">TensorModel (class in dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorModel">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.terminate">terminate() (dipy.external.fsl.Popen method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.html#dipy.test">test() (in module dipy)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.test">(in module dipy.core)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.denoise.html#dipy.denoise.test">(in module dipy.denoise)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.external.html#dipy.external.test">(in module dipy.external)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.test">(in module dipy.reconst)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.dsi.html#dipy.reconst.dsi.threshold_propagator">threshold_propagator() (in module dipy.reconst.dsi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dsi.threshold_propagator">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.total_clusters">total_clusters (dipy.segment.quickbundles.QuickBundles attribute)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.TensorFit.trace">trace() (dipy.reconst.dti.TensorFit method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.trace">(in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.trace">[1]</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.tracking.vox2track.html#dipy.tracking.vox2track.track_counts">track_counts() (in module dipy.tracking.vox2track)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.track_dist_3pts">track_dist_3pts() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.distances.html#dipy.tracking.distances.track_roi_intersection_check">track_roi_intersection_check() (in module dipy.tracking.distances)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.trilinear_interp">trilinear_interp() (in module dipy.reconst.interpolate)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.interpolate.TriLinearInterpolator">TriLinearInterpolator (class in dipy.reconst.interpolate)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.gqi.triple_odf_maxima">triple_odf_maxima() (in module dipy.reconst.gqi)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.tube">tube() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.shm.unique">unique() (in module dipy.reconst.shm)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.unique_edges">unique_edges() (in module dipy.core.sphere)</a>, <a href="reference/dipy.core.sphere.html#dipy.core.sphere.unique_edges">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_peaks.unique_edges">(in module dipy.reconst.benchmarks.bench_peaks)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.unique_sets">unique_sets() (in module dipy.core.sphere)</a>
+  </dt>
+
+      
+  <dt><a href="glossary.html#term-unit-vector"><strong>Unit vector</strong></a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.up">up() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.graph.Graph.up_short">up_short() (dipy.core.graph.Graph method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.clustering.ClusterCentroid.update">update() (dipy.segment.clustering.ClusterCentroid method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.base.IntrospectiveArgumentParser.update_argument">update_argument() (dipy.workflows.base.IntrospectiveArgumentParser method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.gqi.html#dipy.reconst.gqi.upper_hemi_map">upper_hemi_map() (in module dipy.reconst.gqi)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.gqi.upper_hemi_map">[1]</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.vec2vec_rotmat">vec2vec_rotmat() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.vec2vec_rotmat">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.phantom.vec2vec_rotmat">(in module dipy.sims.phantom)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.sims.html#dipy.sims.voxel.vec2vec_rotmat">(in module dipy.sims.voxel)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_vec_val_sum.vec_val_vect">vec_val_vect() (in module dipy.reconst.benchmarks.bench_vec_val_sum)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.vec_val_vect">(in module dipy.reconst.dti)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.vector_cosine">vector_cosine() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.vector_cosine">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.geometry.html#dipy.core.geometry.vector_norm">vector_norm() (in module dipy.core.geometry)</a>, <a href="reference/dipy.core.html#dipy.core.geometry.vector_norm">[1]</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.gradients.vector_norm">(in module dipy.core.gradients)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.vector_norm">(in module dipy.core.sphere)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.dti.vector_norm">(in module dipy.reconst.dti)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.metric.VectorOfEndpointsFeature">VectorOfEndpointsFeature (class in dipy.segment.metric)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.version">version() (dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.vertices">vertices() (dipy.core.sphere.Sphere method)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.vertices">(dipy.data.Sphere method)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.quickbundles.QuickBundles.virtuals">virtuals() (dipy.segment.quickbundles.QuickBundles method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.viz.fvtk.html#dipy.viz.fvtk.volume">volume() (in module dipy.viz.fvtk)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Popen.wait">wait() (dipy.external.fsl.Popen method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.segment.html#dipy.segment.mask.warn">warn() (in module dipy.segment.mask)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking._utils.warn">(in module dipy.tracking._utils)</a>
+  </dt>
+
+        
+  <dt><a href="reference/dipy.workflows.html#dipy.workflows.docstring_parser.warn">(in module dipy.workflows.docstring_parser)</a>
+  </dt>
+
+      </dl></dd>
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.warp_displacements">warp_displacements() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.warp_displacements">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.warp_displacements_tracks">warp_displacements_tracks() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.warp_displacements_tracks">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.rng.WichmannHill1982">WichmannHill1982() (in module dipy.core.rng)</a>, <a href="reference/dipy.core.rng.html#dipy.core.rng.WichmannHill1982">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.rng.WichmannHill2006">WichmannHill2006() (in module dipy.core.rng)</a>, <a href="reference/dipy.core.rng.html#dipy.core.rng.WichmannHill2006">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.tracking.html#dipy.tracking.metrics.winding">winding() (in module dipy.tracking.metrics)</a>, <a href="reference/dipy.tracking.metrics.html#dipy.tracking.metrics.winding">[1]</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.reconst.html#dipy.reconst.benchmarks.bench_vec_val_sum.with_einsum">with_einsum() (in module dipy.reconst.benchmarks.bench_vec_val_sum)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.with_metaclass">with_metaclass() (in module dipy.core.optimize)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.reconst.dti.html#dipy.reconst.dti.wls_fit_tensor">wls_fit_tensor() (in module dipy.reconst.dti)</a>, <a href="reference/dipy.reconst.html#dipy.reconst.dti.wls_fit_tensor">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.fsl.html#dipy.external.fsl.write_bvals_bvecs">write_bvals_bvecs() (in module dipy.external.fsl)</a>, <a href="reference/dipy.external.html#dipy.external.fsl.write_bvals_bvecs">[1]</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.write_track">write_track() (dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+      
+  <dt><a href="reference/dipy.external.html#dipy.external.fsl.Dpy.write_tracks">write_tracks() (dipy.external.fsl.Dpy method)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.x">x (dipy.core.sphere.Sphere attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.x">(dipy.data.Sphere attribute)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.optimize.Optimizer.xopt">xopt (dipy.core.optimize.Optimizer attribute)</a>
+  </dt>
+
+  </dl></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.y">y (dipy.core.sphere.Sphere attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.y">(dipy.data.Sphere attribute)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="reference/dipy.core.html#dipy.core.sphere.Sphere.z">z (dipy.core.sphere.Sphere attribute)</a>
+  </dt>
+
+      <dd><dl>
+        
+  <dt><a href="reference/dipy.data.html#dipy.data.Sphere.z">(dipy.data.Sphere attribute)</a>
+  </dt>
+
+      </dl></dd>
+  </dl></td>
+</tr></table>
+
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="#" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="index.html">Home</a> |&nbsp;</li>
+  <li><a href="stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="installation.html">Download</a> |&nbsp;</li>
+  <li><a href="subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="cite.html">Cite</a> &nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2013, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.6.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy reconst" href="reconst.html" />
+    <link rel="next" title="dipy.reconst.dti" href="dipy.reconst.dti.html" />
+    <link rel="prev" title="dipy reconst" href="reconst.html" />
+  <meta name="keywords" content="dipy, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.reconst.dti.html" title="dipy.reconst.dti"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="reconst.html" title="dipy reconst"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" accesskey="U">dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="reconst.html"
+                        title="previous chapter">dipy reconst</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dipy.reconst.dti.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">dipy.reconst.dti</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.reconst.dsi.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.reconst.dsi">
+<span id="dipy-reconst-dsi"></span><h1><a class="reference internal" href="#module-dipy.reconst.dsi" title="dipy.reconst.dsi"><code class="xref py py-mod docutils literal"><span class="pre">dipy.reconst.dsi</span></code></a><a class="headerlink" href="#module-dipy.reconst.dsi" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="dipy.reconst.dsi.LR_deconv">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">LR_deconv</code><span class="sig-paren">(</span><em>prop</em>, <em>psf</em>, <em>numit=5</em>, <em>acc_factor=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.LR_deconv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Lucy-Richardson deconvolution algorithm on a 3D array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>prop</strong> : 3-D ndarray of dtype float</p>
+<blockquote>
+<div><p>The 3D volume to be deconvolve</p>
+</div></blockquote>
+<p><strong>psf</strong> : 3-D ndarray of dtype float</p>
+<blockquote>
+<div><p>The filter that will be used for the deconvolution.</p>
+</div></blockquote>
+<p><strong>numit</strong> : int</p>
+<blockquote>
+<div><p>Number of Lucy-Richardson iteration to perform.</p>
+</div></blockquote>
+<p><strong>acc_factor</strong> : float</p>
+<blockquote class="last">
+<div><p>Exponential acceleration factor as in <a class="reference internal" href="#r55" id="id1">[R55]</a>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r55" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R55]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Biggs David S.C. et. al, &#8220;Acceleration of Iterative Image 
+Restoration Algorithms&#8221;, Applied Optics, vol. 36, No. 8, p. 1766-1775,
+1997.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.create_qspace">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">create_qspace</code><span class="sig-paren">(</span><em>gtab</em>, <em>origin</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.create_qspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>create the 3D grid which holds the signal values (q-space)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>gtab</strong> : GradientTable</p>
+<p><strong>origin</strong> : (3,) ndarray</p>
+<blockquote>
+<div><p>center of the qspace</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>qgrid</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>qspace coordinates</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.create_qtable">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">create_qtable</code><span class="sig-paren">(</span><em>gtab</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.create_qtable" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a normalized version of gradients</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.gen_PSF">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">gen_PSF</code><span class="sig-paren">(</span><em>qgrid_sampling</em>, <em>siz_x</em>, <em>siz_y</em>, <em>siz_z</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.gen_PSF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a PSF for DSI Deconvolution by taking the ifft of the binary 
+q-space sampling mask and truncating it to keep only the center.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.half_to_full_qspace">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">half_to_full_qspace</code><span class="sig-paren">(</span><em>data</em>, <em>gtab</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.half_to_full_qspace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Half to full Cartesian grid mapping</p>
+<p>Useful when dMRI data are provided in one qspace hemisphere as
+DiffusionSpectrum expects data to be in full qspace.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array, shape (X, Y, Z, W)</p>
+<blockquote>
+<div><p>where (X, Y, Z) volume size and W number of gradient directions</p>
+</div></blockquote>
+<p><strong>gtab</strong> : GradientTable</p>
+<blockquote>
+<div><p>container for b-values and b-vectors (gradient directions)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>new_data</strong> : array, shape (X, Y, Z, 2 * W -1)</p>
+<p class="last"><strong>new_gtab</strong> : GradientTable</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>We assume here that only on b0 is provided with the initial data. If that
+is not the case then you will need to write your own preparation function
+before providing the gradients and the data to the DiffusionSpectrumModel
+class.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.hanning_filter">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">hanning_filter</code><span class="sig-paren">(</span><em>gtab</em>, <em>filter_width</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.hanning_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a hanning window</p>
+<p>The signal is premultiplied by a Hanning window before
+Fourier transform in order to ensure a smooth attenuation
+of the signal at high q values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>gtab</strong> : GradientTable</p>
+<p><strong>filter_width</strong> : int</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>filter</strong> : (N,) ndarray</p>
+<blockquote class="last">
+<div><p>where N is the number of non-b0 gradient directions</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.pdf_interp_coords">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">pdf_interp_coords</code><span class="sig-paren">(</span><em>sphere</em>, <em>rradius</em>, <em>origin</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.pdf_interp_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Precompute coordinates for ODF calculation from the PDF</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sphere</strong> : object,</p>
+<blockquote>
+<div><p>Sphere</p>
+</div></blockquote>
+<p><strong>rradius</strong> : array, shape (N,)</p>
+<blockquote>
+<div><p>line interpolation points</p>
+</div></blockquote>
+<p><strong>origin</strong> : array, shape (3,)</p>
+<blockquote class="last">
+<div><p>center of the grid</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.pdf_odf">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">pdf_odf</code><span class="sig-paren">(</span><em>Pr</em>, <em>rradius</em>, <em>interp_coords</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.pdf_odf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the real ODF from the diffusion propagator(PDF) Pr</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Pr</strong> : array, shape (X, X, X)</p>
+<blockquote>
+<div><p>probability density function</p>
+</div></blockquote>
+<p><strong>rradius</strong> : array, shape (N,)</p>
+<blockquote>
+<div><p>interpolation range on the radius</p>
+</div></blockquote>
+<p><strong>interp_coords</strong> : array, shape (3, M, N)</p>
+<blockquote class="last">
+<div><p>coordinates in the pdf for interpolating the odf</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.project_hemisph_bvecs">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">project_hemisph_bvecs</code><span class="sig-paren">(</span><em>gtab</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.project_hemisph_bvecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project any near identical bvecs to the other hemisphere</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>gtab</strong> : object,</p>
+<blockquote class="last">
+<div><p>GradientTable</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Useful only when working with some types of dsi data.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dsi.threshold_propagator">
+<code class="descclassname">dipy.reconst.dsi.</code><code class="descname">threshold_propagator</code><span class="sig-paren">(</span><em>P</em>, <em>estimated_snr=15.0</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dsi.threshold_propagator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies hard threshold on the propagator to remove background noise for the 
+deconvolution.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.reconst.dti.html" title="dipy.reconst.dti"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="reconst.html" title="dipy reconst"
+             >previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" >dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2013, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

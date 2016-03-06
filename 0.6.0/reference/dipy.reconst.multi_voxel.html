@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.6.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy reconst" href="reconst.html" />
+    <link rel="prev" title="dipy.reconst.modelarray" href="dipy.reconst.modelarray.html" />
+  <meta name="keywords" content="dipy, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.reconst.modelarray.html" title="dipy.reconst.modelarray"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" accesskey="U">dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dipy.reconst.modelarray.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">dipy.reconst.modelarray</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.reconst.multi_voxel.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.reconst.multi_voxel">
+<span id="dipy-reconst-multi-voxel"></span><h1><a class="reference internal" href="#module-dipy.reconst.multi_voxel" title="dipy.reconst.multi_voxel"><code class="xref py py-mod docutils literal"><span class="pre">dipy.reconst.multi_voxel</span></code></a><a class="headerlink" href="#module-dipy.reconst.multi_voxel" title="Permalink to this headline">¶</a></h1>
+<p>Tools to easily make multi voxel models</p>
+<dl class="class">
+<dt id="dipy.reconst.multi_voxel.CallableArray">
+<em class="property">class </em><code class="descclassname">dipy.reconst.multi_voxel.</code><code class="descname">CallableArray</code><a class="headerlink" href="#dipy.reconst.multi_voxel.CallableArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>An array which can be called like a function</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">__call__</span></code>(*args,&nbsp;**kwargs)</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">all</span></code>([axis,&nbsp;out,&nbsp;keepdims])</td>
+<td>Returns True if all elements evaluate to True.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">any</span></code>([axis,&nbsp;out,&nbsp;keepdims])</td>
+<td>Returns True if any of the elements of <cite>a</cite> evaluate to True.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">argmax</span></code>([axis,&nbsp;out])</td>
+<td>Return indices of the maximum values along the given axis.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">argmin</span></code>([axis,&nbsp;out])</td>
+<td>Return indices of the minimum values along the given axis of <cite>a</cite>.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">argpartition</span></code>(kth[,&nbsp;axis,&nbsp;kind,&nbsp;order])</td>
+<td>Returns the indices that would partition this array.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">argsort</span></code>([axis,&nbsp;kind,&nbsp;order])</td>
+<td>Returns the indices that would sort this array.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">astype</span></code>(dtype[,&nbsp;order,&nbsp;casting,&nbsp;subok,&nbsp;copy])</td>
+<td>Copy of the array, cast to a specified type.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">byteswap</span></code>(inplace)</td>
+<td>Swap the bytes of the array elements</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">choose</span></code>(choices[,&nbsp;out,&nbsp;mode])</td>
+<td>Use an index array to construct a new array from a set of choices.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">clip</span></code>([min,&nbsp;max,&nbsp;out])</td>
+<td>Return an array whose values are limited to <code class="docutils literal"><span class="pre">[min,</span> <span class="pre">max]</span></code>.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">compress</span></code>(condition[,&nbsp;axis,&nbsp;out])</td>
+<td>Return selected slices of this array along given axis.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">conj</span></code>()</td>
+<td>Complex-conjugate all elements.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">conjugate</span></code>()</td>
+<td>Return the complex conjugate, element-wise.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">copy</span></code>([order])</td>
+<td>Return a copy of the array.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">cumprod</span></code>([axis,&nbsp;dtype,&nbsp;out])</td>
+<td>Return the cumulative product of the elements along the given axis.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">cumsum</span></code>([axis,&nbsp;dtype,&nbsp;out])</td>
+<td>Return the cumulative sum of the elements along the given axis.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">diagonal</span></code>([offset,&nbsp;axis1,&nbsp;axis2])</td>
+<td>Return specified diagonals.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dot</span></code>(b[,&nbsp;out])</td>
+<td>Dot product of two arrays.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">dump</span></code>(file)</td>
+<td>Dump a pickle of the array to the specified file.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">dumps</span></code>()</td>
+<td>Returns the pickle of the array as a string.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">fill</span></code>(value)</td>
+<td>Fill the array with a scalar value.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">flatten</span></code>([order])</td>
+<td>Return a copy of the array collapsed into one dimension.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">getfield</span></code>(dtype[,&nbsp;offset])</td>
+<td>Returns a field of the given array as a certain type.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">item</span></code>(*args)</td>
+<td>Copy an element of an array to a standard Python scalar and return it.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">itemset</span></code>(*args)</td>
+<td>Insert scalar into an array (scalar is cast to array&#8217;s dtype, if possible)</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">max</span></code>([axis,&nbsp;out])</td>
+<td>Return the maximum along a given axis.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
+<td>Returns the average of the array elements along given axis.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">min</span></code>([axis,&nbsp;out,&nbsp;keepdims])</td>
+<td>Return the minimum along a given axis.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">newbyteorder</span></code>([new_order])</td>
+<td>Return the array with the same data viewed with a different byte order.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">nonzero</span></code>()</td>
+<td>Return the indices of the elements that are non-zero.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">partition</span></code>(kth[,&nbsp;axis,&nbsp;kind,&nbsp;order])</td>
+<td>Rearranges the elements in the array in such a way that value of the element in kth position is in the position it would be in a sorted array.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">prod</span></code>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
+<td>Return the product of the array elements over the given axis</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ptp</span></code>([axis,&nbsp;out])</td>
+<td>Peak to peak (maximum - minimum) value along a given axis.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">put</span></code>(indices,&nbsp;values[,&nbsp;mode])</td>
+<td>Set <code class="docutils literal"><span class="pre">a.flat[n]</span> <span class="pre">=</span> <span class="pre">values[n]</span></code> for all <cite>n</cite> in indices.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ravel</span></code>([order])</td>
+<td>Return a flattened array.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">repeat</span></code>(repeats[,&nbsp;axis])</td>
+<td>Repeat elements of an array.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">reshape</span></code>(shape[,&nbsp;order])</td>
+<td>Returns an array containing the same data with a new shape.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">resize</span></code>(new_shape[,&nbsp;refcheck])</td>
+<td>Change shape and size of array in-place.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">round</span></code>([decimals,&nbsp;out])</td>
+<td>Return <cite>a</cite> with each element rounded to the given number of decimals.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">searchsorted</span></code>(v[,&nbsp;side,&nbsp;sorter])</td>
+<td>Find indices where elements of v should be inserted in a to maintain order.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">setfield</span></code>(val,&nbsp;dtype[,&nbsp;offset])</td>
+<td>Put a value into a specified place in a field defined by a data-type.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">setflags</span></code>([write,&nbsp;align,&nbsp;uic])</td>
+<td>Set array flags WRITEABLE, ALIGNED, and UPDATEIFCOPY, respectively.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sort</span></code>([axis,&nbsp;kind,&nbsp;order])</td>
+<td>Sort an array, in-place.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">squeeze</span></code>([axis])</td>
+<td>Remove single-dimensional entries from the shape of <cite>a</cite>.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">std</span></code>([axis,&nbsp;dtype,&nbsp;out,&nbsp;ddof,&nbsp;keepdims])</td>
+<td>Returns the standard deviation of the array elements along given axis.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sum</span></code>([axis,&nbsp;dtype,&nbsp;out,&nbsp;keepdims])</td>
+<td>Return the sum of the array elements over the given axis.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">swapaxes</span></code>(axis1,&nbsp;axis2)</td>
+<td>Return a view of the array with <cite>axis1</cite> and <cite>axis2</cite> interchanged.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">take</span></code>(indices[,&nbsp;axis,&nbsp;out,&nbsp;mode])</td>
+<td>Return an array formed from the elements of <cite>a</cite> at the given indices.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">tobytes</span></code>([order])</td>
+<td>Construct Python bytes containing the raw data bytes in the array.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">tofile</span></code>(fid[,&nbsp;sep,&nbsp;format])</td>
+<td>Write array to a file as text or binary (default).</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">tolist</span></code>()</td>
+<td>Return the array as a (possibly nested) list.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">tostring</span></code>([order])</td>
+<td>Construct Python bytes containing the raw data bytes in the array.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">trace</span></code>([offset,&nbsp;axis1,&nbsp;axis2,&nbsp;dtype,&nbsp;out])</td>
+<td>Return the sum along diagonals of the array.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">transpose</span></code>(*axes)</td>
+<td>Returns a view of the array with axes transposed.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">var</span></code>([axis,&nbsp;dtype,&nbsp;out,&nbsp;ddof,&nbsp;keepdims])</td>
+<td>Returns the variance of the array elements, along given axis.</td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">view</span></code>([dtype,&nbsp;type])</td>
+<td>New view of array with the same data.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="dipy.reconst.multi_voxel.MultiVoxelFit">
+<em class="property">class </em><code class="descclassname">dipy.reconst.multi_voxel.</code><code class="descname">MultiVoxelFit</code><span class="sig-paren">(</span><em>model</em>, <em>fit_array</em>, <em>mask</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.multi_voxel.MultiVoxelFit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds an array of fits and allows access to their attributes and
+methods</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.multi_voxel.multi_voxel_model">
+<code class="descclassname">dipy.reconst.multi_voxel.</code><code class="descname">multi_voxel_model</code><span class="sig-paren">(</span><em>SingleVoxelModel</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.multi_voxel.multi_voxel_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class decorator to turn a single voxel model into a multi voxel model</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="dipy.html#module-dipy" title="dipy"><code class="xref py py-obj docutils literal"><span class="pre">dipy</span></code></a></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.reconst.modelarray.html" title="dipy.reconst.modelarray"
+             >previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" >dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2013, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,762 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy core" href="core.html" />
+    <link rel="next" title="dipy.core.graph" href="dipy.core.graph.html" />
+    <link rel="prev" title="dipy core" href="core.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.graph.html" title="dipy.core.graph"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="dipy core"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" accesskey="U">dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.html"
+                        title="previous chapter">dipy core</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dipy.core.graph.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">dipy.core.graph</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.core.geometry.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.core.geometry">
+<span id="dipy-core-geometry"></span><h1><a class="reference internal" href="#module-dipy.core.geometry" title="dipy.core.geometry"><code class="xref py py-mod docutils literal"><span class="pre">dipy.core.geometry</span></code></a><a class="headerlink" href="#module-dipy.core.geometry" title="Permalink to this headline">¶</a></h1>
+<p>Utility functions for algebra etc</p>
+<dl class="function">
+<dt id="dipy.core.geometry.cart2sphere">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">cart2sphere</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.cart2sphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return angles for Cartesian 3D coordinates <cite>x</cite>, <cite>y</cite>, and <cite>z</cite></p>
+<p>See doc for <code class="docutils literal"><span class="pre">sphere2cart</span></code> for angle conventions and derivation
+of the formulae.</p>
+<p><img class="math" src="../_images/math/346935f90515992011d04c787672710cdeb8fb18.png" alt="0 \le \theta \mathrm{(theta)} \le \pi"/> and <img class="math" src="../_images/math/583751e01b5ffdac0e25af38de5c194cc875c962.png" alt="0 \le \phi \mathrm{(phi)} \le 2 \pi"/></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like</p>
+<blockquote>
+<div><p>x coordinate in Cartesion space</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like</p>
+<blockquote>
+<div><p>y coordinate in Cartesian space</p>
+</div></blockquote>
+<p><strong>z</strong> : array-like</p>
+<blockquote>
+<div><p>z coordinate</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>r</strong> : array</p>
+<blockquote>
+<div><p>radius</p>
+</div></blockquote>
+<p><strong>theta</strong> : array</p>
+<blockquote>
+<div><p>inclination (polar) angle</p>
+</div></blockquote>
+<p><strong>phi</strong> : array</p>
+<blockquote class="last">
+<div><p>azimuth angle</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.cart_distance">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">cart_distance</code><span class="sig-paren">(</span><em>pts1</em>, <em>pts2</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.cart_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cartesian distance between <cite>pts1</cite> and <cite>pts2</cite></p>
+<p>If either of <cite>pts1</cite> or <cite>pts2</cite> is 2D, then we take the first
+dimension to index points, and the second indexes coordinate.  More
+generally, we take the last dimension to be the coordinate
+dimension.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pts1</strong> : (N,R) or (R,) array-like</p>
+<blockquote>
+<div><p>where N is the number of points and R is the number of
+coordinates defining a point (<code class="docutils literal"><span class="pre">R==3</span></code> for 3D)</p>
+</div></blockquote>
+<p><strong>pts2</strong> : (N,R) or (R,) array-like</p>
+<blockquote>
+<div><p>where N is the number of points and R is the number of
+coordinates defining a point (<code class="docutils literal"><span class="pre">R==3</span></code> for 3D).  It should be
+possible to broadcast <cite>pts1</cite> against <cite>pts2</cite></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>d</strong> : (N,) or (0,) array</p>
+<blockquote class="last">
+<div><p>Cartesian distances between corresponding points in <cite>pts1</cite> and
+<cite>pts2</cite></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#dipy.core.geometry.sphere_distance" title="dipy.core.geometry.sphere_distance"><code class="xref py py-obj docutils literal"><span class="pre">sphere_distance</span></code></a></dt>
+<dd>distance between points on sphere surface</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cart_distance</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">3.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.circumradius">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">circumradius</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.circumradius" title="Permalink to this definition">¶</a></dt>
+<dd><p>a, b and c are 3-dimensional vectors which are the vertices of a
+triangle. The function returns the circumradius of the triangle, i.e
+the radius of the smallest circle that can contain the triangle. In
+the degenerate case when the 3 points are collinear it returns
+half the distance between the furthest apart points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a, b, c</strong> : (3,) arraylike</p>
+<blockquote>
+<div><p>the three vertices of the triangle</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>circumradius</strong> : float</p>
+<blockquote class="last">
+<div><p>the desired circumradius</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.compose_matrix">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">compose_matrix</code><span class="sig-paren">(</span><em>scale=None</em>, <em>shear=None</em>, <em>angles=None</em>, <em>translate=None</em>, <em>perspective=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.compose_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return 4x4 transformation matrix from sequence of
+transformations.</p>
+<p>Code modified from the work of Christoph Gohlke link provided here
+<a class="reference external" href="http://www.lfd.uci.edu/~gohlke/code/transformations.py.html">http://www.lfd.uci.edu/~gohlke/code/transformations.py.html</a></p>
+<p>This is the inverse of the decompose_matrix function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>scale</strong> : vector of 3 scaling factors</p>
+<p><strong>shear</strong> : list of shear factors for x-y, x-z, y-z axes</p>
+<p><strong>angles</strong> : list of Euler angles about static x, y, z axes</p>
+<p><strong>translate</strong> : translation vector along x, y, z axes</p>
+<p><strong>perspective</strong> : perspective partition of matrix</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>matrix</strong> : 4x4 array</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">dipy.core.geometry</span> <span class="kn">as</span> <span class="nn">gm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">angles</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">persp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">M0</span> <span class="o">=</span> <span class="n">gm</span><span class="o">.</span><span class="n">compose_matrix</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span> <span class="n">shear</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">trans</span><span class="p">,</span> <span class="n">persp</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.decompose_matrix">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">decompose_matrix</code><span class="sig-paren">(</span><em>matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.decompose_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sequence of transformations from transformation matrix.</p>
+<p>Code modified from the excellent work of Christoph Gohlke link provided here
+<a class="reference external" href="http://www.lfd.uci.edu/~gohlke/code/transformations.py.html">http://www.lfd.uci.edu/~gohlke/code/transformations.py.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>matrix</strong> : array_like</p>
+<blockquote>
+<div><p>Non-degenerative homogeneous transformation matrix</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tuple of:</strong> :</p>
+<blockquote>
+<div><p>scale : vector of 3 scaling factors
+shear : list of shear factors for x-y, x-z, y-z axes
+angles : list of Euler angles about static x, y, z axes
+translate : translation vector along x, y, z axes
+perspective : perspective partition of matrix</p>
+</div></blockquote>
+<p class="last"><strong>Raise ValueError if matrix is of wrong type or degenerative.</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">T0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scale</span><span class="p">,</span> <span class="n">shear</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">trans</span><span class="p">,</span> <span class="n">persp</span> <span class="o">=</span> <span class="n">decompose_matrix</span><span class="p">(</span><span class="n">T0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.euler_matrix">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">euler_matrix</code><span class="sig-paren">(</span><em>ai</em>, <em>aj</em>, <em>ak</em>, <em>axes='sxyz'</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.euler_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return homogeneous rotation matrix from Euler angles and axis sequence.</p>
+<p>Code modified from the work of Christoph Gohlke link provided here
+<a class="reference external" href="http://www.lfd.uci.edu/~gohlke/code/transformations.py.html">http://www.lfd.uci.edu/~gohlke/code/transformations.py.html</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ai, aj, ak</strong> : Euler&#8217;s roll, pitch and yaw angles</p>
+<p><strong>axes</strong> : One of 24 axis sequences as string or encoded tuple</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>matrix: 4x4 numpy array</strong> :</p>
+<p><strong>Code modified from the work of Christoph Gohlke link provided here</strong> :</p>
+<p class="last"><strong>http://www.lfd.uci.edu/~gohlke/code/transformations.py.html</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">euler_matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;syxz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="o">-</span><span class="mf">1.34786452</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">R</span> <span class="o">=</span> <span class="n">euler_matrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="o">-</span><span class="mf">0.383436184</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ai</span><span class="p">,</span> <span class="n">aj</span><span class="p">,</span> <span class="n">ak</span> <span class="o">=</span> <span class="p">(</span><span class="mf">4.0</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">axes</span> <span class="ow">in</span> <span class="n">_AXES2TUPLE</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="gp">... </span>   <span class="n">R</span> <span class="o">=</span> <span class="n">euler_matrix</span><span class="p">(</span><span class="n">ai</span><span class="p">,</span> <span class="n">aj</span><span class="p">,</span> <span class="n">ak</span><span class="p">,</span> <span class="n">axes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">axes</span> <span class="ow">in</span> <span class="n">_TUPLE2AXES</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="gp">... </span>   <span class="n">R</span> <span class="o">=</span> <span class="n">euler_matrix</span><span class="p">(</span><span class="n">ai</span><span class="p">,</span> <span class="n">aj</span><span class="p">,</span> <span class="n">ak</span><span class="p">,</span> <span class="n">axes</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.lambert_equal_area_projection_cart">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">lambert_equal_area_projection_cart</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>z</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.lambert_equal_area_projection_cart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lambert Equal Area Projection from cartesian vector to plane</p>
+<p>Return positions in <img class="math" src="../_images/math/ed21220f044a64d3cbfd98d95151df2dd18bd98c.png" alt="(y_1,y_2)"/> plane corresponding to the
+directions of the vectors with cartesian coordinates xyz under the
+Lambert Equal Area Projection mapping (see Mardia and Jupp (2000),
+Directional Statistics, p. 161).</p>
+<p>The Lambert EAP maps the upper hemisphere to the planar disc of radius 1 
+and the lower hemisphere to the planar annulus between radii 1 and 2, 
+The Lambert EAP maps the upper hemisphere to the planar disc of radius 1 
+and the lower hemisphere to the planar annulus between radii 1 and 2.
+and <em>vice versa</em>.
+See doc for <code class="docutils literal"><span class="pre">sphere2cart</span></code> for angle conventions</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like</p>
+<blockquote>
+<div><p>x coordinate in Cartesion space</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like</p>
+<blockquote>
+<div><p>y coordinate in Cartesian space</p>
+</div></blockquote>
+<p><strong>z</strong> : array-like</p>
+<blockquote>
+<div><p>z coordinate</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : (N,2) array</p>
+<blockquote class="last">
+<div><p>planar coordinates of points following mapping by Lambert&#8217;s EAP.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.lambert_equal_area_projection_polar">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">lambert_equal_area_projection_polar</code><span class="sig-paren">(</span><em>theta</em>, <em>phi</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.lambert_equal_area_projection_polar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lambert Equal Area Projection from polar sphere to plane</p>
+<p>Return positions in (y1,y2) plane corresponding to the points
+with polar coordinates (theta, phi) on the unit sphere, under the
+Lambert Equal Area Projection mapping (see Mardia and Jupp (2000),
+Directional Statistics, p. 161).</p>
+<p>See doc for <code class="docutils literal"><span class="pre">sphere2cart</span></code> for angle conventions</p>
+<ul class="simple">
+<li><img class="math" src="../_images/math/5d0420d862c4c6f7366a9f8fc85a1c404dc5a991.png" alt="0 \le \theta \le \pi"/> and <img class="math" src="../_images/math/021ad4f4503ff8e162ae39f4ce5586465bb63540.png" alt="0 \le \phi \le 2 \pi"/></li>
+<li><img class="math" src="../_images/math/77a70292d8d79607ccb05946cdec647feb445e2d.png" alt="|(y_1,y_2)| \le 2"/></li>
+</ul>
+<p>The Lambert EAP maps the upper hemisphere to the planar disc of radius 1 
+and the lower hemisphere to the planar annulus between radii 1 and 2,
+and <em>vice versa</em>.  
+Parameters
+&#8212;&#8212;&#8212;-
+theta : array-like</p>
+<blockquote>
+<div>theta spherical coordinates</div></blockquote>
+<dl class="docutils">
+<dt>phi <span class="classifier-delimiter">:</span> <span class="classifier">array-like</span></dt>
+<dd>phi spherical coordinates</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : (N,2) array</p>
+<blockquote class="last">
+<div><p>planar coordinates of points following mapping by Lambert&#8217;s EAP.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.nearest_pos_semi_def">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">nearest_pos_semi_def</code><span class="sig-paren">(</span><em>B</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.nearest_pos_semi_def" title="Permalink to this definition">¶</a></dt>
+<dd><p>Least squares positive semi-definite tensor estimation</p>
+<p>Reference: Niethammer M, San Jose Estepar R, Bouix S, Shenton M,
+Westin CF.  On diffusion tensor estimation. Conf Proc IEEE Eng Med
+Biol Soc.  2006;1:2622-5. PubMed PMID: 17946125; PubMed Central
+PMCID: PMC2791793.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>B</strong> : (3,3) array-like</p>
+<blockquote>
+<div><p>B matrix - symmetric. We do not check the symmetry.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>npds</strong> : (3,3) array</p>
+<blockquote class="last">
+<div><p>Estimated nearest positive semi-definite array to matrix <cite>B</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nearest_pos_semi_def</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="go">array([[ 0.75,  0.  ,  0.  ],</span>
+<span class="go">       [ 0.  ,  0.75,  0.  ],</span>
+<span class="go">       [ 0.  ,  0.  ,  0.  ]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.normalized_vector">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">normalized_vector</code><span class="sig-paren">(</span><em>vec</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.normalized_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return vector divided by its Euclidean (L2) norm</p>
+<p>See <a class="reference internal" href="../glossary.html#term-unit-vector"><span class="xref std std-term">unit vector</span></a> and <a class="reference internal" href="../glossary.html#term-euclidean-norm"><span class="xref std std-term">Euclidean norm</span></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vec</strong> : array-like shape (3,)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nvec</strong> : array shape (3,)</p>
+<blockquote class="last">
+<div><p>vector divided by L2 norm</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">vec</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nvec</span> <span class="o">=</span> <span class="n">normalized_vector</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="o">/</span> <span class="n">l2n</span><span class="p">,</span> <span class="n">nvec</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vec</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(1, 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalized_vector</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(3,)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.sphere2cart">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">sphere2cart</code><span class="sig-paren">(</span><em>r</em>, <em>theta</em>, <em>phi</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.sphere2cart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spherical to Cartesian coordinates</p>
+<p>This is the standard physics convention where <cite>theta</cite> is the
+inclination (polar) angle, and <cite>phi</cite> is the azimuth angle.</p>
+<p>Imagine a sphere with center (0,0,0).  Orient it with the z axis
+running south-&gt;north, the y axis running west-east and the x axis
+from posterior to anterior.  <cite>theta</cite> (the inclination angle) is the
+angle to rotate from the z-axis (the zenith) around the y-axis,
+towards the x axis.  Thus the rotation is counter-clockwise from the
+point of view of positive y.  <cite>phi</cite> (azimuth) gives the angle of
+rotation around the z-axis towards the y axis.  The rotation is
+counter-clockwise from the point of view of positive z.</p>
+<p>Equivalently, given a point P on the sphere, with coordinates x, y,
+z, <cite>theta</cite> is the angle between P and the z-axis, and <cite>phi</cite> is
+the angle between the projection of P onto the XY plane, and the X
+axis.</p>
+<p>Geographical nomenclature designates theta as &#8216;co-latitude&#8217;, and phi
+as &#8216;longitude&#8217;</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>r</strong> : array-like</p>
+<blockquote>
+<div><p>radius</p>
+</div></blockquote>
+<p><strong>theta</strong> : array-like</p>
+<blockquote>
+<div><p>inclination or polar angle</p>
+</div></blockquote>
+<p><strong>phi</strong> : array-like</p>
+<blockquote>
+<div><p>azimuth angle</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>x</strong> : array</p>
+<blockquote>
+<div><p>x coordinate(s) in Cartesion space</p>
+</div></blockquote>
+<p><strong>y</strong> : array</p>
+<blockquote>
+<div><p>y coordinate(s) in Cartesian space</p>
+</div></blockquote>
+<p><strong>z</strong> : array</p>
+<blockquote class="last">
+<div><p>z coordinate</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>See these pages:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Spherical_coordinate_system">http://en.wikipedia.org/wiki/Spherical_coordinate_system</a></li>
+<li><a class="reference external" href="http://mathworld.wolfram.com/SphericalCoordinates.html">http://mathworld.wolfram.com/SphericalCoordinates.html</a></li>
+</ul>
+<p>for excellent discussion of the many different conventions
+possible.  Here we use the physics conventions, used in the
+wikipedia page.</p>
+<p>Derivations of the formulae are simple. Consider a vector x, y, z of
+length r (norm of x, y, z).  The inclination angle (theta) can be
+found from: cos(theta) == z / r -&gt; z == r * cos(theta).  This gives
+the hypotenuse of the projection onto the XY plane, which we will
+call Q. Q == r*sin(theta). Now x / Q == cos(phi) -&gt; x == r *
+sin(theta) * cos(phi) and so on.</p>
+<p>We have deliberately named this function <code class="docutils literal"><span class="pre">sphere2cart</span></code> rather than
+<code class="docutils literal"><span class="pre">sph2cart</span></code> to distinguish it from the Matlab function of that
+name, because the Matlab function uses an unusual convention for the
+angles that we did not want to replicate.  The Matlab function is
+trivial to implement with the formulae given in the Matlab help.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.sphere_distance">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">sphere_distance</code><span class="sig-paren">(</span><em>pts1</em>, <em>pts2</em>, <em>radius=None</em>, <em>check_radius=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.sphere_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distance across sphere surface between <cite>pts1</cite> and <cite>pts2</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pts1</strong> : (N,R) or (R,) array-like</p>
+<blockquote>
+<div><p>where N is the number of points and R is the number of
+coordinates defining a point (<code class="docutils literal"><span class="pre">R==3</span></code> for 3D)</p>
+</div></blockquote>
+<p><strong>pts2</strong> : (N,R) or (R,) array-like</p>
+<blockquote>
+<div><p>where N is the number of points and R is the number of
+coordinates defining a point (<code class="docutils literal"><span class="pre">R==3</span></code> for 3D).  It should be
+possible to broadcast <cite>pts1</cite> against <cite>pts2</cite></p>
+</div></blockquote>
+<p><strong>radius</strong> : None or float, optional</p>
+<blockquote>
+<div><p>Radius of sphere.  Default is to work out radius from mean of the
+length of each point vector</p>
+</div></blockquote>
+<p><strong>check_radius</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, check if the points are on the sphere surface - i.e
+check if the vector lengths in <cite>pts1</cite> and <cite>pts2</cite> are close to
+<cite>radius</cite>.  Default is True.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>d</strong> : (N,) or (0,) array</p>
+<blockquote class="last">
+<div><p>Distances between corresponding points in <cite>pts1</cite> and <cite>pts2</cite>
+across the spherical surface, i.e. the great circle distance</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#dipy.core.geometry.cart_distance" title="dipy.core.geometry.cart_distance"><code class="xref py py-obj docutils literal"><span class="pre">cart_distance</span></code></a></dt>
+<dd>cartesian distance between points</dd>
+<dt><a class="reference internal" href="#dipy.core.geometry.vector_cosine" title="dipy.core.geometry.vector_cosine"><code class="xref py py-obj docutils literal"><span class="pre">vector_cosine</span></code></a></dt>
+<dd>cosine of angle between vectors</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sphere_distance</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">1.5708</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sphere_distance</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">4.7124</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.vector_cosine">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">vector_cosine</code><span class="sig-paren">(</span><em>vecs1</em>, <em>vecs2</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.vector_cosine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cosine of angle between two (sets of) vectors</p>
+<p>The cosine of the angle between two vectors <code class="docutils literal"><span class="pre">v1</span></code> and <code class="docutils literal"><span class="pre">v2</span></code> is
+given by the inner product of <code class="docutils literal"><span class="pre">v1</span></code> and <code class="docutils literal"><span class="pre">v2</span></code> divided by the
+product of the vector lengths:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">v_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">v1</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">v2</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vecs1</strong> : (N, R) or (R,) array-like</p>
+<blockquote>
+<div><p>N vectors (as rows) or single vector.  Vectors have R elements.</p>
+</div></blockquote>
+<p><strong>vecs1</strong> : (N, R) or (R,) array-like</p>
+<blockquote>
+<div><p>N vectors (as rows) or single vector.  Vectors have R elements.
+It should be possible to broadcast <cite>vecs1</cite> against <cite>vecs2</cite></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>vcos</strong> : (N,) or (0,) array</p>
+<blockquote class="last">
+<div><p>Vector cosines.  To get the angles you will need <code class="docutils literal"><span class="pre">np.arccos</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The vector cosine will be the same as the correlation only if all
+the input vectors have zero mean.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.geometry.vector_norm">
+<code class="descclassname">dipy.core.geometry.</code><code class="descname">vector_norm</code><span class="sig-paren">(</span><em>data</em>, <em>axis=None</em>, <em>out=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.geometry.vector_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return length, i.e. euclidean norm, of ndarray along axis.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">vector_norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">vector_norm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">vector_norm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector_norm</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector_norm</span><span class="p">([])</span>
+<span class="go">0.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vector_norm</span><span class="p">([</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.graph.html" title="dipy.core.graph"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.html" title="dipy core"
+             >previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" >dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

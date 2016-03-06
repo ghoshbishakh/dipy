@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy core" href="core.html" />
+    <link rel="next" title="dipy.core.onetime" href="dipy.core.onetime.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.onetime.html" title="dipy.core.onetime"
+             accesskey="N">next</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" accesskey="U">dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dipy.core.onetime.html"
+                        title="next chapter"><code class="docutils literal"><span class="pre">dipy.core.onetime</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.core.meshes.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.core.meshes">
+<span id="dipy-core-meshes"></span><h1><a class="reference internal" href="#module-dipy.core.meshes" title="dipy.core.meshes"><code class="xref py py-mod docutils literal"><span class="pre">dipy.core.meshes</span></code></a><a class="headerlink" href="#module-dipy.core.meshes" title="Permalink to this headline">¶</a></h1>
+<p>Mesh analysis</p>
+<dl class="function">
+<dt id="dipy.core.meshes.argmax_from_adj">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">argmax_from_adj</code><span class="sig-paren">(</span><em>vals</em>, <em>vertex_inds</em>, <em>adj_inds</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.argmax_from_adj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indices of local maxima from <cite>vals</cite> given adjacent points</p>
+<p>See <code class="docutils literal"><span class="pre">reconstruction_performance</span></code> for optimized versions of this
+routine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vals</strong> : (N,) array-like</p>
+<blockquote>
+<div><p>values at all vertices referred to in either of <cite>vertex_inds</cite> or
+<cite>adj_inds</cite>&#8216;</p>
+</div></blockquote>
+<p><strong>vertex_inds</strong> : None or (V,) array-like</p>
+<blockquote>
+<div><p>indices into <cite>vals</cite> giving vertices that may be local maxima.
+If None, then equivalent to <code class="docutils literal"><span class="pre">np.arange(N)</span></code></p>
+</div></blockquote>
+<p><strong>adj_inds</strong> : sequence</p>
+<blockquote>
+<div><p>For every vertex in <code class="docutils literal"><span class="pre">vertex_inds</span></code>, the indices (into <cite>vals</cite>) of
+the neighboring points</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>inds</strong> : (M,) array</p>
+<blockquote class="last">
+<div><p>Indices into <cite>vals</cite> giving local maxima of vals, given topology
+from <cite>adj_inds</cite>, and restrictions from <cite>vertex_inds</cite>.  Inds are
+returned sorted by value at that index - i.e. smallest value (at
+index) first.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.edges">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">edges</code><span class="sig-paren">(</span><em>vertex_inds</em>, <em>faces</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.edges" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return array of starts and ends of edges from list of faces</dt>
+<dd>taking regard of direction.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertex_inds</strong> : sequence</p>
+<blockquote>
+<div><p>length N.  Indices of vertices</p>
+</div></blockquote>
+<p><strong>faces</strong> : (F, 3) array-like</p>
+<blockquote>
+<div><p>Faces given by indices of vertices for each of F faces</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>edgearray</strong> : (E2, 2) array</p>
+<blockquote class="last">
+<div><p>where E2 = 2*E, twice the number of edges. If e= (a,b) is an
+edge then [a,b] and [b,a] are included in edgearray.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.euler_characteristic_check">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">euler_characteristic_check</code><span class="sig-paren">(</span><em>vertices</em>, <em>faces</em>, <em>chi=2</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.euler_characteristic_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <img class="math" src="../_images/math/0001d02b63ede2fe3219e05a7cd09c82ae6298b6.png" alt="f"/> = number of faces, <img class="math" src="../_images/math/630e3a780577ea7921e81ee2ac5237dd1802ec8d.png" alt="e"/> = number_of_edges and <img class="math" src="../_images/math/0e22076955898e6c9bb38aa079135195c24dc81e.png" alt="v"/> = number of vertices,
+the Euler formula says <img class="math" src="../_images/math/161549d2834f0f1255eac4249329e2af824a2349.png" alt="f-e+v = 2"/> for a mesh
+on a sphere. Here, assuming we have a healthy triangulation every
+face is a triangle, all 3 of whose edges should belong to exactly
+two faces. So <img class="math" src="../_images/math/c7db2cd18c97a5fbc18519eadf5a03a1b5c9f35a.png" alt="2*e = 3*f"/>. To avoid integer division and consequential
+integer rounding we test whether <img class="math" src="../_images/math/1c8c532dc553bace63f6e2f45186def206434ccd.png" alt="2*f - 3*f + 2*v == 4"/> or, more generally,
+whether <img class="math" src="../_images/math/fdf3b35d96943fba806026550e27b4d3fdfe5588.png" alt="2*v - f == 2*\chi"/> where <img class="math" src="../_images/math/f632c791f693410fc1bf07ad7cb02c6fcfef9aed.png" alt="\chi"/> is the Euler characteristic of the mesh.</p>
+<ul class="simple">
+<li>Open chain (track) has <img class="math" src="../_images/math/1449b72bae1ae42a414dead46e4984f2c303d4b3.png" alt="\chi=1"/></li>
+<li>Closed chain (loop) has <img class="math" src="../_images/math/6fbcffef888edb4ced5a37ce8f8bca2cc45fcbf3.png" alt="\chi=0"/></li>
+<li>Disk has <img class="math" src="../_images/math/1449b72bae1ae42a414dead46e4984f2c303d4b3.png" alt="\chi=1"/></li>
+<li>Sphere has <img class="math" src="../_images/math/113b7904744ff35c94ad3ef6c8b8a3fe04840131.png" alt="\chi=2"/></li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertices</strong> : (N,3) array-like</p>
+<blockquote>
+<div><p>(x, y, z) Point coordinates of N vertices</p>
+</div></blockquote>
+<p><strong>faces</strong> : (M,3) array-like of type int</p>
+<blockquote>
+<div><p>(i1, i2, i3) Integer indices of the vertices of the (triangular) faces</p>
+</div></blockquote>
+<p><strong>chi</strong> : int, or None</p>
+<blockquote>
+<div><p>The Euler characteristic of the mesh to be checked</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>check</strong> : bool</p>
+<blockquote class="last">
+<div><p>True if the mesh has Euler characteristic chi</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.neighbors">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">neighbors</code><span class="sig-paren">(</span><em>faces</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return indices of neighbors for each vertex within <cite>faces</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>faces</strong> : (F, 3) array-like</p>
+<blockquote>
+<div><p>Faces given by indices of vertices for each of <code class="docutils literal"><span class="pre">F</span></code> faces</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>adj</strong> : list</p>
+<blockquote class="last">
+<div><p>For each vertex found within <cite>faces</cite>, the vertex
+indices that are neighbors according to the graph given by
+<cite>faces</cite>.  We expand the list with empty lists in between
+non-empty neighbors.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.peak_finding_compatible">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">peak_finding_compatible</code><span class="sig-paren">(</span><em>vertices</em>, <em>hemisphere='z'</em>, <em>equator_thresh=None</em>, <em>dist_thresh=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.peak_finding_compatible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that a sphere mesh is compatible with <code class="docutils literal"><span class="pre">peak_finding</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertices</strong> : (N,3) array-like</p>
+<blockquote>
+<div><p>(x, y, z) Point coordinates of N vertices</p>
+</div></blockquote>
+<p><strong>hemisphere</strong> : str, optional</p>
+<blockquote>
+<div><p>Which hemisphere to select.  Values of &#8216;-x&#8217;, &#8216;-y&#8217;, &#8216;-z&#8217; select,
+respectively negative x, y, and z hemispheres; &#8216;x&#8217;, &#8216;y&#8217;, &#8216;z&#8217;
+select the positive x, y, and z hemispheres.  Default is &#8216;z&#8217;</p>
+</div></blockquote>
+<p><strong>equator_thresh</strong> : None or float, optional</p>
+<blockquote>
+<div><p>Threshold (+-0) to identify points as being on the equator of the
+sphere.   If None, generate a default based on the data type</p>
+</div></blockquote>
+<p><strong>dist_thresh</strong> : None or float, optional</p>
+<blockquote>
+<div><p>For a vertex <code class="docutils literal"><span class="pre">v</span></code> on the equator, if there is a vertex
+<code class="docutils literal"><span class="pre">v_dash</span></code> in <cite>vertices</cite>, such that the Euclidean distance
+between <code class="docutils literal"><span class="pre">v</span> <span class="pre">*</span> <span class="pre">-1</span></code> and <code class="docutils literal"><span class="pre">v_dash</span></code> is &lt;= <cite>dist_thresh</cite>, then <code class="docutils literal"><span class="pre">v</span></code>
+is taken to be in the opposite hemisphere to <code class="docutils literal"><span class="pre">v_dash</span></code>, and only
+<code class="docutils literal"><span class="pre">v</span></code>, not <code class="docutils literal"><span class="pre">v_dash</span></code>, will appear in the output vertex indices
+<cite>inds</cite>. None results in a threshold based on the input data type
+of <code class="docutils literal"><span class="pre">vertices</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>compatible</strong> : bool</p>
+<blockquote class="last">
+<div><p>True if the sphere mesh is compatible with <code class="docutils literal"><span class="pre">peak_finding</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.sym_hemisphere">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">sym_hemisphere</code><span class="sig-paren">(</span><em>vertices</em>, <em>hemisphere='z'</em>, <em>equator_thresh=None</em>, <em>dist_thresh=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.sym_hemisphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indices for hemisphere from an array of <cite>vertices</cite> on a sphere</p>
+<p>Selects the vertices from a sphere that lie in one hemisphere.
+If there are pairs of symmetric points on the equator, we return only
+the first occurring of each pair.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertices</strong> : (N,3) array-like</p>
+<blockquote>
+<div><p>(x, y, z) Point coordinates of N vertices</p>
+</div></blockquote>
+<p><strong>hemisphere</strong> : str, optional</p>
+<blockquote>
+<div><p>Which hemisphere to select.  Values of &#8216;-x&#8217;, &#8216;-y&#8217;, &#8216;-z&#8217; select,
+respectively negative x, y, and z hemispheres; &#8216;x&#8217;, &#8216;y&#8217;, &#8216;z&#8217;
+select the positive x, y, and z hemispheres.  Default is &#8216;z&#8217;</p>
+</div></blockquote>
+<p><strong>equator_thresh</strong> : None or float, optional</p>
+<blockquote>
+<div><p>Threshold (+-0) to identify points as being on the equator of the
+sphere.   If None, generate a default based on the data type</p>
+</div></blockquote>
+<p><strong>dist_thresh</strong> : None or float, optional</p>
+<blockquote>
+<div><p>For a vertex <code class="docutils literal"><span class="pre">v</span></code> on the equator, if there is a vertex
+<code class="docutils literal"><span class="pre">v_dash</span></code> in <cite>vertices</cite>, such that the Euclidean distance
+between <code class="docutils literal"><span class="pre">v</span> <span class="pre">*</span> <span class="pre">-1</span></code> and <code class="docutils literal"><span class="pre">v_dash</span></code> is &lt;= <cite>dist_thresh</cite>, then <code class="docutils literal"><span class="pre">v</span></code>
+is taken to be in the opposite hemisphere to <code class="docutils literal"><span class="pre">v_dash</span></code>, and only
+<code class="docutils literal"><span class="pre">v</span></code>, not <code class="docutils literal"><span class="pre">v_dash</span></code>, will appear in the output vertex indices
+<cite>inds</cite>. None results in a threshold based on the input data type
+of <code class="docutils literal"><span class="pre">vertices</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>inds</strong> : (P,) array</p>
+<blockquote class="last">
+<div><p>Indices into <cite>vertices</cite> giving points in hemisphere</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>We expect the sphere to be symmetric, and so there may well be
+points on the sphere equator that are both on the same diameter
+line.  The routine returns the first of the two points in the
+original order of <cite>vertices</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.vertex_adjacencies">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">vertex_adjacencies</code><span class="sig-paren">(</span><em>vertex_inds</em>, <em>faces</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.vertex_adjacencies" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return matrix which shows the adjacent vertices</dt>
+<dd>of each vertex</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertex_inds</strong> : sequence</p>
+<blockquote>
+<div><p>length N.  Indices of vertices</p>
+</div></blockquote>
+<p><strong>faces</strong> : (F, 3) array-like</p>
+<blockquote class="last">
+<div><p>Faces given by indices of vertices for each of F faces</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.vertinds_faces">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">vertinds_faces</code><span class="sig-paren">(</span><em>vertex_inds</em>, <em>faces</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.vertinds_faces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return faces containing any of <cite>vertex_inds</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertex_inds</strong> : sequence</p>
+<blockquote>
+<div><p>length N.  Indices of vertices</p>
+</div></blockquote>
+<p><strong>faces</strong> : (F, 3) array-like</p>
+<blockquote>
+<div><p>Faces given by indices of vertices for each of <code class="docutils literal"><span class="pre">F</span></code> faces</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>less_faces</strong> : (P, 3) array</p>
+<blockquote class="last">
+<div><p>Only retaining rows in <cite>faces</cite> which contain any of <cite>vertex_inds</cite></p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.meshes.vertinds_to_neighbors">
+<code class="descclassname">dipy.core.meshes.</code><code class="descname">vertinds_to_neighbors</code><span class="sig-paren">(</span><em>vertex_inds</em>, <em>faces</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.meshes.vertinds_to_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return indices of neighbors of vertices given <cite>faces</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vertex_inds</strong> : sequence</p>
+<blockquote>
+<div><p>length N.  Indices of vertices</p>
+</div></blockquote>
+<p><strong>faces</strong> : (F, 3) array-like</p>
+<blockquote>
+<div><p>Faces given by indices of vertices for each of <code class="docutils literal"><span class="pre">F</span></code> faces</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>adj</strong> : list</p>
+<blockquote class="last">
+<div><p>For each <code class="docutils literal"><span class="pre">N</span></code> vertex indicated by <cite>vertex_inds</cite>, the vertex
+indices that are neighbors according to the graph given by
+<cite>faces</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.onetime.html" title="dipy.core.onetime"
+             >next</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" >dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

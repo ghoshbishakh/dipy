@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy core" href="core.html" />
+    <link rel="prev" title="dipy.core.onetime" href="dipy.core.onetime.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.onetime.html" title="dipy.core.onetime"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" accesskey="U">dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dipy.core.onetime.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">dipy.core.onetime</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.core.profile.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.core.profile">
+<span id="dipy-core-profile"></span><h1><a class="reference internal" href="#module-dipy.core.profile" title="dipy.core.profile"><code class="xref py py-mod docutils literal"><span class="pre">dipy.core.profile</span></code></a><a class="headerlink" href="#module-dipy.core.profile" title="Permalink to this headline">¶</a></h1>
+<p>Class for profiling cython code</p>
+<dl class="class">
+<dt id="dipy.core.profile.Profiler">
+<em class="property">class </em><code class="descclassname">dipy.core.profile.</code><code class="descname">Profiler</code><span class="sig-paren">(</span><em>call=None</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.profile.Profiler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Profile python/cython files or functions</p>
+<p>If you are profiling cython code you need to add    
+# cython: profile=True on the top of your .pyx file</p>
+<p>and for the functions that you do not want to profile you can use
+this decorator in your cython files</p>
+<p>&#64;cython.profile(False)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>caller: file or function call</strong> :</p>
+<p class="last"><strong>args: function arguments</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p><a class="reference external" href="http://docs.cython.org/src/tutorial/profiling_tutorial.html">http://docs.cython.org/src/tutorial/profiling_tutorial.html</a>
+<a class="reference external" href="http://docs.python.org/library/profile.html">http://docs.python.org/library/profile.html</a>
+<a class="reference external" href="http://packages.python.org/line_profiler/">http://packages.python.org/line_profiler/</a></p>
+<p class="rubric">Examples</p>
+<p>import dipy.core.profile as p
+import numpy as np
+p.Profiler(np.sum,np.random.rand(1000000,3))
+fname=&#8217;test.py&#8217;
+p.Profiler(fname)
+p.print_stats(10)
+p.print_stats(&#8216;det&#8217;)</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="88%" />
+<col width="12%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>stats: function, stats.print_stats(10) will prin the 10 slower functions</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.core.profile.Profiler.print_stats" title="dipy.core.profile.Profiler.print_stats"><code class="xref py py-obj docutils literal"><span class="pre">print_stats</span></code></a>([N])</td>
+<td>Print stats for profiling</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dipy.core.profile.Profiler.print_stats">
+<code class="descname">print_stats</code><span class="sig-paren">(</span><em>N=10</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.profile.Profiler.print_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print stats for profiling</p>
+<p>You can use it in all different ways developed in pstats
+for example
+print_stats(10) will give you the 10 slowest calls
+or
+print_stats(&#8216;function_name&#8217;)
+will give you the stats for all the calls with name &#8216;function_name&#8217;</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>N</strong> : stats.print_stats argument</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.onetime.html" title="dipy.core.onetime"
+             >previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" >dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>
