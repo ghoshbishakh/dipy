@@ -10,12 +10,14 @@ PAPER         =
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d _build/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+VER				= $(shell git describe)
 
 .PHONY: help clean html dirhtml pickle json htmlhelp qthelp latex changes linkcheck doctest
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html      to make standalone HTML files"
+	@echo "  allhtml   to make standalone HTML files for all versions"
 	@echo "  api       to make the auto-generated API files"
 	@echo "  dirhtml   to make HTML files named index.html in directories"
 	@echo "  pickle    to make pickle files"
@@ -56,11 +58,21 @@ gitwash-update:
 html: api rstexamples html-after-examples
 	# build full docs including examples
 
+allhtml: api rstexamples html-after-examples-version
+	# build full docs including examples
+
 html-after-examples:
 	# Standard html build after examples have been prepared
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) _build/html
 	@echo
 	@echo "Build finished. The HTML pages are in _build/html."
+
+html-after-examples-version:
+	@echo "version is: $(VER)"
+	# Standard html build after examples have been prepared
+	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) _build/html/$(VER)
+	@echo
+	@echo "Build finished. The HTML pages are in _build/html/$(VER)"
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) _build/dirhtml
