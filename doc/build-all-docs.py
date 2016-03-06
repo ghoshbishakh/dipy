@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
-import os
-import sys
 from subprocess import Popen, PIPE, CalledProcessError, check_call
+from os import chdir as cd
 
 
 def sh(cmd):
@@ -37,19 +36,40 @@ def sh3(cmd):
 
 def buildDocs(tag):
     tag = tag.decode()
+
+    # git checkout the specific tag:
     checkoutCall = "git checkout " + tag
     print(checkoutCall)
-    checkout = sh3(checkoutCall)
+    checkout = sh2(checkoutCall)
     print(checkout)
+
+    # build the checked out version:
+    print(sh2("pwd"))
+    cd("..")
+    print(sh2("pwd"))
+    sh2("sudo python setup.py build_ext -i")
+    cd("doc")
+    try:
+        sh2("make api")
+    except:
+        print("API Build fail")
+    sh2("make rstexamples")
+    sh2("sphinx-build -b html -d _build/doctrees" + tag +
+        "   . _build/html/" + tag)
+    print("finished building docs for " + tag)
+    checkout = sh3("git checkout sphinx_theme")
+
 
 tags = sh2('git tag')
 # exclude b'show', b'spag0.1' tags
 tags = tags.split()[:-2]
 
 # for now build only one version
-tags = [tags[0]]
+# tags = tags[0]
 print("Building docs for:", tags)
 
 for tag in tags:
     print("Start building docs for ", tag)
     buildDocs(tag)
+
+print("Checking out master head again")
