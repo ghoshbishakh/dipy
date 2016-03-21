@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.6.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy core" href="core.html" />
+    <link rel="next" title="dipy align" href="align.html" />
+    <link rel="prev" title="dipy.core.sphere_stats" href="dipy.core.sphere_stats.html" />
+  <meta name="keywords" content="dipy, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="align.html" title="dipy align"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.sphere_stats.html" title="dipy.core.sphere_stats"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" accesskey="U">dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="dipy.core.sphere_stats.html"
+                        title="previous chapter"><code class="docutils literal"><span class="pre">dipy.core.sphere_stats</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="align.html"
+                        title="next chapter">dipy align</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.core.subdivide_octahedron.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.core.subdivide_octahedron">
+<span id="dipy-core-subdivide-octahedron"></span><h1><a class="reference internal" href="#module-dipy.core.subdivide_octahedron" title="dipy.core.subdivide_octahedron"><code class="xref py py-mod docutils literal"><span class="pre">dipy.core.subdivide_octahedron</span></code></a><a class="headerlink" href="#module-dipy.core.subdivide_octahedron" title="Permalink to this headline">¶</a></h1>
+<p>Create a unit sphere by subdividing all triangles of an octahedron
+recursively.</p>
+<p>The unit sphere has a radius of 1, which also means that all points in this
+sphere (assumed to have centre at [0, 0, 0]) have an absolute value (modulus)
+of 1. Another feature of the unit sphere is that the unit normals of this
+sphere are exactly the same as the vertices.</p>
+<p>This recursive method will avoid the common problem of the polar singularity, 
+produced by 2d (lon-lat) parameterization methods.</p>
+<dl class="function">
+<dt id="dipy.core.subdivide_octahedron.create_unit_hemisphere">
+<code class="descclassname">dipy.core.subdivide_octahedron.</code><code class="descname">create_unit_hemisphere</code><span class="sig-paren">(</span><em>recursion_level=2</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.subdivide_octahedron.create_unit_hemisphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a unit sphere by subdividing a unit octahedron, returns half
+the sphere.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>recursion_level</strong> : int</p>
+<blockquote>
+<div><p>Level of subdivision, recursion_level=1 will return an octahedron,
+anything bigger will return a more subdivided sphere. The sphere will
+have <img class="math" src="../_images/math/06befb6a2e42a8c77b8a05475caf472136f20b0b.png" alt="(4^recursion_level+2)/2"/> vertices.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>HemiSphere :</strong> :</p>
+<blockquote class="last">
+<div><p>Half of a unit sphere.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#dipy.core.subdivide_octahedron.create_unit_sphere" title="dipy.core.subdivide_octahedron.create_unit_sphere"><code class="xref py py-obj docutils literal"><span class="pre">create_unit_sphere</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">Sphere</span></code>, <a class="reference internal" href="dipy.core.html#dipy.core.subdivide_octahedron.HemiSphere" title="dipy.core.subdivide_octahedron.HemiSphere"><code class="xref py py-obj docutils literal"><span class="pre">HemiSphere</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.core.subdivide_octahedron.create_unit_sphere">
+<code class="descclassname">dipy.core.subdivide_octahedron.</code><code class="descname">create_unit_sphere</code><span class="sig-paren">(</span><em>recursion_level=2</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.core.subdivide_octahedron.create_unit_sphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a unit sphere by subdividing a unit octahedron.</p>
+<p>Starts with a unit octahedron and subdivides the faces, projecting the
+resulting points onto the surface of a unit sphere.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>recursion_level</strong> : int</p>
+<blockquote>
+<div><p>Level of subdivision, recursion_level=1 will return an octahedron,
+anything bigger will return a more subdivided sphere. The sphere will
+have <img class="math" src="../_images/math/3a68d6a6ee9b9ea4250ca78728c7a1fd653dc4a1.png" alt="4^recursion_level+2"/> vertices.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Sphere :</strong> :</p>
+<blockquote class="last">
+<div><p>The unit sphere.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#dipy.core.subdivide_octahedron.create_unit_hemisphere" title="dipy.core.subdivide_octahedron.create_unit_hemisphere"><code class="xref py py-obj docutils literal"><span class="pre">create_unit_hemisphere</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">Sphere</span></code></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="align.html" title="dipy align"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="dipy.core.sphere_stats.html" title="dipy.core.sphere_stats"
+             >previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="core.html" >dipy core</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2013, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

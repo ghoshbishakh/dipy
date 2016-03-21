@@ -1,0 +1,340 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.6.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy reconst" href="reconst.html" />
+  <meta name="keywords" content="dipy, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" accesskey="U">dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.reconst.odf.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.reconst.odf">
+<span id="dipy-reconst-odf"></span><h1><a class="reference internal" href="#module-dipy.reconst.odf" title="dipy.reconst.odf"><code class="xref py py-mod docutils literal"><span class="pre">dipy.reconst.odf</span></code></a><a class="headerlink" href="#module-dipy.reconst.odf" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="dipy.reconst.odf.OdfModel">
+<em class="property">class </em><code class="descclassname">dipy.reconst.odf.</code><code class="descname">OdfModel</code><a class="headerlink" href="#dipy.reconst.odf.OdfModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>An abstract class to be sub-classed by specific odf models</p>
+<p>All odf models should provide a fit method which may take data as it&#8217;s
+first and only argument.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.reconst.odf.OdfModel.fit" title="dipy.reconst.odf.OdfModel.fit"><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></a>(data)</td>
+<td>To be implemented by specific odf models</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dipy.reconst.odf.OdfModel.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.odf.OdfModel.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>To be implemented by specific odf models</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.odf.gfa">
+<code class="descclassname">dipy.reconst.odf.</code><code class="descname">gfa</code><span class="sig-paren">(</span><em>samples</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.odf.gfa" title="Permalink to this definition">¶</a></dt>
+<dd><p>The general fractional anisotropy of a function evaluated on the unit sphere</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.odf.peak_directions">
+<code class="descclassname">dipy.reconst.odf.</code><code class="descname">peak_directions</code><span class="sig-paren">(</span><em>odf</em>, <em>sphere</em>, <em>relative_peak_threshold=0.25</em>, <em>min_separation_angle=45</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.odf.peak_directions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the directions of odf peaks</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>odf</strong> : 1d ndarray</p>
+<blockquote>
+<div><p>The odf function evaluated on the vertices of <cite>sphere</cite></p>
+</div></blockquote>
+<p><strong>sphere</strong> : Sphere</p>
+<blockquote>
+<div><p>The Sphere providing discrete directions for evaluation.</p>
+</div></blockquote>
+<p><strong>relative_peak_threshold</strong> : float</p>
+<blockquote>
+<div><p>Only return peaks greater than <code class="docutils literal"><span class="pre">relative_peak_threshold</span> <span class="pre">*</span> <span class="pre">m</span></code> where m
+is the largest peak.</p>
+</div></blockquote>
+<p><strong>min_separation_angle</strong> : float in [0, 90] The minimum distance between</p>
+<blockquote>
+<div><p>directions. If two peaks are too close only the larger of the two is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>directions</strong> : (N, 3) ndarray</p>
+<blockquote>
+<div><p>N vertices for sphere, one for each peak</p>
+</div></blockquote>
+<p><strong>values</strong> : (N,) ndarray</p>
+<blockquote>
+<div><p>peak values</p>
+</div></blockquote>
+<p><strong>indices</strong> : (N,) ndarray</p>
+<blockquote class="last">
+<div><p>peak indices of the directions on the sphere</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.odf.peak_directions_nl">
+<code class="descclassname">dipy.reconst.odf.</code><code class="descname">peak_directions_nl</code><span class="sig-paren">(</span><em>sphere_eval</em>, <em>relative_peak_threshold=0.25</em>, <em>min_separation_angle=45</em>, <em>sphere=&lt;dipy.core.sphere.HemiSphere object&gt;</em>, <em>xtol=1e-07</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.odf.peak_directions_nl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Non Linear Direction Finder</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sphere_eval</strong> : callable</p>
+<blockquote>
+<div><p>A function which can be evaluated on a sphere.</p>
+</div></blockquote>
+<p><strong>relative_peak_threshold</strong> : float</p>
+<blockquote>
+<div><p>Only return peaks greater than <code class="docutils literal"><span class="pre">relative_peak_threshold</span> <span class="pre">*</span> <span class="pre">m</span></code> where m
+is the largest peak.</p>
+</div></blockquote>
+<p><strong>min_separation_angle</strong> : float in [0, 90]</p>
+<blockquote>
+<div><p>The minimum distance between directions. If two peaks are too close only
+the larger of the two is returned.</p>
+</div></blockquote>
+<p><strong>sphere</strong> : Sphere</p>
+<blockquote>
+<div><p>A discrete Sphere. The points on the sphere will be used for initial
+estimate of maximums.</p>
+</div></blockquote>
+<p><strong>xtol</strong> : float</p>
+<blockquote>
+<div><p>Relative tolerance for optimization.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>directions</strong> : array (N, 3)</p>
+<blockquote>
+<div><p>Points on the sphere corresponding to N local maxima on the sphere.</p>
+</div></blockquote>
+<p><strong>values</strong> : array (N,)</p>
+<blockquote class="last">
+<div><p>Value of sphere_eval at each point on directions.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.odf.peaks_from_model">
+<code class="descclassname">dipy.reconst.odf.</code><code class="descname">peaks_from_model</code><span class="sig-paren">(</span><em>model</em>, <em>data</em>, <em>sphere</em>, <em>relative_peak_threshold</em>, <em>min_separation_angle</em>, <em>mask=None</em>, <em>return_odf=False</em>, <em>gfa_thr=0.02</em>, <em>normalize_peaks=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.odf.peaks_from_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the model to data and computes peaks and metrics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>model</strong> : a model instance</p>
+<blockquote>
+<div><p><cite>model</cite> will be used to fit the data.</p>
+</div></blockquote>
+<p><strong>sphere</strong> : Sphere</p>
+<blockquote>
+<div><p>The Sphere providing discrete directions for evaluation.</p>
+</div></blockquote>
+<p><strong>relative_peak_threshold</strong> : float</p>
+<blockquote>
+<div><p>Only return peaks greater than <code class="docutils literal"><span class="pre">relative_peak_threshold</span> <span class="pre">*</span> <span class="pre">m</span></code> where m
+is the largest peak.</p>
+</div></blockquote>
+<p><strong>min_separation_angle</strong> : float in [0, 90] The minimum distance between</p>
+<blockquote>
+<div><p>directions. If two peaks are too close only the larger of the two is
+returned.</p>
+</div></blockquote>
+<p><strong>mask</strong> : array, optional</p>
+<blockquote>
+<div><p>If <cite>mask</cite> is provided, voxels that are False in <cite>mask</cite> are skipped and
+no peaks are returned.</p>
+</div></blockquote>
+<p><strong>return_odf</strong> : bool</p>
+<blockquote>
+<div><p>If True, the odfs are returned.</p>
+</div></blockquote>
+<p><strong>gfa_thr</strong> : float</p>
+<blockquote>
+<div><p>Voxels with gfa less than <cite>gfa_thr</cite> are skipped, no peaks are returned.</p>
+</div></blockquote>
+<p><strong>normalize_peaks</strong> : bool</p>
+<blockquote class="last">
+<div><p>If true, all peak values are calculated relative to <cite>max(odf)</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" >dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2013, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

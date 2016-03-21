@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy align" href="align.html" />
+    <link rel="next" title="dipy bootstrapping" href="boots.html" />
+    <link rel="prev" title="dipy align" href="align.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="boots.html" title="dipy bootstrapping"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="align.html" title="dipy align"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="align.html" accesskey="U">dipy align</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="align.html"
+                        title="previous chapter">dipy align</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="boots.html"
+                        title="next chapter">dipy bootstrapping</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.align.aniso2iso.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dipy-align-aniso2iso">
+<h1><a class="reference internal" href="#module-dipy.align.aniso2iso" title="dipy.align.aniso2iso"><code class="xref py py-mod docutils literal"><span class="pre">dipy.align.aniso2iso</span></code></a><a class="headerlink" href="#dipy-align-aniso2iso" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-dipy.align.aniso2iso"></span><p>Anisotropic to isotropic voxel conversion</p>
+<dl class="function">
+<dt id="dipy.align.aniso2iso.resample">
+<code class="descclassname">dipy.align.aniso2iso.</code><code class="descname">resample</code><span class="sig-paren">(</span><em>data</em>, <em>affine</em>, <em>zooms</em>, <em>new_zooms</em>, <em>order=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.align.aniso2iso.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample data from anisotropic to isotropic voxel size</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array, shape (I,J,K) or (I,J,K,N)</p>
+<blockquote>
+<div><p>3d volume or 4d volume with datasets</p>
+</div></blockquote>
+<p><strong>affine</strong> : array, shape (4,4)</p>
+<blockquote>
+<div><p>mapping from voxel coordinates to world coordinates</p>
+</div></blockquote>
+<p><strong>zooms</strong> : tuple, shape (3,)</p>
+<blockquote>
+<div><p>voxel size for (i,j,k) dimensions</p>
+</div></blockquote>
+<p><strong>new_zooms</strong> : tuple, shape (3,)</p>
+<blockquote>
+<div><p>new voxel size for (i,j,k) after resampling</p>
+</div></blockquote>
+<p><strong>order</strong> : int, from 0 to 5</p>
+<blockquote>
+<div><p>order of interpolation for resampling/reslicing,
+0 nearest interpolation, 1 trilinear etc..
+if you don&#8217;t want any smoothing 0 is the option you need.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data2</strong> : array, shape (I,J,K) or (I,J,K,N)</p>
+<blockquote class="last">
+<div><p>datasets resampled into isotropic voxel size</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>It is also possible with this function to resample/reslice from isotropic voxel size to anisotropic 
+or from isotropic to isotropic or even from anisotropic to anisotropic, as long as you provide
+the correct zooms (voxel sizes) and new_zooms (new voxel sizes). It is fairly easy to get the correct
+zooms using nibabel as show in the example below.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">nibabel</span> <span class="kn">as</span> <span class="nn">nib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.align.aniso2iso</span> <span class="kn">import</span> <span class="n">resample</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.data</span> <span class="kn">import</span> <span class="n">get_data</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fimg</span><span class="o">=</span><span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;aniso_vox&#39;</span><span class="p">)</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="o">=</span><span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fimg</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(58, 58, 24)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">affine</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">get_affine</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zooms</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span><span class="o">.</span><span class="n">get_zooms</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zooms</span>      
+<span class="go">(4.0, 4.0, 5.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_zooms</span><span class="o">=</span><span class="p">(</span><span class="mf">3.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mf">3.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_zooms</span>
+<span class="go">(3.0, 3.0, 3.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span><span class="p">,</span><span class="n">affine2</span><span class="o">=</span><span class="n">resample</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">affine</span><span class="p">,</span><span class="n">zooms</span><span class="p">,</span><span class="n">new_zooms</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(77, 77, 40)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="boots.html" title="dipy bootstrapping"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="align.html" title="dipy align"
+             >previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="align.html" >dipy align</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,605 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy reconst" href="reconst.html" />
+    <link rel="prev" title="dipy reconst" href="reconst.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reconst.html" title="dipy reconst"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" accesskey="U">dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="reconst.html"
+                        title="previous chapter">dipy reconst</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.reconst.dti.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.reconst.dti">
+<span id="dipy-reconst-dti"></span><h1><a class="reference internal" href="#module-dipy.reconst.dti" title="dipy.reconst.dti"><code class="xref py py-mod docutils literal"><span class="pre">dipy.reconst.dti</span></code></a><a class="headerlink" href="#module-dipy.reconst.dti" title="Permalink to this headline">¶</a></h1>
+<p>Classes and functions for fitting tensors</p>
+<dl class="class">
+<dt id="dipy.reconst.dti.Tensor">
+<em class="property">class </em><code class="descclassname">dipy.reconst.dti.</code><code class="descname">Tensor</code><span class="sig-paren">(</span><em>data</em>, <em>b_values</em>, <em>grad_table</em>, <em>mask=True</em>, <em>thresh=None</em>, <em>fit_method='WLS'</em>, <em>verbose=False</em>, <em>*args</em>, <em>**kargs</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.Tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits a diffusion tensor given diffusion-weighted signals and gradient info</p>
+<p>Tensor object that when initialized calculates single self diffusion
+tensor <a class="reference internal" href="#r31" id="id1">[R31]</a> in each voxel using selected fitting algorithm
+(DEFAULT: weighted least squares <a class="reference internal" href="#r32" id="id2">[R32]</a>)
+Requires a given gradient table, b value for each diffusion-weighted
+gradient vector, and image data given all as arrays.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array ([X, Y, Z, ...], g)</p>
+<blockquote>
+<div><p>Diffusion-weighted signals. The dimension corresponding to the
+diffusion weighting must be the last dimenssion</p>
+</div></blockquote>
+<p><strong>bval</strong> : array (g,)</p>
+<blockquote>
+<div><p>Diffusion weighting factor b for each vector in gtab.</p>
+</div></blockquote>
+<p><strong>gtab</strong> : array (g, 3)</p>
+<blockquote>
+<div><p>Diffusion gradient table found in DICOM header as a array.</p>
+</div></blockquote>
+<p><strong>mask</strong> : array, optional</p>
+<blockquote>
+<div><p>The tensor will only be fit where mask is True. Mask must must
+broadcast to the shape of data and must have fewer dimensions than data</p>
+</div></blockquote>
+<p><strong>thresh</strong> : float, default = None</p>
+<blockquote>
+<div><p>The tensor will not be fit where data[bval == 0] &lt; thresh. If multiple
+b0 volumes are given, the minimum b0 signal is used.</p>
+</div></blockquote>
+<p><strong>fit_method</strong> : funciton or string, default = &#8216;WLS&#8217;</p>
+<blockquote>
+<div><p>The method to be used to fit the given data to a tensor. Any function
+that takes the B matrix and the data and returns eigen values and eigen
+vectors can be passed as the fit method. Any of the common fit methods
+can be passed as a string.</p>
+</div></blockquote>
+<p><strong>*args, **kargs :</strong> :</p>
+<blockquote>
+<div><p>Any other arguments or keywards will be passed to fit_method.</p>
+</div></blockquote>
+<p><strong>common fit methods:</strong> :</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>&#8216;WLS&#8217; <span class="classifier-delimiter">:</span> <span class="classifier">weighted least squares</span></dt>
+<dd><p class="first last">dti.wls_fit_tensor</p>
+</dd>
+<dt>&#8216;LS&#8217; <span class="classifier-delimiter">:</span> <span class="classifier">ordinary least squares</span></dt>
+<dd><p class="first last">dti.ols_fit_tensor</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="dipy.io.bvectxt.html#dipy.io.bvectxt.read_bvec_file" title="dipy.io.bvectxt.read_bvec_file"><code class="xref py py-obj docutils literal"><span class="pre">dipy.io.bvectxt.read_bvec_file</span></code></a>, <code class="xref py py-obj docutils literal"><span class="pre">dipy.core.qball.ODF</span></code></p>
+</div>
+<p class="rubric">Notes</p>
+<p>Due to the fact that diffusion MRI entails large volumes (e.g. [256,256,
+50,64]), memory can be an issue. Therefore, only the following parameters 
+of the self diffusion tensor are cached for each voxel:</p>
+<ul class="simple">
+<li>All three eigenvalues</li>
+<li>Primary and secondary eigenvectors</li>
+</ul>
+<p>From these cached parameters, one can presumably construct any desired
+parameter.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r31" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R31]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Basser, P.J., Mattiello, J., LeBihan, D., 1994. Estimation of 
+the effective self-diffusion tensor from the NMR spin echo. J Magn 
+Reson B 103, 247-254.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r32" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R32]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> Basser, P., Pierpaoli, C., 1996. Microstructural and physiological
+features of tissues elucidated by quantitative diffusion-tensor MRI. 
+Journal of Magnetic Resonance 111, 209-219.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>For a complete example have a look at the main dipy/examples folder</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.reconst.dti.Tensor.D" title="dipy.reconst.dti.Tensor.D"><code class="xref py py-obj docutils literal"><span class="pre">D</span></code></a></td>
+<td>Self diffusion tensor</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mask</span></code></td>
+<td>If the model_params array has a mask, returns the mask</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.reconst.dti.Tensor.evals" title="dipy.reconst.dti.Tensor.evals"><code class="xref py py-obj docutils literal"><span class="pre">evals</span></code></a></td>
+<td>Returns the eigenvalues of the tensor as an array</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dipy.reconst.dti.Tensor.evecs" title="dipy.reconst.dti.Tensor.evecs"><code class="xref py py-obj docutils literal"><span class="pre">evecs</span></code></a></td>
+<td>Returns the eigenvectors of teh tensor as an array</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.reconst.dti.Tensor.fa" title="dipy.reconst.dti.Tensor.fa"><code class="xref py py-obj docutils literal"><span class="pre">fa</span></code></a>()</td>
+<td>Fractional anisotropy (FA) calculated from cached eigenvalues.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dipy.reconst.dti.Tensor.md" title="dipy.reconst.dti.Tensor.md"><code class="xref py py-obj docutils literal"><span class="pre">md</span></code></a>()</td>
+<td>Mean diffusitivity (MD) calculated from cached eigenvalues.</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="dipy.reconst.dti.Tensor.D">
+<code class="descname">D</code><a class="headerlink" href="#dipy.reconst.dti.Tensor.D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Self diffusion tensor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dipy.reconst.dti.Tensor.evals">
+<code class="descname">evals</code><a class="headerlink" href="#dipy.reconst.dti.Tensor.evals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the eigenvalues of the tensor as an array</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="dipy.reconst.dti.Tensor.evecs">
+<code class="descname">evecs</code><a class="headerlink" href="#dipy.reconst.dti.Tensor.evecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the eigenvectors of teh tensor as an array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dipy.reconst.dti.Tensor.fa">
+<code class="descname">fa</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.Tensor.fa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fractional anisotropy (FA) calculated from cached eigenvalues.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fa</strong> : array (V, 1)</p>
+<blockquote class="last">
+<div><p>Calculated FA. Note: range is 0 &lt;= FA &lt;= 1.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>FA is calculated with the following equation:</p>
+<div class="math">
+<p><img src="../_images/math/1b831f3f0a64828ef76084b9e189363f05ba3c9f.png" alt="FA = \sqrt{\frac{1}{2}\frac{(\lambda_1-\lambda_2)^2+(\lambda_1-
+            \lambda_3)^2+(\lambda_2-lambda_3)^2}{\lambda_1^2+
+            \lambda_2^2+\lambda_3^2} }"/></p>
+</div></dd></dl>
+
+<dl class="method">
+<dt id="dipy.reconst.dti.Tensor.ind">
+<code class="descname">ind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.Tensor.ind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quantizes eigenvectors with maximum eigenvalues  on an
+evenly distributed sphere so that the can be used for tractography.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>IN</strong> : array, shape(x,y,z) integer indices for the points of the</p>
+<p><strong>evenly distributed sphere representing tensor  eigenvectors of</strong> :</p>
+<p class="last"><strong>maximum eigenvalue</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dipy.reconst.dti.Tensor.md">
+<code class="descname">md</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.Tensor.md" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mean diffusitivity (MD) calculated from cached eigenvalues.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>md</strong> : array (V, 1)</p>
+<blockquote class="last">
+<div><p>Calculated MD.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>MD is calculated with the following equation:</p>
+<div class="math">
+<p><img src="../_images/math/9a50b958007bd87a0259b87ca1d0db0570d701c0.png" alt="ADC = \frac{\lambda_1+\lambda_2+\lambda_3}{3}"/></p>
+</div></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dti.decompose_tensor">
+<code class="descclassname">dipy.reconst.dti.</code><code class="descname">decompose_tensor</code><span class="sig-paren">(</span><em>tensor</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.decompose_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns eigenvalues and eigenvectors given a diffusion tensor</p>
+<p>Computes tensor eigen decomposition to calculate eigenvalues and
+eigenvectors of self-diffusion tensor. (Basser et al., 1994a)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>D</strong> : array (3,3)</p>
+<blockquote>
+<div><p>array holding a tensor. Assumes D has units on order of
+~ 10^-4 mm^2/s</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>eigvals</strong> : array (3,)</p>
+<blockquote>
+<div><p>Eigenvalues from eigen decomposition of the tensor. Negative
+eigenvalues are replaced by zero. Sorted from largest to smallest.</p>
+</div></blockquote>
+<p><strong>eigvecs</strong> : array (3,3)</p>
+<blockquote class="last">
+<div><p>Associated eigenvectors from eigen decomposition of the tensor.
+Eigenvectors are columnar (e.g. eigvecs[:,j] is associated with
+eigvals[j])</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">numpy.linalg.eig</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dti.design_matrix">
+<code class="descclassname">dipy.reconst.dti.</code><code class="descname">design_matrix</code><span class="sig-paren">(</span><em>gtab</em>, <em>bval</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.design_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs design matrix for DTI weighted least squares or least squares 
+fitting. (Basser et al., 1994a)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>gtab</strong> : array with shape (3,g)</p>
+<blockquote>
+<div><p>Diffusion gradient table found in DICOM header as a numpy array.</p>
+</div></blockquote>
+<p><strong>bval</strong> : array with shape (g,)</p>
+<blockquote>
+<div><p>Diffusion weighting factor b for each vector in gtab.</p>
+</div></blockquote>
+<p><strong>dtype</strong> : string</p>
+<blockquote>
+<div><p>Parameter to control the dtype of returned designed matrix</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>design_matrix</strong> : array (g,7)</p>
+<blockquote class="last">
+<div><p>Design matrix or B matrix assuming Gaussian distributed tensor model.
+Note: design_matrix[j,:] = (Bxx,Byy,Bzz,Bxy,Bxz,Byz,dummy)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dti.ols_fit_tensor">
+<code class="descclassname">dipy.reconst.dti.</code><code class="descname">ols_fit_tensor</code><span class="sig-paren">(</span><em>design_matrix</em>, <em>data</em>, <em>min_signal=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.ols_fit_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes ordinary least squares (OLS) fit to calculate self-diffusion 
+tensor using a linear regression model <a class="footnote-reference" href="#id6" id="id5">[1]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>design_matrix</strong> : array (g, 7)</p>
+<blockquote>
+<div><p>Design matrix holding the covariants used to solve for the regression
+coefficients. Use design_matrix to build a valid design matrix from 
+bvalues and a gradient table.</p>
+</div></blockquote>
+<p><strong>data</strong> : array ([X, Y, Z, ...], g)</p>
+<blockquote>
+<div><p>Data or response variables holding the data. Note that the last 
+dimension should contain the data. It makes no copies of data.</p>
+</div></blockquote>
+<p><strong>min_signal</strong> : default = 1</p>
+<blockquote>
+<div><p>All values below min_signal are repalced with min_signal. This is done
+in order to avaid taking log(0) durring the tensor fitting.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>eigvals</strong> : array (..., 3)</p>
+<blockquote>
+<div><p>Eigenvalues from eigen decomposition of the tensor.</p>
+</div></blockquote>
+<p><strong>eigvecs</strong> : array (..., 3, 3)</p>
+<blockquote class="last">
+<div><p>Associated eigenvectors from eigen decomposition of the tensor.
+Eigenvectors are columnar (e.g. eigvecs[:,j] is associated with 
+eigvals[j])</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">WLS_fit_tensor</span></code>, <a class="reference internal" href="#dipy.reconst.dti.decompose_tensor" title="dipy.reconst.dti.decompose_tensor"><code class="xref py py-obj docutils literal"><span class="pre">decompose_tensor</span></code></a>, <a class="reference internal" href="#dipy.reconst.dti.design_matrix" title="dipy.reconst.dti.design_matrix"><code class="xref py py-obj docutils literal"><span class="pre">design_matrix</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>This function is offered mainly as a quick comparison to WLS.</p>
+<div class="math">
+<p><img src="../_images/math/8928ac5da206e4c3e403642376c39ce4a121f12b.png" alt="y = \mathrm{data} \\
+X = \mathrm{design matrix} \\
+
+\hat{\beta}_\mathrm{OLS} = (X^T X)^{-1} X^T y"/></p>
+</div><p class="rubric">References</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> Chung, SW., Lu, Y., Henry, R.G., 2006. Comparison of bootstrap
+approaches for estimation of uncertainties of DTI parameters.
+NeuroImage 33, 531-541.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dti.quantize_evecs">
+<code class="descclassname">dipy.reconst.dti.</code><code class="descname">quantize_evecs</code><span class="sig-paren">(</span><em>evecs</em>, <em>odf_vertices=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.quantize_evecs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the closest orientation of an evenly distributed sphere</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>evecs</strong> : ndarray</p>
+<p><strong>odf_vertices</strong> : None or ndarray</p>
+<blockquote>
+<div><p>If None, then set vertices from symmetric362 sphere.  Otherwise use
+passed ndarray as vertices</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>IN</strong> : ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.reconst.dti.wls_fit_tensor">
+<code class="descclassname">dipy.reconst.dti.</code><code class="descname">wls_fit_tensor</code><span class="sig-paren">(</span><em>design_matrix</em>, <em>data</em>, <em>min_signal=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.reconst.dti.wls_fit_tensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes weighted least squares (WLS) fit to calculate self-diffusion 
+tensor using a linear regression model <a class="footnote-reference" href="#id6" id="id7">[1]</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>design_matrix</strong> : array (g, 7)</p>
+<blockquote>
+<div><p>Design matrix holding the covariants used to solve for the regression
+coefficients.</p>
+</div></blockquote>
+<p><strong>data</strong> : array ([X, Y, Z, ...], g)</p>
+<blockquote>
+<div><p>Data or response variables holding the data. Note that the last 
+dimension should contain the data. It makes no copies of data.</p>
+</div></blockquote>
+<p><strong>min_signal</strong> : default = 1</p>
+<blockquote>
+<div><p>All values below min_signal are repalced with min_signal. This is done
+in order to avaid taking log(0) durring the tensor fitting.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>eigvals</strong> : array (..., 3)</p>
+<blockquote>
+<div><p>Eigenvalues from eigen decomposition of the tensor.</p>
+</div></blockquote>
+<p><strong>eigvecs</strong> : array (..., 3, 3)</p>
+<blockquote class="last">
+<div><p>Associated eigenvectors from eigen decomposition of the tensor.
+Eigenvectors are columnar (e.g. eigvecs[:,j] is associated with 
+eigvals[j])</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#dipy.reconst.dti.decompose_tensor" title="dipy.reconst.dti.decompose_tensor"><code class="xref py py-obj docutils literal"><span class="pre">decompose_tensor</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>In Chung, et al. 2006, the regression of the WLS fit needed an unbiased
+preliminary estimate of the weights and therefore the ordinary least 
+squares (OLS) estimates were used. A &#8220;two pass&#8221; method was implemented:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>calculate OLS estimates of the data</li>
+<li>apply the OLS estimates as weights to the WLS fit of the data</li>
+</ol>
+</div></blockquote>
+<p>This ensured heteroscadasticity could be properly modeled for various 
+types of bootstrap resampling (namely residual bootstrap).</p>
+<div class="math">
+<p><img src="../_images/math/94788fc48058ff0cf27fa827e85418e1a454651f.png" alt="y = \mathrm{data} \\
+X = \mathrm{design matrix} \\
+\hat{\beta}_\mathrm{WLS} = \mathrm{desired regression coefficients (e.g. tensor)}\\
+\\
+\hat{\beta}_\mathrm{WLS} = (X^T W X)^{-1} X^T W y \\
+\\
+W = \mathrm{diag}((X \hat{\beta}_\mathrm{OLS})^2),
+\mathrm{where} \hat{\beta}_\mathrm{OLS} = (X^T X)^{-1} X^T y"/></p>
+</div><p class="rubric">References</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="reconst.html" title="dipy reconst"
+             >previous</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="reconst.html" >dipy reconst</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

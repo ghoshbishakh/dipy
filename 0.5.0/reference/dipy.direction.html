@@ -1,0 +1,551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.5.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.5.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.5.0 documentation" href="../index.html" />
+  <meta name="keywords" content="nipy, neuroimaging, python, neuroscience, time
+				 series">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">direction</span></code></a><ul>
+<li><a class="reference internal" href="#module-direction-peaks">Module: <code class="docutils literal"><span class="pre">direction.peaks</span></code></a></li>
+<li><a class="reference internal" href="#module-direction-probabilistic-direction-getter">Module: <code class="docutils literal"><span class="pre">direction.probabilistic_direction_getter</span></code></a><ul>
+<li><a class="reference internal" href="#deterministicmaximumdirectiongetter"><code class="docutils literal"><span class="pre">DeterministicMaximumDirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#hemisphere"><code class="docutils literal"><span class="pre">HemiSphere</span></code></a></li>
+<li><a class="reference internal" href="#intemporarydirectory"><code class="docutils literal"><span class="pre">InTemporaryDirectory</span></code></a></li>
+<li><a class="reference internal" href="#peaksandmetrics"><code class="docutils literal"><span class="pre">PeaksAndMetrics</span></code></a></li>
+<li><a class="reference internal" href="#peaksandmetricsdirectiongetter"><code class="docutils literal"><span class="pre">PeaksAndMetricsDirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#probabilisticdirectiongetter"><code class="docutils literal"><span class="pre">ProbabilisticDirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#sphere"><code class="docutils literal"><span class="pre">Sphere</span></code></a></li>
+<li><a class="reference internal" href="#repeat"><code class="docutils literal"><span class="pre">repeat</span></code></a></li>
+<li><a class="reference internal" href="#xrange"><code class="docutils literal"><span class="pre">xrange</span></code></a></li>
+<li><a class="reference internal" href="#pool">Pool</a></li>
+<li><a class="reference internal" href="#cpu-count">cpu_count</a></li>
+<li><a class="reference internal" href="#gfa">gfa</a></li>
+<li><a class="reference internal" href="#local-maxima">local_maxima</a></li>
+<li><a class="reference internal" href="#ndindex">ndindex</a></li>
+<li><a class="reference internal" href="#peak-directions">peak_directions</a></li>
+<li><a class="reference internal" href="#peak-directions-nl">peak_directions_nl</a></li>
+<li><a class="reference internal" href="#peaks-from-model">peaks_from_model</a></li>
+<li><a class="reference internal" href="#remove-similar-vertices">remove_similar_vertices</a></li>
+<li><a class="reference internal" href="#reshape-peaks-for-visualization">reshape_peaks_for_visualization</a></li>
+<li><a class="reference internal" href="#search-descending">search_descending</a></li>
+<li><a class="reference internal" href="#sh-to-sf-matrix">sh_to_sf_matrix</a></li>
+<li><a class="reference internal" href="#warn">warn</a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal"><span class="pre">HemiSphere</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal"><span class="pre">InTemporaryDirectory</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal"><span class="pre">PeaksAndMetrics</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal"><span class="pre">PeaksAndMetricsDirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal"><span class="pre">Sphere</span></code></a></li>
+<li><a class="reference internal" href="#id6"><code class="docutils literal"><span class="pre">repeat</span></code></a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal"><span class="pre">xrange</span></code></a></li>
+<li><a class="reference internal" href="#id8">Pool</a></li>
+<li><a class="reference internal" href="#id9">cpu_count</a></li>
+<li><a class="reference internal" href="#id10">gfa</a></li>
+<li><a class="reference internal" href="#id11">local_maxima</a></li>
+<li><a class="reference internal" href="#id12">ndindex</a></li>
+<li><a class="reference internal" href="#id13">peak_directions</a></li>
+<li><a class="reference internal" href="#id14">peak_directions_nl</a></li>
+<li><a class="reference internal" href="#id15">peaks_from_model</a></li>
+<li><a class="reference internal" href="#id16">remove_similar_vertices</a></li>
+<li><a class="reference internal" href="#id17">reshape_peaks_for_visualization</a></li>
+<li><a class="reference internal" href="#id18">search_descending</a></li>
+<li><a class="reference internal" href="#id19">sh_to_sf_matrix</a></li>
+<li><a class="reference internal" href="#id20">warn</a></li>
+<li><a class="reference internal" href="#id21"><code class="docutils literal"><span class="pre">DeterministicMaximumDirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#directiongetter"><code class="docutils literal"><span class="pre">DirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#peakdirectiongetter"><code class="docutils literal"><span class="pre">PeakDirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#pmfgen"><code class="docutils literal"><span class="pre">PmfGen</span></code></a></li>
+<li><a class="reference internal" href="#id22"><code class="docutils literal"><span class="pre">ProbabilisticDirectionGetter</span></code></a></li>
+<li><a class="reference internal" href="#shcoeffpmfgen"><code class="docutils literal"><span class="pre">SHCoeffPmfGen</span></code></a></li>
+<li><a class="reference internal" href="#simplepmfgen"><code class="docutils literal"><span class="pre">SimplePmfGen</span></code></a></li>
+<li><a class="reference internal" href="#order-from-ncoef">order_from_ncoef</a></li>
+<li><a class="reference internal" href="#id23">peak_directions</a></li>
+<li><a class="reference internal" href="#trilinear-interpolate4d">trilinear_interpolate4d</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.direction.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="direction">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">direction</span></code><a class="headerlink" href="#direction" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">DeterministicMaximumDirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">HemiSphere</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">InTemporaryDirectory</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">PeaksAndMetrics</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">PeaksAndMetricsDirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ProbabilisticDirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Sphere</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">repeat</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://docs.python.org/library/functions.html#xrange" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">xrange</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">Pool</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">cpu_count</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">gfa</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">local_maxima</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ndindex</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">peak_directions</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">peak_directions_nl</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">peaks_from_model</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">remove_similar_vertices</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">reshape_peaks_for_visualization</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">search_descending</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sh_to_sf_matrix</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">warn</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="module-direction-peaks">
+<h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">direction.peaks</span></code><a class="headerlink" href="#module-direction-peaks" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">HemiSphere</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">InTemporaryDirectory</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">PeaksAndMetrics</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">PeaksAndMetricsDirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Sphere</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">repeat</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://docs.python.org/library/functions.html#xrange" title="(in Python v2.7)"><code class="xref py py-obj docutils literal"><span class="pre">xrange</span></code></a></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">Pool</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">cpu_count</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">gfa</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">local_maxima</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ndindex</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">peak_directions</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">peak_directions_nl</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">peaks_from_model</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">remove_similar_vertices</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">reshape_peaks_for_visualization</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">search_descending</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">sh_to_sf_matrix</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">warn</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-direction-probabilistic-direction-getter">
+<h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">direction.probabilistic_direction_getter</span></code><a class="headerlink" href="#module-direction-probabilistic-direction-getter" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">DeterministicMaximumDirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">DirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">PeakDirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">PmfGen</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ProbabilisticDirectionGetter</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">SHCoeffPmfGen</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">SimplePmfGen</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">order_from_ncoef</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">peak_directions</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">trilinear_interpolate4d</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="deterministicmaximumdirectiongetter">
+<h3><code class="xref py py-class docutils literal"><span class="pre">DeterministicMaximumDirectionGetter</span></code><a class="headerlink" href="#deterministicmaximumdirectiongetter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hemisphere">
+<h3><code class="xref py py-class docutils literal"><span class="pre">HemiSphere</span></code><a class="headerlink" href="#hemisphere" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="intemporarydirectory">
+<h3><code class="xref py py-class docutils literal"><span class="pre">InTemporaryDirectory</span></code><a class="headerlink" href="#intemporarydirectory" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="peaksandmetrics">
+<h3><code class="xref py py-class docutils literal"><span class="pre">PeaksAndMetrics</span></code><a class="headerlink" href="#peaksandmetrics" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="peaksandmetricsdirectiongetter">
+<h3><code class="xref py py-class docutils literal"><span class="pre">PeaksAndMetricsDirectionGetter</span></code><a class="headerlink" href="#peaksandmetricsdirectiongetter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="probabilisticdirectiongetter">
+<h3><code class="xref py py-class docutils literal"><span class="pre">ProbabilisticDirectionGetter</span></code><a class="headerlink" href="#probabilisticdirectiongetter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sphere">
+<h3><code class="xref py py-class docutils literal"><span class="pre">Sphere</span></code><a class="headerlink" href="#sphere" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="repeat">
+<h3><code class="xref py py-class docutils literal"><span class="pre">repeat</span></code><a class="headerlink" href="#repeat" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="xrange">
+<h3><code class="xref py py-class docutils literal"><span class="pre">xrange</span></code><a class="headerlink" href="#xrange" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pool">
+<h3>Pool<a class="headerlink" href="#pool" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="cpu-count">
+<h3>cpu_count<a class="headerlink" href="#cpu-count" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="gfa">
+<h3>gfa<a class="headerlink" href="#gfa" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="local-maxima">
+<h3>local_maxima<a class="headerlink" href="#local-maxima" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="ndindex">
+<h3>ndindex<a class="headerlink" href="#ndindex" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="peak-directions">
+<h3>peak_directions<a class="headerlink" href="#peak-directions" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="peak-directions-nl">
+<h3>peak_directions_nl<a class="headerlink" href="#peak-directions-nl" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="peaks-from-model">
+<h3>peaks_from_model<a class="headerlink" href="#peaks-from-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="remove-similar-vertices">
+<h3>remove_similar_vertices<a class="headerlink" href="#remove-similar-vertices" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="reshape-peaks-for-visualization">
+<h3>reshape_peaks_for_visualization<a class="headerlink" href="#reshape-peaks-for-visualization" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="search-descending">
+<h3>search_descending<a class="headerlink" href="#search-descending" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sh-to-sf-matrix">
+<h3>sh_to_sf_matrix<a class="headerlink" href="#sh-to-sf-matrix" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="warn">
+<h3>warn<a class="headerlink" href="#warn" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<h3><code class="xref py py-class docutils literal"><span class="pre">HemiSphere</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3><code class="xref py py-class docutils literal"><span class="pre">InTemporaryDirectory</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id3">
+<h3><code class="xref py py-class docutils literal"><span class="pre">PeaksAndMetrics</span></code><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3><code class="xref py py-class docutils literal"><span class="pre">PeaksAndMetricsDirectionGetter</span></code><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3><code class="xref py py-class docutils literal"><span class="pre">Sphere</span></code><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3><code class="xref py py-class docutils literal"><span class="pre">repeat</span></code><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id7">
+<h3><code class="xref py py-class docutils literal"><span class="pre">xrange</span></code><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3>Pool<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id9">
+<h3>cpu_count<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3>gfa<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id11">
+<h3>local_maxima<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id12">
+<h3>ndindex<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id13">
+<h3>peak_directions<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id14">
+<h3>peak_directions_nl<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id15">
+<h3>peaks_from_model<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id16">
+<h3>remove_similar_vertices<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id17">
+<h3>reshape_peaks_for_visualization<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id18">
+<h3>search_descending<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id19">
+<h3>sh_to_sf_matrix<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id20">
+<h3>warn<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id21">
+<h3><code class="xref py py-class docutils literal"><span class="pre">DeterministicMaximumDirectionGetter</span></code><a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="directiongetter">
+<h3><code class="xref py py-class docutils literal"><span class="pre">DirectionGetter</span></code><a class="headerlink" href="#directiongetter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="peakdirectiongetter">
+<h3><code class="xref py py-class docutils literal"><span class="pre">PeakDirectionGetter</span></code><a class="headerlink" href="#peakdirectiongetter" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pmfgen">
+<h3><code class="xref py py-class docutils literal"><span class="pre">PmfGen</span></code><a class="headerlink" href="#pmfgen" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id22">
+<h3><code class="xref py py-class docutils literal"><span class="pre">ProbabilisticDirectionGetter</span></code><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="shcoeffpmfgen">
+<h3><code class="xref py py-class docutils literal"><span class="pre">SHCoeffPmfGen</span></code><a class="headerlink" href="#shcoeffpmfgen" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="simplepmfgen">
+<h3><code class="xref py py-class docutils literal"><span class="pre">SimplePmfGen</span></code><a class="headerlink" href="#simplepmfgen" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="order-from-ncoef">
+<h3>order_from_ncoef<a class="headerlink" href="#order-from-ncoef" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id23">
+<h3>peak_directions<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="trilinear-interpolate4d">
+<h3>trilinear_interpolate4d<a class="headerlink" href="#trilinear-interpolate4d" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Dipy Home</a> |&nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2011, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

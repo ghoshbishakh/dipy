@@ -1,0 +1,875 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.6.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.6.0 documentation" href="../index.html" />
+  <meta name="keywords" content="dipy, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">align</span></code></a><ul>
+<li><a class="reference internal" href="#module-align-imaffine">Module: <code class="docutils literal"><span class="pre">align.imaffine</span></code></a></li>
+<li><a class="reference internal" href="#module-align-imwarp">Module: <code class="docutils literal"><span class="pre">align.imwarp</span></code></a></li>
+<li><a class="reference internal" href="#module-align-metrics">Module: <code class="docutils literal"><span class="pre">align.metrics</span></code></a></li>
+<li><a class="reference internal" href="#module-dipy.align.reslice">Module: <code class="docutils literal"><span class="pre">align.reslice</span></code></a></li>
+<li><a class="reference internal" href="#module-align-scalespace">Module: <code class="docutils literal"><span class="pre">align.scalespace</span></code></a></li>
+<li><a class="reference internal" href="#module-align-streamlinear">Module: <code class="docutils literal"><span class="pre">align.streamlinear</span></code></a><ul>
+<li><a class="reference internal" href="#bunch"><code class="docutils literal"><span class="pre">Bunch</span></code></a></li>
+<li><a class="reference internal" href="#floating"><code class="docutils literal"><span class="pre">floating</span></code></a></li>
+<li><a class="reference internal" href="#affineinversionerror"><code class="docutils literal"><span class="pre">AffineInversionError</span></code></a></li>
+<li><a class="reference internal" href="#affinemap"><code class="docutils literal"><span class="pre">AffineMap</span></code></a></li>
+<li><a class="reference internal" href="#affineregistration"><code class="docutils literal"><span class="pre">AffineRegistration</span></code></a></li>
+<li><a class="reference internal" href="#isotropicscalespace"><code class="docutils literal"><span class="pre">IsotropicScaleSpace</span></code></a></li>
+<li><a class="reference internal" href="#mutualinformationmetric"><code class="docutils literal"><span class="pre">MutualInformationMetric</span></code></a></li>
+<li><a class="reference internal" href="#optimizer"><code class="docutils literal"><span class="pre">Optimizer</span></code></a></li>
+<li><a class="reference internal" href="#parzenjointhistogram"><code class="docutils literal"><span class="pre">ParzenJointHistogram</span></code></a></li>
+<li><a class="reference internal" href="#scalespace"><code class="docutils literal"><span class="pre">ScaleSpace</span></code></a></li>
+<li><a class="reference internal" href="#align-centers-of-mass">align_centers_of_mass</a></li>
+<li><a class="reference internal" href="#align-geometric-centers">align_geometric_centers</a></li>
+<li><a class="reference internal" href="#align-origins">align_origins</a></li>
+<li><a class="reference internal" href="#compute-parzen-mi">compute_parzen_mi</a></li>
+<li><a class="reference internal" href="#get-direction-and-spacings">get_direction_and_spacings</a></li>
+<li><a class="reference internal" href="#sample-domain-regular">sample_domain_regular</a></li>
+<li><a class="reference internal" href="#transform-centers-of-mass">transform_centers_of_mass</a></li>
+<li><a class="reference internal" href="#transform-geometric-centers">transform_geometric_centers</a></li>
+<li><a class="reference internal" href="#transform-origins">transform_origins</a></li>
+<li><a class="reference internal" href="#warn">warn</a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal"><span class="pre">Bunch</span></code></a></li>
+<li><a class="reference internal" href="#diffeomorphicmap"><code class="docutils literal"><span class="pre">DiffeomorphicMap</span></code></a></li>
+<li><a class="reference internal" href="#diffeomorphicregistration"><code class="docutils literal"><span class="pre">DiffeomorphicRegistration</span></code></a></li>
+<li><a class="reference internal" href="#id2"><code class="docutils literal"><span class="pre">ScaleSpace</span></code></a></li>
+<li><a class="reference internal" href="#symmetricdiffeomorphicregistration"><code class="docutils literal"><span class="pre">SymmetricDiffeomorphicRegistration</span></code></a></li>
+<li><a class="reference internal" href="#id3"><code class="docutils literal"><span class="pre">floating</span></code></a></li>
+<li><a class="reference internal" href="#id4">get_direction_and_spacings</a></li>
+<li><a class="reference internal" href="#mult-aff">mult_aff</a></li>
+<li><a class="reference internal" href="#with-metaclass">with_metaclass</a></li>
+<li><a class="reference internal" href="#ccmetric"><code class="docutils literal"><span class="pre">CCMetric</span></code></a></li>
+<li><a class="reference internal" href="#emmetric"><code class="docutils literal"><span class="pre">EMMetric</span></code></a></li>
+<li><a class="reference internal" href="#ssdmetric"><code class="docutils literal"><span class="pre">SSDMetric</span></code></a></li>
+<li><a class="reference internal" href="#similaritymetric"><code class="docutils literal"><span class="pre">SimilarityMetric</span></code></a></li>
+<li><a class="reference internal" href="#id5"><code class="docutils literal"><span class="pre">floating</span></code></a></li>
+<li><a class="reference internal" href="#gradient">gradient</a></li>
+<li><a class="reference internal" href="#v-cycle-2d">v_cycle_2d</a></li>
+<li><a class="reference internal" href="#v-cycle-3d">v_cycle_3d</a></li>
+<li><a class="reference internal" href="#id6">with_metaclass</a></li>
+<li><a class="reference internal" href="#pool">Pool</a></li>
+<li><a class="reference internal" href="#affine-transform">affine_transform</a></li>
+<li><a class="reference internal" href="#cpu-count">cpu_count</a></li>
+<li><a class="reference internal" href="#reslice">reslice</a></li>
+<li><a class="reference internal" href="#id7"><code class="docutils literal"><span class="pre">IsotropicScaleSpace</span></code></a></li>
+<li><a class="reference internal" href="#id8"><code class="docutils literal"><span class="pre">ScaleSpace</span></code></a></li>
+<li><a class="reference internal" href="#id9"><code class="docutils literal"><span class="pre">floating</span></code></a></li>
+<li><a class="reference internal" href="#bundlemindistancematrixmetric"><code class="docutils literal"><span class="pre">BundleMinDistanceMatrixMetric</span></code></a></li>
+<li><a class="reference internal" href="#bundlemindistancemetric"><code class="docutils literal"><span class="pre">BundleMinDistanceMetric</span></code></a></li>
+<li><a class="reference internal" href="#bundlesumdistancematrixmetric"><code class="docutils literal"><span class="pre">BundleSumDistanceMatrixMetric</span></code></a></li>
+<li><a class="reference internal" href="#id10"><code class="docutils literal"><span class="pre">Optimizer</span></code></a></li>
+<li><a class="reference internal" href="#streamlinedistancemetric"><code class="docutils literal"><span class="pre">StreamlineDistanceMetric</span></code></a></li>
+<li><a class="reference internal" href="#streamlinelinearregistration"><code class="docutils literal"><span class="pre">StreamlineLinearRegistration</span></code></a></li>
+<li><a class="reference internal" href="#streamlineregistrationmap"><code class="docutils literal"><span class="pre">StreamlineRegistrationMap</span></code></a></li>
+<li><a class="reference internal" href="#bundle-min-distance">bundle_min_distance</a></li>
+<li><a class="reference internal" href="#bundle-min-distance-fast">bundle_min_distance_fast</a></li>
+<li><a class="reference internal" href="#bundle-sum-distance">bundle_sum_distance</a></li>
+<li><a class="reference internal" href="#center-streamlines">center_streamlines</a></li>
+<li><a class="reference internal" href="#compose-matrix">compose_matrix</a></li>
+<li><a class="reference internal" href="#compose-matrix44">compose_matrix44</a></li>
+<li><a class="reference internal" href="#compose-transformations">compose_transformations</a></li>
+<li><a class="reference internal" href="#decompose-matrix">decompose_matrix</a></li>
+<li><a class="reference internal" href="#decompose-matrix44">decompose_matrix44</a></li>
+<li><a class="reference internal" href="#distance-matrix-mdf">distance_matrix_mdf</a></li>
+<li><a class="reference internal" href="#transform-streamlines">transform_streamlines</a></li>
+<li><a class="reference internal" href="#unlist-streamlines">unlist_streamlines</a></li>
+<li><a class="reference internal" href="#id11">with_metaclass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.align.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.align">
+<span id="align"></span><h1><code class="xref py py-mod docutils literal"><span class="pre">align</span></code><a class="headerlink" href="#module-dipy.align" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Bunch</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">floating</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="module-align-imaffine">
+<h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">align.imaffine</span></code><a class="headerlink" href="#module-align-imaffine" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">AffineInversionError</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">AffineMap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">AffineRegistration</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">IsotropicScaleSpace</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">MutualInformationMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">Optimizer</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">ParzenJointHistogram</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ScaleSpace</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">align_centers_of_mass</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">align_geometric_centers</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">align_origins</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">compute_parzen_mi</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">get_direction_and_spacings</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">sample_domain_regular</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">transform_centers_of_mass</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">transform_geometric_centers</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">transform_origins</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">warn</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-align-imwarp">
+<h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">align.imwarp</span></code><a class="headerlink" href="#module-align-imwarp" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">Bunch</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">DiffeomorphicMap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">DiffeomorphicRegistration</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ScaleSpace</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">SymmetricDiffeomorphicRegistration</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">floating</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">get_direction_and_spacings</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">mult_aff</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">with_metaclass</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-align-metrics">
+<h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">align.metrics</span></code><a class="headerlink" href="#module-align-metrics" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">CCMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">EMMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">SSDMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">SimilarityMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">floating</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">gradient</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">v_cycle_2d</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">v_cycle_3d</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">with_metaclass</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-dipy.align.reslice">
+<span id="module-align-reslice"></span><h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">align.reslice</span></code><a class="headerlink" href="#module-dipy.align.reslice" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.align.reslice.Pool" title="dipy.align.reslice.Pool"><code class="xref py py-obj docutils literal"><span class="pre">Pool</span></code></a>([processes,&nbsp;initializer,&nbsp;initargs,&nbsp;...])</td>
+<td>Returns a process pool object</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dipy.align.reslice.affine_transform" title="dipy.align.reslice.affine_transform"><code class="xref py py-obj docutils literal"><span class="pre">affine_transform</span></code></a>(input,&nbsp;matrix[,&nbsp;offset,&nbsp;...])</td>
+<td>Apply an affine transformation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dipy.align.reslice.cpu_count" title="dipy.align.reslice.cpu_count"><code class="xref py py-obj docutils literal"><span class="pre">cpu_count</span></code></a>()</td>
+<td>Returns the number of CPUs in the system</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dipy.align.reslice.reslice" title="dipy.align.reslice.reslice"><code class="xref py py-obj docutils literal"><span class="pre">reslice</span></code></a>(data,&nbsp;affine,&nbsp;zooms,&nbsp;new_zooms[,&nbsp;...])</td>
+<td>Reslice data with new voxel resolution defined by <code class="docutils literal"><span class="pre">new_zooms</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-align-scalespace">
+<h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">align.scalespace</span></code><a class="headerlink" href="#module-align-scalespace" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">IsotropicScaleSpace</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">ScaleSpace</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">floating</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-align-streamlinear">
+<h2>Module: <code class="xref py py-mod docutils literal"><span class="pre">align.streamlinear</span></code><a class="headerlink" href="#module-align-streamlinear" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">BundleMinDistanceMatrixMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">BundleMinDistanceMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">BundleSumDistanceMatrixMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">Optimizer</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">StreamlineDistanceMetric</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">StreamlineLinearRegistration</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">StreamlineRegistrationMap</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">bundle_min_distance</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">bundle_min_distance_fast</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">bundle_sum_distance</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">center_streamlines</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">compose_matrix</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">compose_matrix44</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">compose_transformations</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">decompose_matrix</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">decompose_matrix44</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">distance_matrix_mdf</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">transform_streamlines</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">unlist_streamlines</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">with_metaclass</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="bunch">
+<h3><code class="xref py py-class docutils literal"><span class="pre">Bunch</span></code><a class="headerlink" href="#bunch" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="floating">
+<h3><code class="xref py py-class docutils literal"><span class="pre">floating</span></code><a class="headerlink" href="#floating" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="affineinversionerror">
+<h3><code class="xref py py-class docutils literal"><span class="pre">AffineInversionError</span></code><a class="headerlink" href="#affineinversionerror" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="affinemap">
+<h3><code class="xref py py-class docutils literal"><span class="pre">AffineMap</span></code><a class="headerlink" href="#affinemap" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="affineregistration">
+<h3><code class="xref py py-class docutils literal"><span class="pre">AffineRegistration</span></code><a class="headerlink" href="#affineregistration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="isotropicscalespace">
+<h3><code class="xref py py-class docutils literal"><span class="pre">IsotropicScaleSpace</span></code><a class="headerlink" href="#isotropicscalespace" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="mutualinformationmetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">MutualInformationMetric</span></code><a class="headerlink" href="#mutualinformationmetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="optimizer">
+<h3><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code><a class="headerlink" href="#optimizer" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="parzenjointhistogram">
+<h3><code class="xref py py-class docutils literal"><span class="pre">ParzenJointHistogram</span></code><a class="headerlink" href="#parzenjointhistogram" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="scalespace">
+<h3><code class="xref py py-class docutils literal"><span class="pre">ScaleSpace</span></code><a class="headerlink" href="#scalespace" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="align-centers-of-mass">
+<h3>align_centers_of_mass<a class="headerlink" href="#align-centers-of-mass" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="align-geometric-centers">
+<h3>align_geometric_centers<a class="headerlink" href="#align-geometric-centers" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="align-origins">
+<h3>align_origins<a class="headerlink" href="#align-origins" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="compute-parzen-mi">
+<h3>compute_parzen_mi<a class="headerlink" href="#compute-parzen-mi" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="get-direction-and-spacings">
+<h3>get_direction_and_spacings<a class="headerlink" href="#get-direction-and-spacings" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sample-domain-regular">
+<h3>sample_domain_regular<a class="headerlink" href="#sample-domain-regular" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="transform-centers-of-mass">
+<h3>transform_centers_of_mass<a class="headerlink" href="#transform-centers-of-mass" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="transform-geometric-centers">
+<h3>transform_geometric_centers<a class="headerlink" href="#transform-geometric-centers" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="transform-origins">
+<h3>transform_origins<a class="headerlink" href="#transform-origins" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="warn">
+<h3>warn<a class="headerlink" href="#warn" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id1">
+<h3><code class="xref py py-class docutils literal"><span class="pre">Bunch</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="diffeomorphicmap">
+<h3><code class="xref py py-class docutils literal"><span class="pre">DiffeomorphicMap</span></code><a class="headerlink" href="#diffeomorphicmap" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="diffeomorphicregistration">
+<h3><code class="xref py py-class docutils literal"><span class="pre">DiffeomorphicRegistration</span></code><a class="headerlink" href="#diffeomorphicregistration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3><code class="xref py py-class docutils literal"><span class="pre">ScaleSpace</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="symmetricdiffeomorphicregistration">
+<h3><code class="xref py py-class docutils literal"><span class="pre">SymmetricDiffeomorphicRegistration</span></code><a class="headerlink" href="#symmetricdiffeomorphicregistration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id3">
+<h3><code class="xref py py-class docutils literal"><span class="pre">floating</span></code><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3>get_direction_and_spacings<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="mult-aff">
+<h3>mult_aff<a class="headerlink" href="#mult-aff" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="with-metaclass">
+<h3>with_metaclass<a class="headerlink" href="#with-metaclass" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="ccmetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">CCMetric</span></code><a class="headerlink" href="#ccmetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="emmetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">EMMetric</span></code><a class="headerlink" href="#emmetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="ssdmetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">SSDMetric</span></code><a class="headerlink" href="#ssdmetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="similaritymetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">SimilarityMetric</span></code><a class="headerlink" href="#similaritymetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3><code class="xref py py-class docutils literal"><span class="pre">floating</span></code><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="gradient">
+<h3>gradient<a class="headerlink" href="#gradient" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v-cycle-2d">
+<h3>v_cycle_2d<a class="headerlink" href="#v-cycle-2d" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="v-cycle-3d">
+<h3>v_cycle_3d<a class="headerlink" href="#v-cycle-3d" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>with_metaclass<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="pool">
+<h3>Pool<a class="headerlink" href="#pool" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="dipy.align.reslice.Pool">
+<code class="descclassname">dipy.align.reslice.</code><code class="descname">Pool</code><span class="sig-paren">(</span><em>processes=None</em>, <em>initializer=None</em>, <em>initargs=()</em>, <em>maxtasksperchild=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.align.reslice.Pool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a process pool object</p>
+</dd></dl>
+
+</div>
+<div class="section" id="affine-transform">
+<h3>affine_transform<a class="headerlink" href="#affine-transform" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="dipy.align.reslice.affine_transform">
+<code class="descclassname">dipy.align.reslice.</code><code class="descname">affine_transform</code><span class="sig-paren">(</span><em>input</em>, <em>matrix</em>, <em>offset=0.0</em>, <em>output_shape=None</em>, <em>output=None</em>, <em>order=3</em>, <em>mode='constant'</em>, <em>cval=0.0</em>, <em>prefilter=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.align.reslice.affine_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply an affine transformation.</p>
+<p>The given matrix and offset are used to find for each point in the
+output the corresponding coordinates in the input by an affine
+transformation. The value of the input at those coordinates is
+determined by spline interpolation of the requested order. Points
+outside the boundaries of the input are filled according to the given
+mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>input</strong> : ndarray</p>
+<blockquote>
+<div><p>The input array.</p>
+</div></blockquote>
+<p><strong>matrix</strong> : ndarray</p>
+<blockquote>
+<div><p>The matrix must be two-dimensional or can also be given as a
+one-dimensional sequence or array. In the latter case, it is assumed
+that the matrix is diagonal. A more efficient algorithms is then
+applied that exploits the separability of the problem.</p>
+</div></blockquote>
+<p><strong>offset</strong> : float or sequence, optional</p>
+<blockquote>
+<div><p>The offset into the array where the transform is applied. If a float,
+<cite>offset</cite> is the same for each axis. If a sequence, <cite>offset</cite> should
+contain one value for each axis.</p>
+</div></blockquote>
+<p><strong>output_shape</strong> : tuple of ints, optional</p>
+<blockquote>
+<div><p>Shape tuple.</p>
+</div></blockquote>
+<p><strong>output</strong> : ndarray or dtype, optional</p>
+<blockquote>
+<div><p>The array in which to place the output, or the dtype of the returned
+array.</p>
+</div></blockquote>
+<p><strong>order</strong> : int, optional</p>
+<blockquote>
+<div><p>The order of the spline interpolation, default is 3.
+The order has to be in the range 0-5.</p>
+</div></blockquote>
+<p><strong>mode</strong> : str, optional</p>
+<blockquote>
+<div><p>Points outside the boundaries of the input are filled according
+to the given mode (&#8216;constant&#8217;, &#8216;nearest&#8217;, &#8216;reflect&#8217; or &#8216;wrap&#8217;).
+Default is &#8216;constant&#8217;.</p>
+</div></blockquote>
+<p><strong>cval</strong> : scalar, optional</p>
+<blockquote>
+<div><p>Value used for points outside the boundaries of the input if
+<code class="docutils literal"><span class="pre">mode='constant'</span></code>. Default is 0.0</p>
+</div></blockquote>
+<p><strong>prefilter</strong> : bool, optional</p>
+<blockquote>
+<div><p>The parameter prefilter determines if the input is pre-filtered with
+<cite>spline_filter</cite> before interpolation (necessary for spline
+interpolation of order &gt; 1).  If False, it is assumed that the input is
+already filtered. Default is True.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>affine_transform</strong> : ndarray or None</p>
+<blockquote class="last">
+<div><p>The transformed input. If <cite>output</cite> is given as a parameter, None is
+returned.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="cpu-count">
+<h3>cpu_count<a class="headerlink" href="#cpu-count" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="dipy.align.reslice.cpu_count">
+<code class="descclassname">dipy.align.reslice.</code><code class="descname">cpu_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dipy.align.reslice.cpu_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the number of CPUs in the system</p>
+</dd></dl>
+
+</div>
+<div class="section" id="reslice">
+<h3>reslice<a class="headerlink" href="#reslice" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="dipy.align.reslice.reslice">
+<code class="descclassname">dipy.align.reslice.</code><code class="descname">reslice</code><span class="sig-paren">(</span><em>data</em>, <em>affine</em>, <em>zooms</em>, <em>new_zooms</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>num_processes=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.align.reslice.reslice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reslice data with new voxel resolution defined by <code class="docutils literal"><span class="pre">new_zooms</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array, shape (I,J,K) or (I,J,K,N)</p>
+<blockquote>
+<div><p>3d volume or 4d volume with datasets</p>
+</div></blockquote>
+<p><strong>affine</strong> : array, shape (4,4)</p>
+<blockquote>
+<div><p>mapping from voxel coordinates to world coordinates</p>
+</div></blockquote>
+<p><strong>zooms</strong> : tuple, shape (3,)</p>
+<blockquote>
+<div><p>voxel size for (i,j,k) dimensions</p>
+</div></blockquote>
+<p><strong>new_zooms</strong> : tuple, shape (3,)</p>
+<blockquote>
+<div><p>new voxel size for (i,j,k) after resampling</p>
+</div></blockquote>
+<p><strong>order</strong> : int, from 0 to 5</p>
+<blockquote>
+<div><p>order of interpolation for resampling/reslicing,
+0 nearest interpolation, 1 trilinear etc..
+if you don&#8217;t want any smoothing 0 is the option you need.</p>
+</div></blockquote>
+<p><strong>mode</strong> : string (&#8216;constant&#8217;, &#8216;nearest&#8217;, &#8216;reflect&#8217; or &#8216;wrap&#8217;)</p>
+<blockquote>
+<div><p>Points outside the boundaries of the input are filled according
+to the given mode.</p>
+</div></blockquote>
+<p><strong>cval</strong> : float</p>
+<blockquote>
+<div><p>Value used for points outside the boundaries of the input if
+mode=&#8217;constant&#8217;.</p>
+</div></blockquote>
+<p><strong>num_processes</strong> : int</p>
+<blockquote>
+<div><p>Split the calculation to a pool of children processes. This only
+applies to 4D <cite>data</cite> arrays. If a positive integer then it defines
+the size of the multiprocessing pool that will be used. If 0, then
+the size of the pool will equal the number of cores available.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data2</strong> : array, shape (I,J,K) or (I,J,K,N)</p>
+<blockquote>
+<div><p>datasets resampled into isotropic voxel size</p>
+</div></blockquote>
+<p><strong>affine2</strong> : array, shape (4,4)</p>
+<blockquote class="last">
+<div><p>new affine for the resampled image</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">nibabel</span> <span class="kn">as</span> <span class="nn">nib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.align.reslice</span> <span class="kn">import</span> <span class="n">reslice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.data</span> <span class="kn">import</span> <span class="n">get_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fimg</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;aniso_vox&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">nib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fimg</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">58</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">affine</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_affine</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zooms</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">get_header</span><span class="p">()</span><span class="o">.</span><span class="n">get_zooms</span><span class="p">()[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zooms</span>
+<span class="go">(4.0, 4.0, 5.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_zooms</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mf">3.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_zooms</span>
+<span class="go">(3.0, 3.0, 3.0)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span><span class="p">,</span> <span class="n">affine2</span> <span class="o">=</span> <span class="n">reslice</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">affine</span><span class="p">,</span> <span class="n">zooms</span><span class="p">,</span> <span class="n">new_zooms</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">77</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="id7">
+<h3><code class="xref py py-class docutils literal"><span class="pre">IsotropicScaleSpace</span></code><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3><code class="xref py py-class docutils literal"><span class="pre">ScaleSpace</span></code><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id9">
+<h3><code class="xref py py-class docutils literal"><span class="pre">floating</span></code><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bundlemindistancematrixmetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">BundleMinDistanceMatrixMetric</span></code><a class="headerlink" href="#bundlemindistancematrixmetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bundlemindistancemetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">BundleMinDistanceMetric</span></code><a class="headerlink" href="#bundlemindistancemetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bundlesumdistancematrixmetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">BundleSumDistanceMatrixMetric</span></code><a class="headerlink" href="#bundlesumdistancematrixmetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id10">
+<h3><code class="xref py py-class docutils literal"><span class="pre">Optimizer</span></code><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="streamlinedistancemetric">
+<h3><code class="xref py py-class docutils literal"><span class="pre">StreamlineDistanceMetric</span></code><a class="headerlink" href="#streamlinedistancemetric" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="streamlinelinearregistration">
+<h3><code class="xref py py-class docutils literal"><span class="pre">StreamlineLinearRegistration</span></code><a class="headerlink" href="#streamlinelinearregistration" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="streamlineregistrationmap">
+<h3><code class="xref py py-class docutils literal"><span class="pre">StreamlineRegistrationMap</span></code><a class="headerlink" href="#streamlineregistrationmap" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bundle-min-distance">
+<h3>bundle_min_distance<a class="headerlink" href="#bundle-min-distance" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bundle-min-distance-fast">
+<h3>bundle_min_distance_fast<a class="headerlink" href="#bundle-min-distance-fast" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="bundle-sum-distance">
+<h3>bundle_sum_distance<a class="headerlink" href="#bundle-sum-distance" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="center-streamlines">
+<h3>center_streamlines<a class="headerlink" href="#center-streamlines" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="compose-matrix">
+<h3>compose_matrix<a class="headerlink" href="#compose-matrix" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="compose-matrix44">
+<h3>compose_matrix44<a class="headerlink" href="#compose-matrix44" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="compose-transformations">
+<h3>compose_transformations<a class="headerlink" href="#compose-transformations" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="decompose-matrix">
+<h3>decompose_matrix<a class="headerlink" href="#decompose-matrix" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="decompose-matrix44">
+<h3>decompose_matrix44<a class="headerlink" href="#decompose-matrix44" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="distance-matrix-mdf">
+<h3>distance_matrix_mdf<a class="headerlink" href="#distance-matrix-mdf" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="transform-streamlines">
+<h3>transform_streamlines<a class="headerlink" href="#transform-streamlines" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="unlist-streamlines">
+<h3>unlist_streamlines<a class="headerlink" href="#unlist-streamlines" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id11">
+<h3>with_metaclass<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2013, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>

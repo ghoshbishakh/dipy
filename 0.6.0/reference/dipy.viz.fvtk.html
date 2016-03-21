@@ -1,0 +1,906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dipy &mdash; dipy 0.6.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/dipy.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.6.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="dipy 0.6.0 documentation" href="../index.html" />
+    <link rel="up" title="dipy viz" href="viz.html" />
+    <link rel="next" title="A quick overview of features" href="../stateoftheart.html" />
+    <link rel="prev" title="dipy viz" href="viz.html" />
+  <meta name="keywords" content="dipy, dMRI, DTI, DSI, diffusion MRI, Tensor,
+  neuroimaging, python, neuroscience, Eleftherios, Garyfallidis, tractography,
+  streamlines, fiber tracking">
+
+  </head>
+  <body role="document">
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+ <a href="../index.html">
+  <img src="../_static/dipy-banner.png" alt="dipy logo"  border="0" />
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../stateoftheart.html" title="A quick overview of features"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="viz.html" title="dipy viz"
+             accesskey="P">previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="viz.html" accesskey="U">dipy viz</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+  
+<h4> Site Navigation </h4>
+  <ul>
+    <li><a href="../documentation.html">Documentation</a></li>
+    <li><a href="../devel/index.html">Development</a></li>
+  </ul>
+
+<h4> NIPY Community </h4>
+  <ul class="simple">
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/">Community Home</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/projects/">NIPY Projects</a></li>
+    <li><a class="reference external"
+	href="http://mail.scipy.org/mailman/listinfo/nipy-devel">Mailing List</a></li>
+    <li><a class="reference external"
+	href="http://nipy.sourceforge.net/software/license/index.html">License</a></li>
+  </ul>
+
+
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">dipy.viz.fvtk</span></code></a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="viz.html"
+                        title="previous chapter">dipy viz</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../stateoftheart.html"
+                        title="next chapter">A quick overview of features</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/reference/dipy.viz.fvtk.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+
+<div id="searchbox-ml" style="display: none">
+  <h3>Search mailing list archive</h3>
+  <script type="text/javascript">
+    function mlsearch(curobj)
+    {
+    curobj.q.value="site:mail.scipy.org/pipermail/nipy-devel/ "+curobj.userquery.value
+    }
+  </script>
+  <form action="http://www.google.com/search" method="get" onSubmit="mlsearch(this)">
+    <input name="userquery" size="13" type="text" /> <input type="submit" value="Go" />
+    <input name="q" type="hidden" />
+  </form>
+</div>
+  
+<div id="searchbox-site" style="display: none">
+  <h3>Search this site</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="13" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-dipy.viz.fvtk">
+<span id="dipy-viz-fvtk"></span><h1><a class="reference internal" href="#module-dipy.viz.fvtk" title="dipy.viz.fvtk"><code class="xref py py-mod docutils literal"><span class="pre">dipy.viz.fvtk</span></code></a><a class="headerlink" href="#module-dipy.viz.fvtk" title="Permalink to this headline">¶</a></h1>
+<p>Fvtk module implements simple visualization functions using VTK.</p>
+<p>The main idea is the following:
+A window can have one or more renderers. A renderer can have none, one or more actors. Examples of actors are a sphere, line, point etc.
+You basically add actors in a renderer and in that way you can visualize the forementioned objects e.g. sphere, line ...</p>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+<dl class="function">
+<dt id="dipy.viz.fvtk.add">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">add</code><span class="sig-paren">(</span><em>ren</em>, <em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a specific actor</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.annotatePick">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">annotatePick</code><span class="sig-paren">(</span><em>object</em>, <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.annotatePick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Python function to create the text for the
+text mapper used to display the results of picking.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.axes">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">axes</code><span class="sig-paren">(</span><em>scale=(1</em>, <em>1</em>, <em>1)</em>, <em>colorx=(1</em>, <em>0</em>, <em>0)</em>, <em>colory=(0</em>, <em>1</em>, <em>0)</em>, <em>colorz=(0</em>, <em>0</em>, <em>1)</em>, <em>opacity=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.axes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an actor with the coordinate system axes where  red = x, green = y, blue =z.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.clear">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">clear</code><span class="sig-paren">(</span><em>ren</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all actors from the renderer</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.contour">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">contour</code><span class="sig-paren">(</span><em>vol, voxsz=(1.0, 1.0, 1.0), affine=None, levels=[50], colors=[array([ 1.,  0.,  0.])], opacities=[0.5]</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.contour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Take a volume and draw surface contours for any any number of
+thresholds (levels) where every contour has its own color and opacity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vol</strong> : (N, M, K) ndarray</p>
+<blockquote>
+<div><p>An array representing the volumetric dataset for which we will draw
+some beautiful contours .</p>
+</div></blockquote>
+<p><strong>voxsz</strong> : (3,) array_like</p>
+<blockquote>
+<div><p>Voxel size.</p>
+</div></blockquote>
+<p><strong>affine</strong> : None</p>
+<blockquote>
+<div><p>Not used.</p>
+</div></blockquote>
+<p><strong>levels</strong> : array_like</p>
+<blockquote>
+<div><p>Sequence of thresholds for the contours taken from image values needs
+to be same datatype as <cite>vol</cite>.</p>
+</div></blockquote>
+<p><strong>colors</strong> : (N, 3) ndarray</p>
+<blockquote>
+<div><p>RGB values in [0,1].</p>
+</div></blockquote>
+<p><strong>opacities</strong> : array_like</p>
+<blockquote>
+<div><p>Opacities of contours.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ass</strong> : assembly of actors</p>
+<blockquote class="last">
+<div><p>Representing the contour surfaces.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">fvtk</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.create_colormap">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">create_colormap</code><span class="sig-paren">(</span><em>v</em>, <em>name='jet'</em>, <em>auto=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.create_colormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create colors from a specific colormap and return it
+as an array of shape (N,3) where every row gives the corresponding
+r,g,b value. The colormaps we use are similar with those of pylab.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>v</strong> : (N,) array</p>
+<blockquote>
+<div><p>vector of values to be mapped in RGB colors according to colormap</p>
+</div></blockquote>
+<p><strong>name</strong> : str. &#8216;jet&#8217;, &#8216;blues&#8217;, &#8216;blue_red&#8217;, &#8216;accent&#8217;</p>
+<blockquote>
+<div><p>name of the colourmap</p>
+</div></blockquote>
+<p><strong>auto</strong> : bool,</p>
+<blockquote class="last">
+<div><p>if auto is True then v is interpolated to [0, 10] from v.min()
+to v.max()</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If you want to add more colormaps here is what you could do. Go to
+this website <a class="reference external" href="http://www.scipy.org/Cookbook/Matplotlib/Show_colormaps">http://www.scipy.org/Cookbook/Matplotlib/Show_colormaps</a>
+see which colormap you need and then get in pylab using the cm.datad
+dictionary.</p>
+<p>e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cm</span><span class="o">.</span><span class="n">datad</span><span class="p">[</span><span class="s1">&#39;jet&#39;</span><span class="p">]</span>
+
+<span class="p">{</span><span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+          <span class="p">(</span><span class="mf">0.11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+          <span class="p">(</span><span class="mf">0.34000000000000002</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+          <span class="p">(</span><span class="mf">0.65000000000000002</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+          <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+ <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+          <span class="p">(</span><span class="mf">0.125</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+          <span class="p">(</span><span class="mf">0.375</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+          <span class="p">(</span><span class="mf">0.64000000000000001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+          <span class="p">(</span><span class="mf">0.91000000000000003</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+          <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span>
+ <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+         <span class="p">(</span><span class="mf">0.34999999999999998</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+         <span class="p">(</span><span class="mf">0.66000000000000003</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+         <span class="p">(</span><span class="mf">0.89000000000000001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+         <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.crossing">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">crossing</code><span class="sig-paren">(</span><em>a</em>, <em>ind</em>, <em>sph</em>, <em>scale</em>, <em>orient=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.crossing" title="Permalink to this definition">¶</a></dt>
+<dd><p>visualize a volume of crossings</p>
+<p class="rubric">Examples</p>
+<p>See &#8216;dipy/doc/examples/visualize_crossings.py&#8217; at <a class="reference internal" href="../examples_index.html#examples"><span>Examples</span></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.dots">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">dots</code><span class="sig-paren">(</span><em>points</em>, <em>color=(1</em>, <em>0</em>, <em>0)</em>, <em>opacity=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.dots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create one or more 3d dots(points) returns one actor handling all the points</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.ellipsoid">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">ellipsoid</code><span class="sig-paren">(</span><em>R=array([[2, 0, 0],        [0, 1, 0],        [0, 0, 1]]), position=(0, 0, 0), thetares=20, phires=20, color=(0, 0, 1), opacity=1, tessel=0</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.ellipsoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a ellipsoid actor.</p>
+<p>Stretch a unit sphere to make it an ellipsoid under a 3x3 translation
+matrix R.</p>
+<dl class="docutils">
+<dt>R = sp.array([[2, 0, 0],</dt>
+<dd>[0, 1, 0],
+[0, 0, 1] ])</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.label">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">label</code><span class="sig-paren">(</span><em>ren</em>, <em>text='Origin'</em>, <em>pos=(0</em>, <em>0</em>, <em>0)</em>, <em>scale=(0.2</em>, <em>0.2</em>, <em>0.2)</em>, <em>color=(1</em>, <em>1</em>, <em>1)</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a label actor.</p>
+<p>This actor will always face the camera</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ren</strong> : vtkRenderer() object</p>
+<blockquote>
+<div><p>Renderer as returned by <code class="docutils literal"><span class="pre">ren()</span></code>.</p>
+</div></blockquote>
+<p><strong>text</strong> : str</p>
+<blockquote>
+<div><p>Text for the label.</p>
+</div></blockquote>
+<p><strong>pos</strong> : (3,) array_like, optional</p>
+<blockquote>
+<div><p>Left down position of the label.</p>
+</div></blockquote>
+<p><strong>scale</strong> : (3,) array_like</p>
+<blockquote>
+<div><p>Changes the size of the label.</p>
+</div></blockquote>
+<p><strong>color</strong> : (3,) array_like</p>
+<blockquote>
+<div><p>Label color as <code class="docutils literal"><span class="pre">(r,g,b)</span></code> tuple.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>l</strong> : vtkActor object</p>
+<blockquote class="last">
+<div><p>Label.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">l</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.line">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">line</code><span class="sig-paren">(</span><em>lines</em>, <em>colors</em>, <em>opacity=1</em>, <em>linewidth=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an actor for one or more lines.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lines</strong> :  list of arrays representing lines as 3d points  for example</p>
+<blockquote>
+<div><p>lines=[np.random.rand(10,3),np.random.rand(20,3)]
+represents 2 lines the first with 10 points and the second with 20 points in x,y,z coordinates.</p>
+</div></blockquote>
+<p><strong>colors</strong> : array, shape (N,3)</p>
+<blockquote>
+<div><p>Colormap where every triplet is encoding red, green and blue e.g.</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd><p class="first last">r1,g1,b1
+r2,g2,b2
+...
+rN,gN,bN</p>
+</dd>
+</dl>
+<p>where</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd><p class="first last">0=&lt;r&lt;=1,
+0=&lt;g&lt;=1,
+0=&lt;b&lt;=1</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>opacity</strong> : float, optional</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">transparency</span> <span class="pre">&lt;=</span> <span class="pre">1</span></code></p>
+</div></blockquote>
+<p><strong>linewidth</strong> : float, optional</p>
+<blockquote>
+<div><p>Line thickness.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>v</strong> : vtkActor object</p>
+<blockquote class="last">
+<div><p>Line.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">colors</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.record">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">record</code><span class="sig-paren">(</span><em>ren=None</em>, <em>cam_pos=None</em>, <em>cam_focal=None</em>, <em>cam_view=None</em>, <em>out_path=None</em>, <em>path_numbering=False</em>, <em>n_frames=10</em>, <em>az_ang=10</em>, <em>magnification=1</em>, <em>size=(300</em>, <em>300)</em>, <em>bgr_color=(0</em>, <em>0</em>, <em>0)</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.record" title="Permalink to this definition">¶</a></dt>
+<dd><p>This will record a video of your scene</p>
+<p>Records a video as a series of <code class="docutils literal"><span class="pre">.png</span></code> files of your scene by rotating the
+azimuth angle az_angle in every frame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ren</strong> : vtkRenderer() object</p>
+<blockquote>
+<div><p>as returned from function ren()</p>
+</div></blockquote>
+<p><strong>cam_pos</strong> : None or sequence (3,), optional</p>
+<blockquote>
+<div><p>camera position</p>
+</div></blockquote>
+<p><strong>cam_focal</strong> : None or sequence (3,), optional</p>
+<blockquote>
+<div><p>camera focal point</p>
+</div></blockquote>
+<p><strong>cam_view</strong> : None or sequence (3,), optional</p>
+<blockquote>
+<div><p>camera view up</p>
+</div></blockquote>
+<p><strong>out_path</strong> : str, optional</p>
+<blockquote>
+<div><p>output directory for the frames</p>
+</div></blockquote>
+<p><strong>path_numbering</strong> : bool</p>
+<blockquote>
+<div><p>when recording it changes out_path ot out_path + str(frame number)</p>
+</div></blockquote>
+<p><strong>n_frames</strong> : int, optional</p>
+<blockquote>
+<div><p>number of frames to save, default 10</p>
+</div></blockquote>
+<p><strong>az_ang</strong> : float, optional</p>
+<blockquote>
+<div><p>azimuthal angle of camera rotation.</p>
+</div></blockquote>
+<p><strong>magnification</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>how much to magnify the saved frame</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#uncomment below to record</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.record(r)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#check for new images in current directory</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.ren">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">ren</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.ren" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a renderer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>v</strong> : vtkRenderer() object</p>
+<blockquote class="last">
+<div><p>Renderer.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">fvtk</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.rm">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">rm</code><span class="sig-paren">(</span><em>ren</em>, <em>a</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.rm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a specific actor</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.rm_all">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">rm_all</code><span class="sig-paren">(</span><em>ren</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.rm_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all actors from the renderer</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.show">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">show</code><span class="sig-paren">(</span><em>ren</em>, <em>title='dipy.viz.fvtk'</em>, <em>size=(300</em>, <em>300)</em>, <em>png_magnify=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show window</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ren</strong> : vtkRenderer() object</p>
+<blockquote>
+<div><p>As returned from function <code class="docutils literal"><span class="pre">ren()</span></code>.</p>
+</div></blockquote>
+<p><strong>title</strong> : string</p>
+<blockquote>
+<div><p>A string for the window title bar.</p>
+</div></blockquote>
+<p><strong>size</strong> : (int, int)</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">(width,</span> <span class="pre">height)</span></code> of the window</p>
+</div></blockquote>
+<p><strong>png_magnify</strong> : int</p>
+<blockquote class="last">
+<div><p>Number of times to magnify the screenshot.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#dipy.viz.fvtk.record" title="dipy.viz.fvtk.record"><code class="xref py py-obj docutils literal"><span class="pre">dipy.viz.fvtk.record</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>If you want to:</p>
+<ul class="simple">
+<li>navigate in the the 3d world use the left - middle - right mouse buttons</li>
+<li>reset the screen press &#8216;r&#8217;</li>
+<li>save a screenshot press &#8216;s&#8217;</li>
+<li>quit press &#8216;q&#8217;</li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lines</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">colors</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">],[</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="n">colors</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">l</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.slicer">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">slicer</code><span class="sig-paren">(</span><em>ren, vol, voxsz=(1.0, 1.0, 1.0), affine=None, contours=1, planes=1, levels=[20, 30, 40], opacities=[0.8, 0.7, 0.3], colors=None, planesx=[20, 30], planesy=[30, 40], planesz=[20, 30]</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.slicer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slicer and contour rendering of 3d volumes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vol</strong> : array, shape (N, M, K), dtype uint8</p>
+<blockquote>
+<div><p>An array representing the volumetric dataset that we want to visualize
+using volumetric rendering.</p>
+</div></blockquote>
+<p><strong>voxsz</strong> : sequence of 3 floats</p>
+<blockquote>
+<div><p>Voxel size.</p>
+</div></blockquote>
+<p><strong>affine</strong> : array, shape (4,4), default None</p>
+<blockquote>
+<div><p>As given by <code class="docutils literal"><span class="pre">volumeimages</span></code>.</p>
+</div></blockquote>
+<p><strong>contours</strong> : bool 1 to show contours</p>
+<blockquote>
+<div><p>Whether to show contours.</p>
+</div></blockquote>
+<p><strong>planes</strong> : boolean 1 show planes</p>
+<blockquote>
+<div><p>Whether to show planes.</p>
+</div></blockquote>
+<p><strong>levels</strong> : sequence</p>
+<blockquote>
+<div><p>Contour levels.</p>
+</div></blockquote>
+<p><strong>opacities</strong> : sequence</p>
+<blockquote>
+<div><p>Opacity for every contour level.</p>
+</div></blockquote>
+<p><strong>colors</strong> : None or sequence of 3-tuples</p>
+<blockquote>
+<div><p>Color for each contour level.</p>
+</div></blockquote>
+<p><strong>planesx</strong> : (2,) array_like</p>
+<blockquote>
+<div><p>Saggital.</p>
+</div></blockquote>
+<p><strong>planesy</strong> : (2,) array_like</p>
+<blockquote>
+<div><p>Coronal.</p>
+</div></blockquote>
+<p><strong>planesz :</strong> :</p>
+<blockquote class="last">
+<div><p>Axial (2,) array_like</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">80j</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">80j</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">80j</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="o">=</span><span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.slicer(r,s) #does showing too</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.sphere">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">sphere</code><span class="sig-paren">(</span><em>position=(0</em>, <em>0</em>, <em>0)</em>, <em>radius=0.5</em>, <em>thetares=8</em>, <em>phires=8</em>, <em>color=(0</em>, <em>0</em>, <em>1)</em>, <em>opacity=1</em>, <em>tessel=0</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.sphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a sphere actor</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.sphere_funcs">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">sphere_funcs</code><span class="sig-paren">(</span><em>sphere_values</em>, <em>sphere</em>, <em>image=None</em>, <em>colormap='jet'</em>, <em>scale=2.2</em>, <em>norm=True</em>, <em>radial_scale=True</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.sphere_funcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot many morphed spheres simultaneously.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sphere_values</strong> : (M,) or (X, M) or (X, Y, M) or (X, Y, Z, M) ndarray</p>
+<blockquote>
+<div><p>Values on the sphere.</p>
+</div></blockquote>
+<p><strong>sphere</strong> : Sphere</p>
+<p><strong>image</strong> : None,</p>
+<blockquote>
+<div><p>Not  yet supported.</p>
+</div></blockquote>
+<p><strong>colormap</strong> : None or &#8216;jet&#8217;</p>
+<blockquote>
+<div><p>If None then no color is used.</p>
+</div></blockquote>
+<p><strong>scale</strong> : float,</p>
+<blockquote>
+<div><p>Distance between spheres.</p>
+</div></blockquote>
+<p><strong>norm</strong> : bool,</p>
+<blockquote>
+<div><p>Normalize <cite>sphere_values</cite>.</p>
+</div></blockquote>
+<p><strong>radial_scale</strong> : bool,</p>
+<blockquote>
+<div><p>Scale sphere points according to odf values.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>actor</strong> : vtkActor</p>
+<blockquote class="last">
+<div><p>Spheres.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">odfs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">724</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">odfs</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.data</span> <span class="kn">import</span> <span class="n">get_sphere</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sphere</span> <span class="o">=</span> <span class="n">get_sphere</span><span class="p">(</span><span class="s1">&#39;symmetric724&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">fvtk</span><span class="o">.</span><span class="n">sphere_funcs</span><span class="p">(</span><span class="n">odfs</span><span class="p">,</span> <span class="n">sphere</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.tube">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">tube</code><span class="sig-paren">(</span><em>point1=(0</em>, <em>0</em>, <em>0)</em>, <em>point2=(1</em>, <em>0</em>, <em>0)</em>, <em>color=(1</em>, <em>0</em>, <em>0)</em>, <em>opacity=1</em>, <em>radius=0.1</em>, <em>capson=1</em>, <em>specular=1</em>, <em>sides=8</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.tube" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deprecated</p>
+<p>Wrap a tube around a line connecting point1 with point2 with a specific
+radius.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dipy.viz.fvtk.volume">
+<code class="descclassname">dipy.viz.fvtk.</code><code class="descname">volume</code><span class="sig-paren">(</span><em>vol</em>, <em>voxsz=(1.0</em>, <em>1.0</em>, <em>1.0)</em>, <em>affine=None</em>, <em>center_origin=1</em>, <em>info=0</em>, <em>maptype=0</em>, <em>trilinear=1</em>, <em>iso=0</em>, <em>iso_thr=100</em>, <em>opacitymap=None</em>, <em>colormap=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dipy.viz.fvtk.volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a volume and return a volumetric actor using volumetric
+rendering.</p>
+<p>This function has many different interesting capabilities. The maptype,
+opacitymap and colormap are the most crucial parameters here.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vol</strong> : array, shape (N, M, K), dtype uint8</p>
+<blockquote>
+<div><p>An array representing the volumetric dataset that we want to visualize
+using volumetric rendering.</p>
+</div></blockquote>
+<p><strong>voxsz</strong> : (3,) array_like</p>
+<blockquote>
+<div><p>Voxel size.</p>
+</div></blockquote>
+<p><strong>affine</strong> : (4, 4) ndarray</p>
+<blockquote>
+<div><p>As given by volumeimages.</p>
+</div></blockquote>
+<p><strong>center_origin</strong> : int {0,1}</p>
+<blockquote>
+<div><p>It considers that the center of the volume is the
+point <code class="docutils literal"><span class="pre">(-vol.shape[0]/2.0+0.5,-vol.shape[1]/2.0+0.5,-vol.shape[2]/2.0+0.5)</span></code>.</p>
+</div></blockquote>
+<p><strong>info</strong> : int {0,1}</p>
+<blockquote>
+<div><p>If 1 it prints out some info about the volume, the method and the
+dataset.</p>
+</div></blockquote>
+<p><strong>trilinear</strong> : int {0,1}</p>
+<blockquote>
+<div><p>Use trilinear interpolation, default 1, gives smoother rendering. If
+you want faster interpolation use 0 (Nearest).</p>
+</div></blockquote>
+<p><strong>maptype</strong> : int {0,1}</p>
+<blockquote>
+<div><p>The maptype is a very important parameter which affects the raycasting algorithm in use for the rendering.
+The options are:
+If 0 then vtkVolumeTextureMapper2D is used.
+If 1 then vtkVolumeRayCastFunction is used.</p>
+</div></blockquote>
+<p><strong>iso</strong> : int {0,1}</p>
+<blockquote>
+<div><p>If iso is 1 and maptype is 1 then we use
+<code class="docutils literal"><span class="pre">vtkVolumeRayCastIsosurfaceFunction</span></code> which generates an isosurface at
+the predefined iso_thr value. If iso is 0 and maptype is 1
+<code class="docutils literal"><span class="pre">vtkVolumeRayCastCompositeFunction</span></code> is used.</p>
+</div></blockquote>
+<p><strong>iso_thr</strong> : int</p>
+<blockquote>
+<div><p>If iso is 1 then then this threshold in the volume defines the value
+which will be used to create the isosurface.</p>
+</div></blockquote>
+<p><strong>opacitymap</strong> : (2, 2) ndarray</p>
+<blockquote>
+<div><p>The opacity map assigns a transparency coefficient to every point in
+the volume.  The default value uses the histogram of the volume to
+calculate the opacitymap.</p>
+</div></blockquote>
+<p><strong>colormap</strong> : (4, 4) ndarray</p>
+<blockquote>
+<div><p>The color map assigns a color value to every point in the volume.
+When None from the histogram it uses a red-blue colormap.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>v</strong> : vtkVolume</p>
+<blockquote class="last">
+<div><p>Volume.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>What is the difference between TextureMapper2D and RayCastFunction?  Coming
+soon... See VTK user&#8217;s guide [book] &amp; The Visualization Toolkit [book] and
+VTK&#8217;s online documentation &amp; online docs.</p>
+<p>What is the difference between RayCastIsosurfaceFunction and
+RayCastCompositeFunction?  Coming soon... See VTK user&#8217;s guide [book] &amp;
+The Visualization Toolkit [book] and VTK&#8217;s online documentation &amp;
+online docs.</p>
+<p>What about trilinear interpolation?
+Coming soon... well when time permits really ... :-)</p>
+<p class="rubric">Examples</p>
+<p>First example random points.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vol</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vol</span><span class="o">=</span><span class="n">vol</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">vol</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vol</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="go">0 99</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">fvtk</span><span class="o">.</span><span class="n">volume</span><span class="p">(</span><span class="n">vol</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+<p>Second example with a more complicated function</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dipy.viz</span> <span class="kn">import</span> <span class="n">fvtk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">20j</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">20j</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">20j</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">fvtk</span><span class="o">.</span><span class="n">ren</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">fvtk</span><span class="o">.</span><span class="n">volume</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fvtk</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#fvtk.show(r)</span>
+</pre></div>
+</div>
+<p>If you find this function too complicated you can always use mayavi.
+Please do not forget to use the -wthread switch in ipython if you are
+running mayavi.</p>
+<p>from enthought.mayavi import mlab
+import numpy as np
+x, y, z = np.ogrid[-10:10:20j, -10:10:20j, -10:10:20j]
+s = np.sin(x*y*z)/(x*y*z)
+mlab.pipeline.volume(mlab.pipeline.scalar_field(s))
+mlab.show()</p>
+<p>More mayavi demos are available here:</p>
+<p><a class="reference external" href="http://code.enthought.com/projects/mayavi/docs/development/html/mayavi/mlab.html">http://code.enthought.com/projects/mayavi/docs/development/html/mayavi/mlab.html</a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../stateoftheart.html" title="A quick overview of features"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="viz.html" title="dipy viz"
+             >previous</a> |</li>
+  <li><a href="../index.html">Home</a> |&nbsp;</li>
+  <li><a href="../stateoftheart.html">Overview</a> |&nbsp;</li>
+  <li><a href="../examples_index.html">Gallery</a> |&nbsp;</li>
+  <li><a href="../installation.html">Download</a> |&nbsp;</li>
+  <li><a href="../subscribe.html">Subscribe</a> |&nbsp;</li>
+  <li><a href="../developers.html">Developers</a> |&nbsp;</li>
+  <li><a href="../cite.html">Cite</a> &nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../documentation.html" >Documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >dipy reference</a> &raquo;</li>
+          <li class="nav-item nav-item-3"><a href="viz.html" >dipy viz</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2008-2013, dipy developers &lt;nipy-devel@neuroimaging.scipy.org&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.5.
+    </div>
+  </body>
+</html>
