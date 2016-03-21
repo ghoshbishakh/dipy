@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>Set up your fork &mdash; dipy 0.12.0dev documentation</title>
+      
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.12.0dev',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap.min.js"></script>
+      <link rel="top" title="dipy 0.12.0dev documentation" href="../../index.html" />
+      <link rel="up" title="Git for development" href="git_development.html" />
+      <link rel="next" title="Configure git" href="configure_git.html" />
+      <link rel="prev" title="Making your own copy (fork) of dipy" href="forking_hell.html" /> 
+    </head>
+    <body role="document">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><img style="max-width:100px; margin-top: -7px;"
+             src="../../_static/images/dipy-logo.png"></a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../../index.html">Home</a></li>
+              <li><a href="../../stateoftheart.html">Overview</a></li>
+              <li><a href="../../examples_index.html">Gallery</a></li>
+              <li><a href="../../installation.html">Download</a></li>
+              <li><a href="../../subscribe.html">Subscribe</a></li>
+              <li><a href="../../developers.html">Developers</a></li>
+              <li><a href="../../cite.html">Cite</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>  
+      <div class="container mainContainer">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 docCol">
+            <div class="document main-doc">
+              <div class="documentwrapper">
+                <div class="bodywrapper">
+                  <div class="body img-control" role="main">
+                    
+  <div class="section" id="set-up-your-fork">
+<span id="set-up-fork"></span><h1>Set up your fork<a class="headerlink" href="#set-up-your-fork" title="Permalink to this headline">¶</a></h1>
+<p>First you follow the instructions for <a class="reference internal" href="forking_hell.html#forking"><span>Making your own copy (fork) of dipy</span></a>.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span>git clone git@github.com:your-user-name/dipy.git
+cd dipy
+git remote add upstream git://github.com/nipy/dipy.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-detail">
+<h2>In detail<a class="headerlink" href="#in-detail" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clone-your-fork">
+<h3>Clone your fork<a class="headerlink" href="#clone-your-fork" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Clone your fork to the local computer with <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span>
+<span class="pre">git&#64;github.com:your-user-name/dipy.git</span></code></p>
+</li>
+<li><p class="first">Investigate.  Change directory to your new repo: <code class="docutils literal"><span class="pre">cd</span> <span class="pre">dipy</span></code>. Then
+<code class="docutils literal"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">-a</span></code> to show you all branches.  You&#8217;ll get something
+like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>* master
+remotes/origin/master
+</pre></div>
+</div>
+<p>This tells you that you are currently on the <code class="docutils literal"><span class="pre">master</span></code> branch, and
+that you also have a <code class="docutils literal"><span class="pre">remote</span></code> connection to <code class="docutils literal"><span class="pre">origin/master</span></code>.
+What remote repository is <code class="docutils literal"><span class="pre">remote/origin</span></code>? Try <code class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span></code> to
+see the URLs for the remote.  They will point to your github fork.</p>
+<p>Now you want to connect to the upstream <a class="reference external" href="https://github.com/nipy/dipy">dipy github</a> repository, so
+you can merge in changes from trunk.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="linking-your-repository-to-the-upstream-repo">
+<span id="linking-to-upstream"></span><h3>Linking your repository to the upstream repo<a class="headerlink" href="#linking-your-repository-to-the-upstream-repo" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span>cd dipy
+git remote add upstream git://github.com/nipy/dipy.git
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">upstream</span></code> here is just the arbitrary name we&#8217;re using to refer to the
+main <a class="reference external" href="http://nipy.org/dipy">dipy</a> repository at <a class="reference external" href="https://github.com/nipy/dipy">dipy github</a>.</p>
+<p>Note that we&#8217;ve used <code class="docutils literal"><span class="pre">git://</span></code> for the URL rather than <code class="docutils literal"><span class="pre">git&#64;</span></code>.  The
+<code class="docutils literal"><span class="pre">git://</span></code> URL is read only.  This means we that we can&#8217;t accidentally
+(or deliberately) write to the upstream repo, and we are only going to
+use it to merge into our own code.</p>
+<p>Just for your own satisfaction, show yourself that you now have a new
+&#8216;remote&#8217;, with <code class="docutils literal"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">-v</span> <span class="pre">show</span></code>, giving you something like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>upstream     git://github.com/nipy/dipy.git (fetch)
+upstream     git://github.com/nipy/dipy.git (push)
+origin       git@github.com:your-user-name/dipy.git (fetch)
+origin       git@github.com:your-user-name/dipy.git (push)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="clearer"></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebarCol">
+    <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebarwrapper">
+        <h3> Site Navigation </h3>
+        <ul>
+          <li><a href="../../documentation.html">Documentation</a></li>
+          <li><a href="../index.html">Development</a></li>
+        </ul>
+
+        <h3> NIPY Community </h3>
+        <ul class="simple">
+          <li><a class="reference external" href="http://nipy.org/">Community Home</a></li>
+          <li><a class="reference external" href="http://nipy.org/software/projects/">NIPY Projects</a></li>
+          <li><a class="reference external" href="https://mail.python.org/mailman/listinfo/neuroimaging">Mailing List</a></li>
+          <li><a class="reference external" href="http://nipy.org/nipy/license.html">License</a></li>
+        </ul>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Set up your fork</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#in-detail">In detail</a><ul>
+<li><a class="reference internal" href="#clone-your-fork">Clone your fork</a></li>
+<li><a class="reference internal" href="#linking-your-repository-to-the-upstream-repo">Linking your repository to the upstream repo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="forking_hell.html"
+                        title="previous chapter">Making your own copy (fork) of dipy</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="configure_git.html"
+                        title="next chapter">Configure git</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/devel/gitwash/set_up_fork.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+      </div>
+    </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="container footerContainer">
+          <div class="bottomNav">
+  <div class="related" role="navigation" aria-label="related navigation">
+    
+    <ul>
+      <li class="right" style="margin-right: 10px">
+        <a href="../../genindex.html" title="General Index"
+        accesskey="I">index</a></li>
+      <li class="right" >
+        <a href="../../np-modindex.html" title="Python Module Index"
+        >modules</a> |</li>
+      <li class="right" >
+        <a href="configure_git.html" title="Configure git"
+        accesskey="N">next</a> |</li>
+      <li class="right" >
+        <a href="forking_hell.html" title="Making your own copy (fork) of dipy"
+        accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">dipy 0.12.0dev documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-1"><a href="../../documentation.html" >Documentation</a> &raquo;</li>
+        <li class="nav-item nav-item-2"><a href="../index.html" >DiPy development</a> &raquo;</li>
+        <li class="nav-item nav-item-3"><a href="index.html" >Working with <em>dipy</em> source code</a> &raquo;</li>
+        <li class="nav-item nav-item-4"><a href="git_development.html" accesskey="U">Git for development</a> &raquo;</li> 
+      </ul>
+    </div>
+          </div>
+          <div class="footerContent" role="contentinfo">
+          &copy; Copyright 2008-2015, dipy developers &lt;neuroimaging@python.org&gt;.
+          Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.
+        </div>
+        </div>
+      </footer>
+    </body>
+    </html>
