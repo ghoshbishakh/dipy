@@ -3,8 +3,11 @@
 
 {% block rootrellink %}
   <li><a href="{{pathto('index')}}">Home</a> |&nbsp;</li>
+  <li><a href="{{pathto('stateoftheart')}}">Overview</a> |&nbsp;</li>
   <li><a href="{{pathto('examples_index')}}">Gallery</a> |&nbsp;</li>
+  <li><a href="{{pathto('installation')}}">Download</a> |&nbsp;</li>
   <li><a href="{{pathto('subscribe')}}">Subscribe</a> |&nbsp;</li>
+  <li><a href="{{pathto('developers')}}">Developers</a> |&nbsp;</li>
   <li><a href="{{pathto('cite')}}">Cite</a> &nbsp;</li>
 {% endblock %}
 
@@ -29,6 +32,7 @@
 <h4> Site Navigation </h4>
   <ul>
     <li><a href="{{pathto('documentation')}}">Documentation</a></li>
+    <li><a href="{{pathto('devel/index')}}">Development</a></li>
   </ul>
 
 <h4> NIPY Community </h4>
