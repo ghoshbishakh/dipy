@@ -75,7 +75,7 @@ class IntrospectiveArgumentParser(arg.ArgumentParser):
         -------
         sub_flow_optionals : dictionary of all sub workflow optional parameters
         """
-        specs = inspect.getargspec(workflow.run)
+        specs = inspect.signature(workflow.run)
         doc = inspect.getdoc(workflow.run)
         npds = NumpyDocString(doc)
         self.doc = npds['Parameters']
@@ -84,18 +84,15 @@ class IntrospectiveArgumentParser(arg.ArgumentParser):
         self.outputs = [param for param in npds['Parameters'] if
                         'out_' in param[0]]
 
-        args = specs.args[1:]
-        defaults = specs.defaults
-
-        len_args = len(args)
-        len_defaults = len(defaults)
+        args = specs.parameters
 
         output_args = \
             self.add_argument_group('output arguments(optional)')
 
-        for i, arg in enumerate(args):
+        i = 0
+        for parameter_name, parameter_obj in args.items():
             prefix = ''
-            is_optionnal = i >= len_args - len_defaults
+            is_optionnal = (parameter_obj.default == inspect.Parameter.empty)
             if is_optionnal:
                 prefix = '--'
 
@@ -103,7 +100,7 @@ class IntrospectiveArgumentParser(arg.ArgumentParser):
             dtype, isnarg = self._select_dtype(typestr)
             help_msg = ''.join(self.doc[i][2])
 
-            _args = ['{0}{1}'.format(prefix, arg)]
+            _args = ['{0}{1}'.format(prefix, parameter_name)]
             _kwargs = {'help': help_msg,
                        'type': dtype,
                        'action': 'store'}
@@ -113,7 +110,7 @@ class IntrospectiveArgumentParser(arg.ArgumentParser):
                 if dtype is bool:
                     _kwargs['action'] = 'store_true'
                     default_ = dict()
-                    default_[arg] = False
+                    default_[parameter_name] = False
                     self.set_defaults(**default_)
                     del _kwargs['type']
                     del _kwargs['metavar']
@@ -127,10 +124,11 @@ class IntrospectiveArgumentParser(arg.ArgumentParser):
             if isnarg:
                 _kwargs['nargs'] = '*'
 
-            if 'out_' in arg:
+            if 'out_' in parameter_name:
                 output_args.add_argument(*_args, **_kwargs)
             else:
                 self.add_argument(*_args, **_kwargs)
+            i += 1
 
         return self.add_sub_flow_args(workflow.get_sub_runs())
 
